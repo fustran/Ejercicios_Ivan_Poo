@@ -15,10 +15,10 @@ public class Persona {
     public Persona(String nombre, String apellido, String dni, char sexo, int edad){
 
         setNombre(nombre);
-        this.apellido=apellido;
-        this.dni=dni;
-        this.sexo=sexo;
-        this.edad=edad;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.sexo = sexo;
+        this.edad = edad;
 
     }
 
@@ -28,7 +28,7 @@ public class Persona {
 
     public void setNombre(String nombre){
         if (!nombre.equalsIgnoreCase("messi")){
-            this.nombre=nombre;
+            this.nombre = nombre;
         }
     }
 
@@ -37,7 +37,7 @@ public class Persona {
     }
 
     public void setApellido(String apellido){
-        this.apellido=apellido;
+        this.apellido = apellido;
     }
 
     public String getDni(){
@@ -45,7 +45,7 @@ public class Persona {
     }
 
     public void setDni(String dni){
-        this.dni=dni;
+        this.dni = dni;
     }
 
     public char getSexo(){
@@ -53,7 +53,7 @@ public class Persona {
     }
 
     public void setSexo(char sexo){
-        this.sexo=sexo;
+        this.sexo = sexo;
     }
 
     public int getEdad(){
@@ -61,7 +61,7 @@ public class Persona {
     }
 
     public void setEdad(int edad){
-        this.edad=edad;
+        this.edad = edad;
     }
 
     public String concatenar (){
@@ -69,7 +69,7 @@ public class Persona {
     }
 
     public void mostrarInfo(){
-        System.out.println(this.nombre +" " + this.apellido +" " + this.dni +" " + this.sexo +" " + this.edad);
+        System.out.println(this.nombre + " " + this.apellido + " " + this.dni + " " + this.sexo + " " + this.edad);
 
     }
 }
