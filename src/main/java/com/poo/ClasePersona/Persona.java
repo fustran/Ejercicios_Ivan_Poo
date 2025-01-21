@@ -14,7 +14,11 @@ public class Persona {
 
     public Persona(String nombre, String apellido, String dni, char sexo, int edad){
 
-        setNombre(nombre);
+        if (!nombre.equalsIgnoreCase("messi")) { 
+            this.nombre = nombre; // Validación directa
+        } else {
+            this.nombre = "Nombre no válido"; // Valor predeterminado
+        }
         this.apellido = apellido;
         this.dni = dni;
         this.sexo = sexo;
