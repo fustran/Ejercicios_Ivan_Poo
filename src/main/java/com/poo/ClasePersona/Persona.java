@@ -64,7 +64,7 @@ public class Persona {
         this.edad = edad;
     }
 
-    public String concatenar (){
+    public String concatenar(){
         return this.nombre + " " + this.apellido;
     }
 
