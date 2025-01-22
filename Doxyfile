@@ -1,0 +1,33 @@
+# Doxyfile para documentar una sola clase en Java
+
+# Nombre del proyecto
+PROJECT_NAME           = "Documentación de Mi Proyecto Java"
+PROJECT_NUMBER         = "1.0"
+
+# Directorio de salida
+OUTPUT_DIRECTORY       = ./src/main/java/com/poo/JavaDoc
+
+# Archivo de entrada
+INPUT                  = ./src/main/java/com/poo/
+
+# Patrones de archivos permitidos (para que coincida con el archivo `.java`)
+FILE_PATTERNS          = *.java
+
+# No recorrer directorios
+RECURSIVE              = NO
+
+# Generar documentación en HTML
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+
+# Otras configuraciones
+EXTRACT_ALL            = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARNINGS               = YES
+
+# No generar documentación de miembros privados
+EXTRACT_PRIVATE        = NO
+EXTRACT_PROTECTED      = YES
+
+# doxygen -g (para crear el archivo Doxyfile de configuración)
+# doxygen Doxyfile (para generar la documentación en la carpeta raiz)

@@ -1,7 +1,8 @@
 package com.poo;
 
-import com.poo.ClasePersona.Persona;
 
+//import com.poo.ClasePersona.Persona;
+/*
 public class Main {
     public static void main(String[] args) {
 
@@ -20,6 +21,28 @@ public class Main {
 
         Persona persona3 = new Persona("messi","Ruiz","12345678A",'H',45);
         persona3.mostrarInfo();
-
     }
 }
+*/
+
+
+
+// import com.poo.ClaseTelevisor.Televisor;
+/*
+public class Main {
+    public static void main(String[] args) {
+        
+    }
+}
+*/
+
+
+
+// import com.poo.Paciente.Paciente;
+/*
+public class Main {
+    public static void main(String[] args) {
+        
+    }
+}
+*/

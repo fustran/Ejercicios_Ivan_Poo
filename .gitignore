@@ -1,0 +1,13 @@
+# Ignorar archivos compilados de Java
+*.class
+
+# Ignorar carpeta generada por Maven
+target/
+
+# Ignorar configuraciones de IDE (por ejemplo, IntelliJ IDEA y VS Code)
+.idea/
+.vscode/
+
+# Ignorar archivos temporales y de logs
+*.log
+*.tmp
