@@ -27,22 +27,27 @@ public class Main {
 
 
 
-// import com.poo.ClaseTelevisor.Televisor;
-/*
+/*import com.poo.ClaseTelevisor.Televisor;
+
 public class Main {
     public static void main(String[] args) {
+        Televisor televisor1 = new Televisor();
         
     }
-}
-*/
+}*/
 
 
 
-// import com.poo.Paciente.Paciente;
-/*
+
+import com.poo.Paciente.Paciente;
+
 public class Main {
     public static void main(String[] args) {
-        
+        Paciente paciente1 = new Paciente("Luís", 45, 'H', 90.0, 1.90);
+        paciente1.imprimirInfo();
+        Paciente paciente2 = new Paciente("María", 35, 'M', 60.0, 1.70);
+        paciente2.imprimirInfo();
+        //System.out.println(paciente1.obtenerDni());
     }
 }
-*/
+
