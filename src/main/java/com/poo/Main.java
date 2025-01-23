@@ -1,7 +1,5 @@
 package com.poo;
 
-
-//import com.poo.ClasePersona.Persona;
 /*
 public class Main {
     public static void main(String[] args) {
@@ -43,6 +41,7 @@ import com.poo.Paciente.Paciente;
 
 public class Main {
     public static void main(String[] args) {
+
         Paciente paciente1 = new Paciente("Luís", 45, 'H', 90.0, 1.90);
         paciente1.imprimirInfo();
         Paciente paciente2 = new Paciente("María", 35, 'M', 60.0, 1.70);
@@ -50,4 +49,3 @@ public class Main {
         //System.out.println(paciente1.obtenerDni());
     }
 }
-

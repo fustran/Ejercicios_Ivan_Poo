@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Paciente {
     
-    public final static char GENERO_DEFAULT = 'X'; 
+    public final static char GENERO_DEFAULT = 'X';
     private String nombre;
     private int edad;
     private String dni;
@@ -28,19 +28,19 @@ public class Paciente {
         obtenerDni();
     }
 
+    // Método para generar un DNI aleatorio
     private void obtenerDni(){
-        Random generarDni = new Random();
-        int numeroDni = generarDni.nextInt(10000000, 99999999);
+        Random aleatorio = new Random();
+        int numeroDni = aleatorio.nextInt(10000000, 99999999);
         int resto = numeroDni % 23;
         char letras[] = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 
-        'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 
-        'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
+                        'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 
+                        'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
 
         this.dni = Integer.toString(numeroDni) + letras[resto];
     }
 
     public void imprimirInfo(){
         System.out.println(this.nombre + " " + this.edad + " " + this.genero + " " + this.dni + " " + this.peso + " " + this.altura);
-
     }
 }
