@@ -46,4 +46,4 @@ build/
 .DS_Store
 
 # ignorar el pom.xml
-pom.xml
+**/pom.xml
