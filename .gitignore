@@ -11,3 +11,6 @@ target/
 # Ignorar archivos temporales y de logs
 *.log
 *.tmp
+
+# ignorar el pom.xml
+pom.xml
