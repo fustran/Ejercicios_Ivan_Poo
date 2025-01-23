@@ -25,14 +25,33 @@ public class Main {
 
 
 
-import com.poo.ClaseTelevisor.Televisor;
+/*import com.poo.ClaseTelevisor.Televisor;
 
 public class Main {
     public static void main(String[] args) {
+
         Televisor televisor1 = new Televisor();
-        
+
+        System.out.println("Canal inicial: " + televisor1.getCanal());
+        System.out.println("Volumen inicial: " + televisor1.getVolumen());
+
+        televisor1.setCanal(100);
+        televisor1.setVolumen(100);
+
+        System.out.println("Canal: " + televisor1.getCanal());
+        System.out.println("Volumen: " + televisor1.getVolumen());
+
+        televisor1.bajarCanal();
+        System.out.println("Canal: " + televisor1.getCanal());
+        televisor1.bajarVolumen();
+        System.out.println("Volumen: " + televisor1.getVolumen());
+
+        televisor1.subirCanal();
+        System.out.println("Canal: " + televisor1.getCanal());
+        televisor1.subirVolumen();
+        System.out.println("Volumen: " + televisor1.getVolumen());
     }
-}
+}*/
 
 
 
