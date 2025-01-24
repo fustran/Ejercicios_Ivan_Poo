@@ -1,5 +1,9 @@
 package com.poo;
 
+import java.util.Scanner;
+
+import com.poo.Paciente.Paciente;
+
 /*
 public class Main {
     public static void main(String[] args) {
@@ -22,7 +26,6 @@ public class Main {
     }
 }
 */
-
 
 
 /*import com.poo.ClaseTelevisor.Televisor;
@@ -54,8 +57,6 @@ public class Main {
 }*/
 
 
-
-
 /*import com.poo.Paciente.Paciente;
 
 public class Main {
@@ -68,3 +69,73 @@ public class Main {
         System.out.println(paciente1.obtenerDni());
     }
 }*/
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        try (Scanner teclado = new Scanner(System.in)){
+
+            System.out.println("Nombre?");
+            String nombre = teclado.next();
+            System.out.println("Edad?");
+            int edad = teclado.nextInt();
+            System.out.println("Género?");
+            char genero = teclado.next().charAt(0);
+            System.out.println("Peso?");
+            double peso = teclado.nextDouble();
+            System.out.println("Altura?");
+            double altura = teclado.nextDouble();
+
+            Paciente paciente1 = new Paciente();
+            Paciente paciente2 = new Paciente(nombre,edad,genero);
+            Paciente paciente3 = new Paciente(nombre,edad,genero,peso,altura);
+
+            paciente1.setNombre("Llados");
+            paciente1.setEdad(40);
+            paciente1.setGenero('H');
+            paciente1.setPeso(120);
+            paciente1.setAltura(1.75);
+
+            paciente1.imprimirInfo();
+            paciente2.imprimirInfo();
+            paciente3.imprimirInfo();
+
+            mostrarMensajeIMC(paciente1);
+            mostrarMensajeIMC(paciente2);
+            mostrarMensajeIMC(paciente3);
+
+            mayorEdad(paciente1);
+            mayorEdad(paciente2);
+            mayorEdad(paciente3);
+
+            System.out.println(paciente1);
+        }
+    }
+
+    public static void mostrarMensajeIMC(Paciente paciente){
+
+        int peso = paciente.calcularIMC();
+
+        switch(peso){
+            case Paciente.BAJO_PESO:
+                System.out.println("El paciente " + paciente.getNombre() +  " está por debajo del peso ideal");
+                break;
+            case Paciente.PESO_IDEAL:
+                System.out.println("El paciente " + paciente.getNombre() + " está en su peso ideal");
+                break;
+            case Paciente.SOBREPESO:
+                System.out.println("El paciente " + paciente.getNombre() + " está por encima de su peso ideal");
+                break;
+        }
+    }
+
+    public static void mayorEdad(Paciente paciente){
+
+        if(paciente.esMayorDeEdad()){
+            System.out.println("El paciente " + paciente.getNombre() + " es mayor de edad");
+        }else{
+            System.out.println("El paciente " + paciente.getNombre() + " no es mayor de edad --> " + paciente.getEdad());
+        }
+    }
+}
