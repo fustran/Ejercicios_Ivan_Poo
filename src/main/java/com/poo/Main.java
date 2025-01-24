@@ -68,7 +68,7 @@ public class Main {
         paciente2.imprimirInfo();
         System.out.println(paciente1.obtenerDni());
     }
-}*/
+}
 
 
 public class Main {
@@ -130,12 +130,39 @@ public class Main {
         }
     }
 
-    public static void mayorEdad(Paciente paciente){
+    public static void mayorEdad(Paciente paciente) {
 
-        if(paciente.esMayorDeEdad()){
+        if (paciente.esMayorDeEdad()) {
             System.out.println("El paciente " + paciente.getNombre() + " es mayor de edad");
-        }else{
+        } else {
             System.out.println("El paciente " + paciente.getNombre() + " no es mayor de edad --> " + paciente.getEdad());
         }
+    }
+}
+
+import com.poo.ClaseEstudiante.Estudiante;
+public class Main {
+    public static void main(String[] args) {
+        Estudiante estudiante1 = new Estudiante("paco");
+        Estudiante estudiante2 = new Estudiante("paco",  "2º ESO", "noseque@alu.edu.gva.es");
+
+
+        System.out.println(estudiante1);
+        System.out.println(estudiante2);
+
+        if (Estudiante.validarEmail(estudiante2.getEmail())) {
+            System.out.println("Email válido");
+        } else {
+            System.out.println("Email no válido");
+        }
+    }
+}*/
+
+import com.poo.ClaseLibro.Libro;
+public class Main {
+    public static void main(String[] args) {
+
+        Libro libro1 = new Libro("El principito", "Quevedo");
+        System.out.println(libro1);
     }
 }
