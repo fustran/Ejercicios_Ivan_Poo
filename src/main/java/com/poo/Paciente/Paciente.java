@@ -4,11 +4,11 @@ import java.util.Random;
 
 
 public class Paciente {
-    
-    public final static char GENERO_DEFAULT = 'X';
-    public final static int BAJO_PESO = -1;
-    public final static int PESO_IDEAL = 0;
-    public final static int SOBREPESO = 1;
+
+    public static final char GENERO_DEFAULT = 'X';
+    public static final int BAJO_PESO = -1;
+    public static final int PESO_IDEAL = 0;
+    public static final int SOBREPESO = 1;
     public static final int EDAD_ADULTA = 18;
 
     private String nombre;
@@ -37,16 +37,19 @@ public class Paciente {
         obtenerDni();
     }
 
-    // Método para generar un DNI aleatorio
-    private void obtenerDni(){
-        Random aleatorio = new Random();
-        int numeroDni = aleatorio.nextInt(10000000, 99999999);
-        int resto = numeroDni % 23;
-        char letras[] = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 
-                        'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 
-                        'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
+    // Array de letras para el DNI
+    private static final char[] LETRAS = {'T', 'R', 'W', 'A', 'G', 'M', 'Y',
+                                          'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z',
+                                          'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
 
-        this.dni = Integer.toString(numeroDni) + letras[resto];
+    // Objeto Random para generar un número aleatorio
+    private static final Random ALEATORIO = new Random();
+
+    // Metodo para generar un DNI aleatorio
+    private void obtenerDni(){
+        int numeroDni = ALEATORIO.nextInt(10000000, 99999999);
+        int resto = numeroDni % 23;
+        this.dni = Integer.toString(numeroDni) + LETRAS[resto];
     }
 
     public void imprimirInfo(){
@@ -123,8 +126,8 @@ public class Paciente {
         this.altura=altura;
     }
 
-    // @override Es una anotación que indica que estás sobrescribiendo un método de la clase padre (en este caso, toString de Object).
-    // El método toString es un método definido en la clase base Object, de la cual heredan todas las clases en Java.
+    // @override Es una anotación que indica que estás sobrescribiendo un metodo de la clase padre (en este caso, toString de Object).
+    // El metodo toString es un metodo definido en la clase base Object, de la cual heredan todas las clases en Java.
     // Por defecto imprime: Paciente@1b6d3586
     // Se usa para imprimir el objeto de una forma más legible.
     @Override
