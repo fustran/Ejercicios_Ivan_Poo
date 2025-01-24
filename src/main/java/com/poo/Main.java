@@ -1,8 +1,6 @@
 package com.poo;
 
-import java.util.Scanner;
-
-import com.poo.Paciente.Paciente;
+//import java.util.Scanner;
 
 /*
 public class Main {
@@ -138,8 +136,9 @@ public class Main {
             System.out.println("El paciente " + paciente.getNombre() + " no es mayor de edad --> " + paciente.getEdad());
         }
     }
-}
+}*/
 
+/*
 import com.poo.ClaseEstudiante.Estudiante;
 public class Main {
     public static void main(String[] args) {
@@ -162,7 +161,13 @@ import com.poo.ClaseLibro.Libro;
 public class Main {
     public static void main(String[] args) {
 
-        Libro libro1 = new Libro("El principito", "Quevedo");
+        Libro libro1 = new Libro("El Principito", "Quevedo");
         System.out.println(libro1);
+
+        Libro libro2 = new Libro("El Quijote", "Cervantes");
+        System.out.println(libro2);
+
+        System.out.println("Total libros creados: " + Libro.getTotalLibros());
+        System.out.println("Libros disponibles: " + Libro.getLibrosDisponibles());
     }
 }
