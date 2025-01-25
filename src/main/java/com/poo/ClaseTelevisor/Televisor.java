@@ -63,4 +63,9 @@ public final class Televisor {
     public int bajarVolumen(){
         return this.volumen--;
     }
+
+    @Override
+    public String toString(){
+        return "Televisor: [" + getCanal() + ", Volumen: " + getVolumen() + "]";
+    }
 }

@@ -26,5 +26,8 @@ public class AplicacionTv {
 
         System.out.println("Televisor 1 - Canal final: " + televisor1.getCanal() + ", Volumen final: " + televisor1.getVolumen());
         System.out.println("Televisor 2 - Canal final: " + televisor2.getCanal() + ", Volumen final: " + televisor2.getVolumen());
+
+        System.out.println(televisor1);
+        System.out.println(televisor2);
     }
 }
