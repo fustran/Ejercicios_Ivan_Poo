@@ -111,8 +111,8 @@ public class Persona {
         return this.nombre + " " + this.apellido;
     }
 
-    // Metodo para mostrar información de la persona, no tiene parámetros porque no necesita parámetros.
-    public void mostrarInfo(){
-        System.out.println(this.nombre + " " + this.apellido + " " + this.dni + " " + this.sexo + " " + this.edad);
+    @Override
+    public String toString(){
+        return "Persona: [Nombre = " + getNombre() + ", Apellido = " + getApellido() + ", DNI = " + getDni() + ", Sexo = " + getSexo() + ", Edad = " + getEdad() + ", Ciudad de Residencia = " + getCiudadResidencia() + ", Profesión = " + getProfesion() + "]";
     }
 }

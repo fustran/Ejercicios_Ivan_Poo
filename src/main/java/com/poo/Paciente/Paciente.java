@@ -132,6 +132,6 @@ public class Paciente {
     // Se usa para imprimir el objeto de una forma más legible.
     @Override
     public String toString(){
-        return "Paciente : [ nombre = " + this.nombre + ", edad = " + this.edad + ", genero = " + this.genero + ", peso = " + this.peso + ", altura = " + this.altura + "]";
+        return "Paciente : [ nombre = " + getNombre() + ", edad = " + getEdad() + ", genero = " + getGenero() + ", peso = " + getPeso() + ", altura = " + getAltura() + "]";
     }
 }

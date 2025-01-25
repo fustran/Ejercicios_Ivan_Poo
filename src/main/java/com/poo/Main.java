@@ -20,7 +20,7 @@ public class Main {
         System.out.println(persona1.getNombre());
 
         Persona persona3 = new Persona("messi","Ruiz","12345678A",'H',45);
-        persona3.mostrarInfo();
+        System.out.println(persona3);
     }
 }
 */

@@ -4,7 +4,7 @@ public class Estudiante {
 
     private static final String CORREO_VALIDO = "^[A-Za-z0-9+_.-]+@alu.edu.gva.es$";
 
-    public static int contadorEstudiantes = 0;
+    private static int contadorEstudiantes = 0;
 
     private String nombre;
     private String curso;
@@ -57,12 +57,12 @@ public class Estudiante {
         this.email = email;
     }
 
+    public static Boolean validarEmail(String email) {
+        return email.matches(CORREO_VALIDO);
+    }
+
     @Override
     public String toString() {
         return "Estudiante : [nombre = " + getNombre() + ", Curso = " + getCurso() + ", NIA = " + getNia() + ", Email = " + getEmail() + "]";
-    }
-
-    public static Boolean validarEmail(String email) {
-        return email.matches(CORREO_VALIDO);
     }
 }
