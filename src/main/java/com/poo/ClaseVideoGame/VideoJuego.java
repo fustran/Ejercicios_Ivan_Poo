@@ -1,12 +1,12 @@
 package com.poo.ClaseVideoGame;
 
-public class VideoGame {
+public class VideoJuego {
 
     String nombre;
     double precio;
     String categoria;
 
-    public VideoGame(String nombre, double precio, String categoria) {
+    public VideoJuego(String nombre, double precio, String categoria) {
         this.nombre = nombre;
         this.precio = precio;
         this.categoria = categoria;
@@ -38,6 +38,6 @@ public class VideoGame {
 
     @Override
     public String toString() {
-        return "VideoGame{" + " Nombre='" + getNombre() + '\'' + ", Precio=" + getPrecio() + ", Categoria='" + getCategoria() + '\'' + '}';
+        return "VideoJuego : [ NOMBRE = " + getNombre() + ", PRECIO = " +  String.format("%.2f€", getPrecio()) + ", CATEGORÍA = " + getCategoria() + " ]";
     }
 }

@@ -157,7 +157,8 @@ public class Main {
     }
 }*/
 
-import com.poo.ClaseLibro.Libro;
+
+/*import com.poo.ClaseLibro.Libro;
 public class Main {
     public static void main(String[] args) {
 
@@ -169,5 +170,21 @@ public class Main {
 
         System.out.println("Total libros creados: " + Libro.getTotalLibros());
         System.out.println("Libros disponibles: " + Libro.getLibrosDisponibles());
+    }
+}*/
+
+
+import com.poo.ClaseVideoGame.VideoJuego;
+
+public class Main {
+    public static void main(String[] args) {
+
+        VideoJuego videoJuego = new VideoJuego("World of Warcraft", 45, "MMO RPG");
+        VideoJuego videoJuego1 = new VideoJuego("Diablo IV", 89, "Rol RPG");
+        VideoJuego videoJuego2 = new VideoJuego("Harry Potter" , 65, "Aventura");
+
+        System.out.println("\n" + videoJuego);
+        System.out.println(videoJuego1);
+        System.out.println(videoJuego2);
     }
 }
