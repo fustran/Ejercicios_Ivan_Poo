@@ -174,7 +174,7 @@ public class Main {
 }*/
 
 
-import com.poo.ClaseVideoGame.VideoJuego;
+import com.poo.Clasevideojuego.VideoJuego;
 
 public class Main {
     public static void main(String[] args) {

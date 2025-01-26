@@ -1,4 +1,4 @@
-package com.poo.ClaseVideoGame;
+package com.poo.Clasevideojuego;
 
 public class VideoJuego {
 
