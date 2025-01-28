@@ -139,13 +139,20 @@ public class Main {
 }*/
 
 /*
-import com.poo.ClaseEstudiante.Estudiante;
+
 public class Main {
     public static void main(String[] args) {
+
+    }
+}*/
+
+import com.poo.ClaseEstudiante.Estudiante;
+import com.poo.ClaseLibro.Libro;
+public class Main {
+    public static void main(String[] args) {
+
         Estudiante estudiante1 = new Estudiante("paco");
         Estudiante estudiante2 = new Estudiante("paco",  "2º ESO", "noseque@alu.edu.gva.es");
-
-
         System.out.println(estudiante1);
         System.out.println(estudiante2);
 
@@ -154,13 +161,7 @@ public class Main {
         } else {
             System.out.println("Email no válido");
         }
-    }
-}*/
 
-
-/*import com.poo.ClaseLibro.Libro;
-public class Main {
-    public static void main(String[] args) {
 
         Libro libro1 = new Libro("El Principito", "Quevedo");
         System.out.println(libro1);
@@ -170,11 +171,20 @@ public class Main {
 
         System.out.println("Total libros creados: " + Libro.getTotalLibros());
         System.out.println("Libros disponibles: " + Libro.getLibrosDisponibles());
+
+        System.out.println(Libro.getLibrosDisponibles());
+        libro1.prestar(estudiante2);
+        System.out.println(libro1);
+        System.out.println(Libro.getLibrosDisponibles());
+
+        libro1.devolver();
+        System.out.println(libro1);
+        System.out.println(Libro.getLibrosDisponibles());
     }
-}*/
+}
 
 
-import com.poo.Clasevideojuego.VideoJuego;
+/*import com.poo.Clasevideojuego.VideoJuego;
 
 public class Main {
     public static void main(String[] args) {
@@ -187,4 +197,4 @@ public class Main {
         System.out.println(videoJuego1);
         System.out.println(videoJuego2);
     }
-}
+}*/

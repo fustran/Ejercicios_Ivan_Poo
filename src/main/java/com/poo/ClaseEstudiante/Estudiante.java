@@ -1,5 +1,7 @@
 package com.poo.ClaseEstudiante;
 
+import com.poo.ClaseLibro.Libro;
+
 public class Estudiante {
 
     private static final String CORREO_VALIDO = "^[A-Za-z0-9+_.-]+@alu.edu.gva.es$";
@@ -10,6 +12,22 @@ public class Estudiante {
     private String curso;
     private final int nia;
     private String email;
+    private Libro libroPrestado;
+
+    public Libro getLibroPrestado() {
+        return libroPrestado;
+    }
+
+    public Libro setLibroPrestado(Libro libroPrestado) {
+        this.libroPrestado = libroPrestado;
+        return libroPrestado;
+    }
+
+    public static int getContadorEstudiantes() {
+        return contadorEstudiantes;
+    }
+
+
 
     public Estudiante(String nombre, String curso, String email) {
         this.nombre = nombre;
@@ -17,6 +35,7 @@ public class Estudiante {
         this.email = email;
         contadorEstudiantes++;
         nia = contadorEstudiantes; // al no ser pasado como atributo no hace falta el this.
+        libroPrestado = null;
     }
 
     public Estudiante(String nombre) {
@@ -63,6 +82,6 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        return "Estudiante : [nombre = " + getNombre() + ", Curso = " + getCurso() + ", NIA = " + getNia() + ", Email = " + getEmail() + "]";
+        return "Estudiante : [nombre = " + getNombre() + ", Curso = " + getCurso() + ", NIA = " + getNia() + ", Email = " + getEmail() + " Libro prestado = " + getLibroPrestado() + "]";
     }
 }

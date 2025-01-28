@@ -1,5 +1,7 @@
 package com.poo.ClaseLibro;
 
+import com.poo.ClaseEstudiante.Estudiante;
+
 /**
  * Clase Libro que contiene los atributos y métodos de un libro.
  * @autor <b>Poo</b>
@@ -15,6 +17,7 @@ public class Libro {
     private String autor;
     private final String id;
     private boolean disponible;
+    private Estudiante estudiantePrestado;
 
 
     /**
@@ -29,6 +32,7 @@ public class Libro {
         cantidadLibros++;
         librosDisponibles++;
         this.id = generarIdLibro();
+        estudiantePrestado = null;
     }
 
     /**
@@ -104,12 +108,57 @@ public class Libro {
         this.disponible = disponible;
     }
 
+    public void estaDisponible() {
+        if(getDisponible()) {
+            System.out.println("El libro " + getDisponible() + "está disponible");
+        }else{
+            System.out.println("El libro " + getDisponible() + "no está disponible");
+        }
+    }
+
     /**
      * @override Es una anotación que indica que estás sobrescribiendo un metodo de la clase padre (en este caso, toString de Object).
      * @return retorna un mensaje con la información del libro.
      */
     @Override
     public String toString(){
-        return "Libro :  [Título = " + getTitulo() + ", Autor = " + getAutor() + ", ID = " + getId() + ", Disponible = " + getDisponible() + "]";
+        return "Libro :  [Título = " + getTitulo() + ", Autor = " + getAutor() + ", ID = " + getId() + ", Disponible = " + getDisponible() + ", Estudiante Prestado = " + getEstudiantePrestado() + "]";
+    }
+
+    public void prestar(Estudiante estudiante) {
+
+        if(disponible && estudiante.getLibroPrestado() == null) {
+            disponible = false;
+            System.out.println("El libro: " + getTitulo() + " ha sido prestado con éxito a " + estudiante.getNombre());
+            librosDisponibles--;
+            estudiantePrestado = estudiante;
+            estudiante.setLibroPrestado(this);
+
+        }  else if(estudiante.getLibroPrestado() == null){
+            System.out.println("El estudiante " + () + " Ya ha sido prestaod");
+
+        }else{
+            System.out.println("El libro: " + getTitulo() + " no se puede prestar (No disponible).");
+        }
+    }
+
+    public Estudiante getEstudiantePrestado() {
+        return estudiantePrestado;
+    }
+
+    public void setEstudiantePrestado(Estudiante estudiantePrestado) {
+        this.estudiantePrestado = estudiantePrestado;
+    }
+
+    public void devolver() {
+        if(!disponible) {
+            disponible = true;
+            System.out.println("El libro: " + getTitulo() + " ha sido devuelto con éxito por " + estudiantePrestado.getNombre());
+            librosDisponibles++;
+            estudiantePrestado = null;
+
+        }else {
+            System.out.println("El libro: " + getTitulo() + " no se puede devolver");
+        }
     }
 }
