@@ -1,4 +1,4 @@
-package com.poo.ClaseTelevisor;
+package com.poo.Televisor;
 
 
 public final class Televisor {

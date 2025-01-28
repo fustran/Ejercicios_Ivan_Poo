@@ -1,6 +1,6 @@
 // Programación Orientada a Objetos. Clase Persona.
 
-package com.poo.ClasePersona;
+package com.poo.Persona;
 
 public class Persona {
 

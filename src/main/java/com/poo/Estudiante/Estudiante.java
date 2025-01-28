@@ -1,18 +1,17 @@
-package com.poo.ClaseEstudiante;
+package com.poo.Estudiante;
 
-import com.poo.ClaseLibro.Libro;
+import com.poo.Libro.Libro;
 
 public class Estudiante {
 
     private static final String CORREO_VALIDO = "^[A-Za-z0-9+_.-]+@alu.edu.gva.es$";
-
     private static int contadorEstudiantes = 0;
 
     private String nombre;
     private String curso;
     private final int nia;
     private String email;
-    private Libro libroPrestado;
+    private Libro libroPrestado; // Relación con la clase libro
 
     public Libro getLibroPrestado() {
         return libroPrestado;
@@ -26,8 +25,6 @@ public class Estudiante {
     public static int getContadorEstudiantes() {
         return contadorEstudiantes;
     }
-
-
 
     public Estudiante(String nombre, String curso, String email) {
         this.nombre = nombre;

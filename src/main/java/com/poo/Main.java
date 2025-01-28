@@ -146,8 +146,8 @@ public class Main {
     }
 }*/
 
-import com.poo.ClaseEstudiante.Estudiante;
-import com.poo.ClaseLibro.Libro;
+import com.poo.Estudiante.Estudiante;
+import com.poo.Libro.Libro;
 public class Main {
     public static void main(String[] args) {
 
@@ -162,7 +162,6 @@ public class Main {
             System.out.println("Email no válido");
         }
 
-
         Libro libro1 = new Libro("El Principito", "Quevedo");
         System.out.println(libro1);
 
@@ -174,12 +173,15 @@ public class Main {
 
         System.out.println(Libro.getLibrosDisponibles());
         libro1.prestar(estudiante2);
+        System.out.println(estudiante2);
         System.out.println(libro1);
         System.out.println(Libro.getLibrosDisponibles());
 
-        libro1.devolver();
+        libro1.devolver(estudiante2);
         System.out.println(libro1);
+        System.out.println(estudiante2);
         System.out.println(Libro.getLibrosDisponibles());
+        libro1.devolver(estudiante2);
     }
 }
 
