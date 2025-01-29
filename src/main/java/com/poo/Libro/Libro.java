@@ -3,7 +3,6 @@ package com.poo.Libro;
 import com.poo.Editorial.Editorial;
 import com.poo.Estudiante.Estudiante;
 import com.poo.Prestamo.Prestamo;
-import java.time.LocalDate;
 
 public class Libro {
 
@@ -30,7 +29,7 @@ public class Libro {
     }
 
     private String generarIdLibro() {
-       return ID_LIBROS + String.format("%03d", cantidadLibros);
+        return ID_LIBROS + String.format("%03d", cantidadLibros);
     }
 
     public void prestar(Estudiante estudiante) {

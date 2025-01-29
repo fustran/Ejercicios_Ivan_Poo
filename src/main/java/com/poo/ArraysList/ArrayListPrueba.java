@@ -1,11 +1,13 @@
 package com.poo.ArraysList;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ArrayListPrueba {
 
     public static void main(String[] args) {
-        ArrayList<Integer> listaNums = new ArrayList();
+
+        ArrayList<Integer> listaNums = new ArrayList<>();
 
         listaNums.add(3);
         listaNums.add(10);
@@ -33,7 +35,7 @@ public class ArrayListPrueba {
         listaNums.set(0,42);
         System.out.println(listaNums.get(0));
 
-        ArrayList<Integer> listaNumsCopia = (ArrayList<Integer>) listaNums.clone();
+        ArrayList<Integer> listaNumsCopia = new ArrayList<>(listaNums);
         System.out.println(listaNumsCopia);
 
         listaNums.clear();

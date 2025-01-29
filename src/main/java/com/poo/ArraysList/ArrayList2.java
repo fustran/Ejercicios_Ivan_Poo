@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class ArrayList2 {
 
     public static void main(String[] args) {
-        ArrayList<String> listaCompra = new ArrayList();
+        ArrayList<String> listaCompra = new ArrayList<>();
 
         System.out.println(listaCompra.isEmpty());
 
