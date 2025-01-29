@@ -146,6 +146,7 @@ public class Main {
     }
 }*/
 
+import com.poo.Editorial.Editorial;
 import com.poo.Estudiante.Estudiante;
 import com.poo.Libro.Libro;
 public class Main {
@@ -162,11 +163,18 @@ public class Main {
             System.out.println("Email no válido");
         }
 
-        Libro libro1 = new Libro("El Principito", "Quevedo");
+        Editorial editorial1 = new Editorial("Anaya", "España");
+        System.out.println(editorial1);
+
+        Editorial editorial2 = new Editorial("Juan de la Cuesta a costa de Francisco de Robles", "España");
+        System.out.println(editorial2);
+
+        Libro libro1 = new Libro("El Principito", "Quevedo, " + editorial1);
         System.out.println(libro1);
 
-        Libro libro2 = new Libro("El Quijote", "Cervantes");
+        Libro libro2 = new Libro("El Quijote", "Cervantes" + editorial2);
         System.out.println(libro2);
+
 
         System.out.println("Total libros creados: " + Libro.getTotalLibros());
         System.out.println("Libros disponibles: " + Libro.getLibrosDisponibles());
@@ -182,6 +190,7 @@ public class Main {
         System.out.println(estudiante2);
         System.out.println(Libro.getLibrosDisponibles());
         libro1.devolver(estudiante2);
+
     }
 }
 

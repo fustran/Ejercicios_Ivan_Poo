@@ -1,0 +1,61 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Estudiante {
+  - CORREO_VALIDO: String
+  - libroPrestado: Libro
+  - email: String
+  - contadorEstudiantes: int
+  - nombre: String
+  - curso: String
+  - nia: int
+  + Estudiante(String): 
+  + Estudiante(String, String, String): 
+  + setLibroPrestado(Libro): Libro
+  + getNombre(): String
+  + setCurso(String): void
+  + validarEmail(String): Boolean
+  + toString(): String
+  + getLibroPrestado(): Libro
+  + obtenerTotalEstudiantes(): int
+  + getEmail(): String
+  + getContadorEstudiantes(): int
+  + setEmail(String): void
+  + getNia(): int
+  + getCurso(): String
+  + setNombre(String): void
+}
+class Libro {
+  - estudiantePrestado: Estudiante
+  - cantidadLibros: int
+  - ID_LIBROS: String
+  - disponible: boolean
+  - titulo: String
+  - id: String
+  - autor: String
+  - librosDisponibles: int
+  + Libro(String, String): 
+  + getAutor(): String
+  + prestar(Estudiante): void
+  + toString(): String
+  + setDisponible(boolean): void
+  + getDisponible(): boolean
+  + getTitulo(): String
+  + estaDisponible(): void
+  + setAutor(String): void
+  + setTitulo(String): void
+  + devolver(Estudiante): void
+  + getLibrosDisponibles(): int
+  + setEstudiantePrestado(Estudiante): void
+  + getTotalLibros(): int
+  - generarIdLibro(): String
+  + getEstudiantePrestado(): Estudiante
+  + getId(): String
+}
+
+Estudiante "1" *-[#595959,plain]-> "libroPrestado\n1" Libro      
+Libro      "1" *-[#595959,plain]-> "estudiantePrestado\n1" Estudiante 
+@enduml

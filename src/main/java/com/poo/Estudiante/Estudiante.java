@@ -13,19 +13,6 @@ public class Estudiante {
     private String email;
     private Libro libroPrestado; // Relación con la clase libro
 
-    public Libro getLibroPrestado() {
-        return libroPrestado;
-    }
-
-    public Libro setLibroPrestado(Libro libroPrestado) {
-        this.libroPrestado = libroPrestado;
-        return libroPrestado;
-    }
-
-    public static int getContadorEstudiantes() {
-        return contadorEstudiantes;
-    }
-
     public Estudiante(String nombre, String curso, String email) {
         this.nombre = nombre;
         this.curso = curso;
@@ -39,6 +26,15 @@ public class Estudiante {
         this.nombre = nombre;
         contadorEstudiantes++;
         nia = contadorEstudiantes; // al no ser pasado como atributo no hace falta el this.
+
+    }
+
+    public static Boolean validarEmail(String email) {
+        return email.matches(CORREO_VALIDO);
+    }
+
+    public static int getContadorEstudiantes() {
+        return contadorEstudiantes;
     }
 
     public static int obtenerTotalEstudiantes() {
@@ -73,12 +69,21 @@ public class Estudiante {
         this.email = email;
     }
 
-    public static Boolean validarEmail(String email) {
-        return email.matches(CORREO_VALIDO);
+    public Libro getLibroPrestado() {
+        return libroPrestado;
+    }
+
+    public void setLibroPrestado(Libro libroPrestado) {
+        this.libroPrestado = libroPrestado;
     }
 
     @Override
     public String toString() {
-        return "Estudiante : [nombre = " + getNombre() + ", Curso = " + getCurso() + ", NIA = " + getNia() + ", Email = " + getEmail() + " Libro prestado = " + getLibroPrestado() + "]";
+        String libroInfo = (getLibroPrestado() != null) ? getLibroPrestado().getTitulo() : "Ninguno";
+        return "Estudiante: [Nombre = " + getNombre() +
+                ", Curso = " + getCurso() +
+                ", NIA = " + getNia() +
+                ", Email = " + getEmail() +
+                ", Libro Prestado = " + libroInfo + "]";
     }
 }

@@ -1,6 +1,9 @@
 package com.poo.Libro;
 
+import com.poo.Editorial.Editorial;
 import com.poo.Estudiante.Estudiante;
+import com.poo.Prestamo.Prestamo;
+import java.time.LocalDateTime;
 
 public class Libro {
 
@@ -13,7 +16,7 @@ public class Libro {
     private final String id;
     private boolean disponible;
     private Estudiante estudiantePrestado;
-
+    private Editorial editorialLibro;
 
     public Libro(String titulo, String autor) {
         this.titulo = titulo;
@@ -23,6 +26,7 @@ public class Libro {
         librosDisponibles++;
         this.id = generarIdLibro(); //calcular ID libro.
         estudiantePrestado = null;
+        this.editorialLibro = getEditorialLibro();
     }
 
     private String generarIdLibro() {
@@ -37,6 +41,9 @@ public class Libro {
             librosDisponibles--;
             estudiantePrestado = estudiante;
             estudiante.setLibroPrestado(this);
+
+            Prestamo prestamo = new Prestamo(estudiante, this, LocalDateTime.now());
+            System.out.println("Se ha registrado el préstamo con fecha: " + prestamo.getFechaPrestamo());
 
         }else if(estudiante.getLibroPrestado() != null){
             System.out.println("El estudiante " + estudiante.getNombre() + " ya tiene un libro prestado.");
@@ -110,8 +117,21 @@ public class Libro {
         this.estudiantePrestado = estudiantePrestado;
     }
 
+    public Editorial getEditorialLibro() {
+        return editorialLibro;
+    }
+
+    public void setEditorialLibro(Editorial editorialLibro) {
+        this.editorialLibro = editorialLibro;
+    }
+
     @Override
-    public String toString(){
-        return "Libro :  [Título = " + getTitulo() + ", Autor = " + getAutor() + ", ID = " + getId() + ", Disponible = " + getDisponible() + ", estudiantePrestado = " + getEstudiantePrestado() + "]";
+    public String toString() {
+        String estudianteInfo = (getEstudiantePrestado() != null) ? getEstudiantePrestado().getNombre() : "Ninguno";
+        return "Libro: [Título = " + getTitulo() +
+                ", Autor = " + getAutor() +
+                ", ID = " + getId() +
+                ", Disponible = " + getDisponible() +
+                ", Estudiante Prestado = " + estudianteInfo + "]";
     }
 }
