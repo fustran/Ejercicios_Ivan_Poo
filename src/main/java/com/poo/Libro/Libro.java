@@ -3,7 +3,7 @@ package com.poo.Libro;
 import com.poo.Editorial.Editorial;
 import com.poo.Estudiante.Estudiante;
 import com.poo.Prestamo.Prestamo;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Libro {
 
@@ -18,7 +18,7 @@ public class Libro {
     private Estudiante estudiantePrestado;
     private Editorial editorialLibro;
 
-    public Libro(String titulo, String autor) {
+    public Libro(String titulo, String autor, Editorial editorialLibro) {
         this.titulo = titulo;
         this.autor = autor;
         disponible = true;
@@ -26,7 +26,7 @@ public class Libro {
         librosDisponibles++;
         this.id = generarIdLibro(); //calcular ID libro.
         estudiantePrestado = null;
-        this.editorialLibro = getEditorialLibro();
+        this.editorialLibro = editorialLibro;
     }
 
     private String generarIdLibro() {
@@ -42,8 +42,8 @@ public class Libro {
             estudiantePrestado = estudiante;
             estudiante.setLibroPrestado(this);
 
-            Prestamo prestamo = new Prestamo(estudiante, this, LocalDateTime.now());
-            System.out.println("Se ha registrado el préstamo con fecha: " + prestamo.getFechaPrestamo());
+            Prestamo prestamo = new Prestamo(estudiante, this);
+            System.out.println("Se ha registrado el préstamo con fecha: " + prestamo);
 
         }else if(estudiante.getLibroPrestado() != null){
             System.out.println("El estudiante " + estudiante.getNombre() + " ya tiene un libro prestado.");
@@ -126,7 +126,7 @@ public class Libro {
     }
 
     @Override
-    public String toString() {
+    public String toString() { //Ternaria para comprar la condición, si es true or false.
         String estudianteInfo = (getEstudiantePrestado() != null) ? getEstudiantePrestado().getNombre() : "Ninguno";
         return "Libro: [Título = " + getTitulo() +
                 ", Autor = " + getAutor() +

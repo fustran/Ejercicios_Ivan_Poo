@@ -169,10 +169,10 @@ public class Main {
         Editorial editorial2 = new Editorial("Juan de la Cuesta a costa de Francisco de Robles", "España");
         System.out.println(editorial2);
 
-        Libro libro1 = new Libro("El Principito", "Quevedo, " + editorial1);
+        Libro libro1 = new Libro("El Principito", "Quevedo, ", editorial1);
         System.out.println(libro1);
 
-        Libro libro2 = new Libro("El Quijote", "Cervantes" + editorial2);
+        Libro libro2 = new Libro("El Quijote", "Cervantes", editorial2);
         System.out.println(libro2);
 
 

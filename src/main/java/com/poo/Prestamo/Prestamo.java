@@ -1,6 +1,6 @@
 package com.poo.Prestamo;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import com.poo.Estudiante.Estudiante;
 import com.poo.Libro.Libro;
 
@@ -8,13 +8,13 @@ public class Prestamo {
 
     private Estudiante estudiantePrestamo;
     private Libro libroPrestamo;
-    private LocalDateTime fechaPrestamo;
+    private final LocalDate fechaPrestamo;
 
-    public Prestamo(Estudiante estudiante, Libro libro, LocalDateTime fecha) {
+    public Prestamo(Estudiante estudiante, Libro libro) {
 
         this.estudiantePrestamo = estudiante;
         this.libroPrestamo = libro;
-        this.fechaPrestamo = fecha;
+        fechaPrestamo = LocalDate.now();
     }
 
     public Estudiante getEstudiantePrestamo() {
@@ -33,16 +33,15 @@ public class Prestamo {
         this.libroPrestamo = libroPrestamo;
     }
 
-    public LocalDateTime getFechaPrestamo() {
+    public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(LocalDateTime fechaPrestamo) {
-        this.fechaPrestamo = fechaPrestamo;
-    }
 
-   /* @Override
+    @Override
     public String toString() {
-        return "Préstamo: [Nombre = " + getEstudiantePrestamo() + ", Pais = " + getLibroPrestamo() + ", Fecha = " + getFechaPrestamo() + "]";
-    }*/
+        return "Préstamo: [Nombre = " + getEstudiantePrestamo() +
+        ", Pais = " + getLibroPrestamo() +
+        ", Fecha = " + getFechaPrestamo() + "]";
+    }
 }

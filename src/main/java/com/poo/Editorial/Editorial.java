@@ -28,6 +28,7 @@ public class Editorial {
 
     @Override
     public String toString() {
-        return "Editorial: [Nombre = " + getNombre() + ", Pais = " + getPais() + "]";
+        return "Editorial: [Nombre = " + getNombre() +
+                ", Pais = " + getPais() + "]";
     }
 }
