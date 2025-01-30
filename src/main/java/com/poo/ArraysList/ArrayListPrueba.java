@@ -24,7 +24,7 @@ public class ArrayListPrueba {
         System.out.println(listaNums.indexOf(54));
         System.out.println(listaNums.size());
 
-        for (int i = 0; i < listaNums.size(); i++) {
+        for (int i = 0; i < listaNums.size(); i++) { // Metodo size se usa para recorrer elementos.
             System.out.print(listaNums.get(i));
         }
 
