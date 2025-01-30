@@ -12,9 +12,7 @@ public class Estudiante {
     private String curso;
     private final int nia;
     private String email;
-    private Libro libroPrestado; // Relación con la clase libro
-    private ArrayList<Libro> LibrosPrestados = new ArrayList<>();
-
+    private ArrayList<Libro> librosPrestados; // Relación con la clase libros
 
     public Estudiante(String nombre, String curso, String email) {
         this.nombre = nombre;
@@ -22,13 +20,14 @@ public class Estudiante {
         this.email = email;
         contadorEstudiantes++;
         nia = contadorEstudiantes; // al no ser pasado como atributo no hace falta el this.
-        libroPrestado = null;
+        librosPrestados = new ArrayList<>();
     }
 
     public Estudiante(String nombre) {
         this.nombre = nombre;
         contadorEstudiantes++;
         nia = contadorEstudiantes; // al no ser pasado como atributo no hace falta el this.
+        librosPrestados = new ArrayList<>();
 
     }
 
@@ -72,21 +71,35 @@ public class Estudiante {
         this.email = email;
     }
 
-    public Libro getLibroPrestado() {
-        return libroPrestado;
+    public ArrayList<Libro> getLibrosPrestados() {
+        return librosPrestados;
     }
 
-    public void setLibroPrestado(Libro libroPrestado) {
-        this.libroPrestado = libroPrestado;
+    public void setLibrosPrestados(ArrayList <Libro> librosPrestados) {
+        this.librosPrestados = librosPrestados;
+    }
+
+    public void agregarLibro(Libro libro) {
+        librosPrestados.add(libro);
+    }
+
+    public void borrarLibro(Libro libro) {
+        librosPrestados.remove(libro);
     }
 
     @Override
     public String toString() {
-        String libroInfo = (getLibroPrestado() != null) ? getLibroPrestado().getTitulo() : "Ninguno";
-        return "Estudiante: [Nombre = " + getNombre() +
-                ", Curso = " + getCurso() +
-                ", NIA = " + getNia() +
-                ", Email = " + getEmail() +
-                ", Libro Prestado = " + libroInfo + "]";
+        if (!librosPrestados.isEmpty()) {
+            return "Estudiante: [Nombre = " + getNombre() +
+                    ", Curso = " + getCurso() +
+                    ", NIA = " + getNia() +
+                    ", Email = " + getEmail() +
+                    ", Libros Prestados = " + librosPrestados.size() + "]";
+        }else{
+            return "Estudiante: [Nombre = " + getNombre() +
+                    ", Curso = " + getCurso() +
+                    ", NIA = " + getNia() +
+                    ", Email = " + getEmail() + "]";
+        }
     }
 }

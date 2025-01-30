@@ -150,6 +150,8 @@ import com.poo.Editorial.Editorial;
 import com.poo.Estudiante.Estudiante;
 import com.poo.Libro.Libro;
 import com.poo.Prestamo.Prestamo;
+import com.poo.Persona.Persona;
+import com.poo.Equipo.Equipo;
 public class Main {
     public static void main(String[] args) {
 
@@ -166,17 +168,15 @@ public class Main {
         }
 
         Editorial editorial1 = new Editorial("Anaya", "España");
-        System.out.println(editorial1);
-
         Editorial editorial2 = new Editorial("Juan de la Cuesta a costa de Francisco de Robles", "España");
-        System.out.println(editorial2);
 
         Libro libro1 = new Libro("El Principito", "Quevedo, ", editorial1);
         System.out.println(libro1);
+        System.out.println(editorial1);
 
         Libro libro2 = new Libro("El Quijote", "Cervantes", editorial2);
         System.out.println(libro2);
-
+        System.out.println(editorial2);
 
         System.out.println(Libro.getLibrosDisponibles());
 
@@ -197,8 +197,25 @@ public class Main {
         libro1.devolver(estudiante2);
 
         libro1.estaDisponible();
+
+
+
+
+        /*Persona persona1 = new Persona("Marta", "Poveda", "12345675", 'M', 20, "Alicante", "Profesora");
+
+        Equipo equipo1 = new Equipo("Bastrad");
+        System.out.println(persona1);
+        System.out.println(equipo1);
+
+        Persona persona2 = new Persona("Kiko", "yomismo", "12345673", 'H', 21, "Madrid", "Nada");*/
+
+
+
+
     }
 }
+
+
 
 
 /*import com.poo.Clasevideojuego.VideoJuego;

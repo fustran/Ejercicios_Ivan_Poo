@@ -13,9 +13,9 @@ public class Persona {
     private String profesion;
 
     // Constructor por defecto
-    public Persona(){
+   /* public Persona(String marta){
 
-    }
+    }*/
 
     // Constructor con parámetros para inicializar los atributos de la clase.
     public Persona(String nombre, String apellido, String dni, char sexo, int edad, String ciudadResidencia, String profesion){

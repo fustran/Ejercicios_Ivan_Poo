@@ -27,6 +27,7 @@ public class Libro {
         this.id = generarIdLibro(); //calcular ID libro.
         estudiantePrestado = null;
         this.editorial = editorial;
+        editorial.agregarLibro(this);
     }
 
     private String generarIdLibro() {
@@ -35,18 +36,18 @@ public class Libro {
 
     public Prestamo prestar(Estudiante estudiante) {
 
-        if(disponible && estudiante.getLibroPrestado() == null) {
+        if(disponible && !estudiante.getLibrosPrestados().contains(this)) {
             disponible = false;
             System.out.println("El libro: " + getTitulo() + " ha sido prestado con éxito a: " + estudiante.getNombre());
             librosDisponibles--;
             estudiantePrestado = estudiante;
-            estudiante.setLibroPrestado(this);
+            estudiante.agregarLibro(this);
 
             Prestamo prestamo = new Prestamo(estudiante, this);
             System.out.println("Se ha registrado el préstamo con fecha: " + prestamo);
 
-        }else if(estudiante.getLibroPrestado() != null){
-            System.out.println("El estudiante " + estudiante.getNombre() + " ya tiene un libro prestado.");
+        }else if(estudiante.getLibrosPrestados().contains(this)){
+            System.out.println("El estudiante " + estudiante.getNombre() + " ya tiene un libros prestados.");
 
         }else{
             System.out.println("El libro: " + getTitulo() + " no se puede prestar (No disponible).");
@@ -61,7 +62,7 @@ public class Libro {
             System.out.println("El libro: " + getTitulo() + " ha sido devuelto con éxito por " + estudiantePrestado.getNombre());
             librosDisponibles++;
             estudiantePrestado = null;
-            estudiante.setLibroPrestado(null);
+            estudiante.borrarLibro(this);
         }else {
             System.out.println("El libro: " + getTitulo() + " no se puede devolver. Está disponible");
         }
@@ -128,12 +129,25 @@ public class Libro {
     }
 
     @Override
-    public String toString() { //Ternaria para comprar la condición, si es true or false.
+    public String toString() {
+        String estudianteInfo;
+        if (estudiantePrestado != null) {
+            estudianteInfo = estudiantePrestado.getNombre();
+        } else {
+            estudianteInfo = "Ninguno";
+        }
+
+        String editorialInfo;
+        if (editorial != null) {
+            editorialInfo = editorial.getNombre();
+        } else {
+            editorialInfo = "Ninguna";
+        }
         return "Libro: [Título = " + getTitulo() +
                 ", Autor = " + getAutor() +
                 ", ID = " + getId() +
                 ", Disponible = " + getDisponible() +
-                ", EstudiantePrestado=" + getEstudiantePrestado() +
-                ", Editorial=" + getEditorial() + " ]";
+                ", EstudiantePrestado=" +  estudianteInfo +
+                ", Editorial=" + editorialInfo + " ]";
     }
 }
