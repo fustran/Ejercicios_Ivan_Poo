@@ -4,6 +4,7 @@ import com.poo.Editorial.Editorial;
 import com.poo.Estudiante.Estudiante;
 import com.poo.Prestamo.Prestamo;
 
+
 public class Libro {
 
     private static int cantidadLibros = 0;

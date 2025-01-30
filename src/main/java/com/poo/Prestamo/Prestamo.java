@@ -37,7 +37,6 @@ public class Prestamo {
         return fechaPrestamo;
     }
 
-
     @Override
     public String toString() {
         return "Préstamo: [Nombre = " + getEstudiantePrestamo() +

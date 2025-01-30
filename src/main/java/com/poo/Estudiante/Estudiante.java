@@ -1,6 +1,7 @@
 package com.poo.Estudiante;
 
 import com.poo.Libro.Libro;
+import java.util.ArrayList;
 
 public class Estudiante {
 
@@ -12,6 +13,8 @@ public class Estudiante {
     private final int nia;
     private String email;
     private Libro libroPrestado; // Relación con la clase libro
+    private ArrayList<Libro> LibrosPrestados = new ArrayList<>();
+
 
     public Estudiante(String nombre, String curso, String email) {
         this.nombre = nombre;
