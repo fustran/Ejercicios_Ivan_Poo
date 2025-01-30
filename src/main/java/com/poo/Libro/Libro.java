@@ -16,9 +16,9 @@ public class Libro {
     private final String id;
     private boolean disponible;
     private Estudiante estudiantePrestado;
-    private Editorial editorialLibro;
+    private Editorial editorial;
 
-    public Libro(String titulo, String autor, Editorial editorialLibro) {
+    public Libro(String titulo, String autor, Editorial editorial) {
         this.titulo = titulo;
         this.autor = autor;
         disponible = true;
@@ -26,14 +26,14 @@ public class Libro {
         librosDisponibles++;
         this.id = generarIdLibro(); //calcular ID libro.
         estudiantePrestado = null;
-        this.editorialLibro = editorialLibro;
+        this.editorial = editorial;
     }
 
     private String generarIdLibro() {
         return ID_LIBROS + String.format("%03d", cantidadLibros);
     }
 
-    public void prestar(Estudiante estudiante) {
+    public Prestamo prestar(Estudiante estudiante) {
 
         if(disponible && estudiante.getLibroPrestado() == null) {
             disponible = false;
@@ -51,6 +51,8 @@ public class Libro {
         }else{
             System.out.println("El libro: " + getTitulo() + " no se puede prestar (No disponible).");
         }
+
+        return null;
     }
 
     public void devolver(Estudiante estudiante) {
@@ -101,12 +103,12 @@ public class Libro {
         this.autor = autor;
     }
 
-    public static int getTotalLibros() {
-        return cantidadLibros;
-    }
-
     public static int getLibrosDisponibles() {
         return librosDisponibles;
+    }
+
+    public static int getTotalLibros() {
+        return cantidadLibros;
     }
 
     public Estudiante getEstudiantePrestado() {
@@ -117,21 +119,21 @@ public class Libro {
         this.estudiantePrestado = estudiantePrestado;
     }
 
-    public Editorial getEditorialLibro() {
-        return editorialLibro;
+    public Editorial getEditorial() {
+        return editorial;
     }
 
-    public void setEditorialLibro(Editorial editorialLibro) {
-        this.editorialLibro = editorialLibro;
+    public void setEditorial(Editorial editorial) {
+        this.editorial = editorial;
     }
 
     @Override
     public String toString() { //Ternaria para comprar la condición, si es true or false.
-        String estudianteInfo = (getEstudiantePrestado() != null) ? getEstudiantePrestado().getNombre() : "Ninguno";
         return "Libro: [Título = " + getTitulo() +
                 ", Autor = " + getAutor() +
                 ", ID = " + getId() +
                 ", Disponible = " + getDisponible() +
-                ", Estudiante Prestado = " + estudianteInfo + "]";
+                ", EstudiantePrestado=" + getEstudiantePrestado() +
+                ", Editorial=" + getEditorial() + " ]";
     }
 }

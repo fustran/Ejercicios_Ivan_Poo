@@ -149,11 +149,13 @@ public class Main {
 import com.poo.Editorial.Editorial;
 import com.poo.Estudiante.Estudiante;
 import com.poo.Libro.Libro;
+import com.poo.Prestamo.Prestamo;
 public class Main {
     public static void main(String[] args) {
 
         Estudiante estudiante1 = new Estudiante("paco");
         Estudiante estudiante2 = new Estudiante("paco",  "2º ESO", "noseque@alu.edu.gva.es");
+
         System.out.println(estudiante1);
         System.out.println(estudiante2);
 
@@ -176,21 +178,25 @@ public class Main {
         System.out.println(libro2);
 
 
-        System.out.println("Total libros creados: " + Libro.getTotalLibros());
-        System.out.println("Libros disponibles: " + Libro.getLibrosDisponibles());
-
         System.out.println(Libro.getLibrosDisponibles());
-        libro1.prestar(estudiante2);
+
+        Prestamo prestamo1 = libro1.prestar(estudiante2);
+
+        System.out.println(prestamo1);
         System.out.println(estudiante2);
         System.out.println(libro1);
+
         System.out.println(Libro.getLibrosDisponibles());
 
         libro1.devolver(estudiante2);
+
         System.out.println(libro1);
         System.out.println(estudiante2);
+
         System.out.println(Libro.getLibrosDisponibles());
         libro1.devolver(estudiante2);
 
+        libro1.estaDisponible();
     }
 }
 
