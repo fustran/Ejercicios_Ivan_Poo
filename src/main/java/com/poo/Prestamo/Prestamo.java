@@ -7,26 +7,26 @@ import com.poo.Libro.Libro;
 public class Prestamo {
 
     private Estudiante estudiantePrestamo;
-    private Libro libro;
-    private final LocalDate fecha;
+    private Libro libroPrestamo;
+    private final LocalDate fechaPrestamo;
 
     public Prestamo(Estudiante estudiante, Libro libro) {
 
         this.estudiantePrestamo = estudiante;
-        this.libro = libro;
-        fecha = LocalDate.now();
+        this.libroPrestamo = libro;
+        fechaPrestamo = LocalDate.now();
     }
 
-    public Libro getLibro() {
-        return libro;
+    public Libro getLibroPrestamo() {
+        return libroPrestamo;
     }
 
-    public void setLibro(Libro libro) {
-        this.libro = libro;
+    public void setLibroPrestamo(Libro libroPrestamo) {
+        this.libroPrestamo = libroPrestamo;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
+    public LocalDate getFechaPrestamo() {
+        return fechaPrestamo;
     }
 
     public Estudiante getEstudiantePrestamo() {
@@ -40,7 +40,7 @@ public class Prestamo {
     @Override
     public String toString() {
         return "Préstamo: [Nombre = " + getEstudiantePrestamo() +
-        ", Pais = " + getLibro() +
-        ", Fecha = " + getFecha() + "]";
+        ", Pais = " + getLibroPrestamo() +
+        ", Fecha = " + getFechaPrestamo() + "]";
     }
 }

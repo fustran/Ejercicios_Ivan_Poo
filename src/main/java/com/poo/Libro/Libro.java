@@ -4,7 +4,6 @@ import com.poo.Editorial.Editorial;
 import com.poo.Estudiante.Estudiante;
 import com.poo.Prestamo.Prestamo;
 
-
 public class Libro {
 
     private static int cantidadLibros = 0;
@@ -74,9 +73,9 @@ public class Libro {
 
     public void estaDisponible() {
         if(getDisponible()) {
-            System.out.println("El libro " + getDisponible() + "está disponible");
+            System.out.println("El libro " + getDisponible() + " está disponible");
         }else{
-            System.out.println("El libro " + getDisponible() + "no está disponible");
+            System.out.println("El libro " + getDisponible() + " no está disponible");
         }
     }
 
@@ -130,6 +129,7 @@ public class Libro {
 
     @Override
     public String toString() {
+
         String estudianteInfo;
         if (estudiantePrestado != null) {
             estudianteInfo = estudiantePrestado.getNombre();
@@ -147,7 +147,7 @@ public class Libro {
                 ", Autor = " + getAutor() +
                 ", ID = " + getId() +
                 ", Disponible = " + getDisponible() +
-                ", EstudiantePrestado=" +  estudianteInfo +
-                ", Editorial=" + editorialInfo + " ]";
+                ", EstudiantePrestado = " +  estudianteInfo +
+                ", Editorial = " + editorialInfo + " ]";
     }
 }

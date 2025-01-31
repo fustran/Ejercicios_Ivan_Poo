@@ -47,8 +47,16 @@ public class Estudiante {
         return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getCurso() {
         return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
 
     public int getNia() {
@@ -57,14 +65,6 @@ public class Estudiante {
 
     public String getEmail() {
         return email;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
     }
 
     public void setEmail(String email) {
@@ -94,7 +94,7 @@ public class Estudiante {
                     ", Curso = " + getCurso() +
                     ", NIA = " + getNia() +
                     ", Email = " + getEmail() +
-                    ", Libros Prestados = " + librosPrestados.size() + "]";
+                    ", Libros Prestados = " + getLibrosPrestados() + "]";
         }else{
             return "Estudiante: [Nombre = " + getNombre() +
                     ", Curso = " + getCurso() +

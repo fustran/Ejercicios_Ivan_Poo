@@ -43,7 +43,7 @@ public class Editorial {
         librosPublicados.add(libro);
     }
 
-    public void eliminarLibro(Libro libro) {
+    public void borrarLibro(Libro libro) {
         librosPublicados.remove(libro);
     }
 
@@ -51,6 +51,6 @@ public class Editorial {
     public String toString() {
         return "Editorial: [Nombre = " + getNombre() +
                 ", Pais = " + getPais() +
-                ", ListaLibros = " + librosPublicados.size() + "]";
+                ", ListaLibros = " + getLibrosPublicados() + "]";
     }
 }

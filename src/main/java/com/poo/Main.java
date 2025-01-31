@@ -199,8 +199,6 @@ public class Main {
         libro1.estaDisponible();
 
 
-
-
         /*Persona persona1 = new Persona("Marta", "Poveda", "12345675", 'M', 20, "Alicante", "Profesora");
 
         Equipo equipo1 = new Equipo("Bastrad");
@@ -208,9 +206,6 @@ public class Main {
         System.out.println(equipo1);
 
         Persona persona2 = new Persona("Kiko", "yomismo", "12345673", 'H', 21, "Madrid", "Nada");*/
-
-
-
 
     }
 }
