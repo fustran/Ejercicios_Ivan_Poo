@@ -15,7 +15,7 @@ public class Libro {
     private final String id;
     private boolean disponible;
     private Estudiante estudiantePrestado;
-    private Editorial editorial;
+    private Editorial editorialLibro;
 
     public Libro(String titulo, String autor, Editorial editorial) {
         this.titulo = titulo;
@@ -25,7 +25,7 @@ public class Libro {
         librosDisponibles++;
         this.id = generarIdLibro(); //calcular ID libro.
         estudiantePrestado = null;
-        this.editorial = editorial;
+        this.editorialLibro = editorial;
         editorial.agregarLibro(this);
     }
 
@@ -119,12 +119,12 @@ public class Libro {
         this.estudiantePrestado = estudiantePrestado;
     }
 
-    public Editorial getEditorial() {
-        return editorial;
+    public Editorial getEditorialLibro() {
+        return editorialLibro;
     }
 
-    public void setEditorial(Editorial editorial) {
-        this.editorial = editorial;
+    public void setEditorialLibro(Editorial editorialLibro) {
+        this.editorialLibro = editorialLibro;
     }
 
     @Override
@@ -138,8 +138,8 @@ public class Libro {
         }
 
         String editorialInfo;
-        if (editorial != null) {
-            editorialInfo = editorial.getNombre();
+        if (editorialLibro != null) {
+            editorialInfo = editorialLibro.getNombre();
         } else {
             editorialInfo = "Ninguna";
         }
