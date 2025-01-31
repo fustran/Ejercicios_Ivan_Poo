@@ -146,12 +146,11 @@ public class Main {
     }
 }*/
 
-import com.poo.Editorial.Editorial;
-import com.poo.Estudiante.Estudiante;
-import com.poo.Libro.Libro;
-import com.poo.Prestamo.Prestamo;
-import com.poo.Persona.Persona;
-import com.poo.Equipo.Equipo;
+/*import com.poo.Biblioteca.Editorial;
+import com.poo.Biblioteca.Estudiante;
+import com.poo.Biblioteca.Libro;
+import com.poo.Biblioteca.Prestamo;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -196,7 +195,7 @@ public class Main {
         System.out.println(Libro.getLibrosDisponibles());
         libro1.devolver(estudiante2);
 
-        libro1.estaDisponible();
+        libro1.estaDisponible();*/
 
 
         /*Persona persona1 = new Persona("Marta", "Poveda", "12345675", 'M', 20, "Alicante", "Profesora");
@@ -205,25 +204,9 @@ public class Main {
         System.out.println(persona1);
         System.out.println(equipo1);
 
-        Persona persona2 = new Persona("Kiko", "yomismo", "12345673", 'H', 21, "Madrid", "Nada");*/
+        Persona persona2 = new Persona("Kiko", "yomismo", "12345673", 'H', 21, "Madrid", "Nada");
 
-    }
-}
-
-
-
-
-/*import com.poo.Clasevideojuego.VideoJuego;
-
-public class Main {
-    public static void main(String[] args) {
-
-        VideoJuego videoJuego = new VideoJuego("World of Warcraft", 45, "MMO RPG");
-        VideoJuego videoJuego1 = new VideoJuego("Diablo IV", 89, "Rol RPG");
-        VideoJuego videoJuego2 = new VideoJuego("Harry Potter" , 65, "Aventura");
-
-        System.out.println("\n" + videoJuego);
-        System.out.println(videoJuego1);
-        System.out.println(videoJuego2);
     }
 }*/
+
+

@@ -1,8 +1,4 @@
-package com.poo.Libro;
-
-import com.poo.Editorial.Editorial;
-import com.poo.Estudiante.Estudiante;
-import com.poo.Prestamo.Prestamo;
+package com.poo.Biblioteca;
 
 public class Libro {
 

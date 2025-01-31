@@ -1,6 +1,5 @@
-package com.poo.Estudiante;
+package com.poo.Biblioteca;
 
-import com.poo.Libro.Libro;
 import java.util.ArrayList;
 
 public class Estudiante {

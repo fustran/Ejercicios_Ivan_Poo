@@ -1,8 +1,6 @@
-package com.poo.Prestamo;
+package com.poo.Biblioteca;
 
 import java.time.LocalDate;
-import com.poo.Estudiante.Estudiante;
-import com.poo.Libro.Libro;
 
 public class Prestamo {
 
