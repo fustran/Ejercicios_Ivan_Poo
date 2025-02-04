@@ -21,7 +21,12 @@ public class AppCasa {
         casa.mostrarHabitaciones();
         
         casa.agregarHabitacion("Salon", 40);
+        casa.agregarHabitacion("Comedor", 90);
 
+        casa.getHabitaciones().get(0).agregarElectrodomestico("Nevera", 40);
+        casa.getHabitaciones().get(1).agregarElectrodomestico("Televisor", 20);
+
+        casa.calcularHabitacionMasConsumo();
 
     }
 }

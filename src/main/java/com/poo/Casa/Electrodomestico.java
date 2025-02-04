@@ -5,9 +5,6 @@ public class Electrodomestico {
     private String nombre;
     private double consumo;
 
-    public Electrodomestico() {
-
-    }
 
     public Electrodomestico(String nombre, double consumo) {
         this.nombre = nombre;
@@ -31,8 +28,8 @@ public class Electrodomestico {
     }
 
     @Override
-    public String toString() {
-        return "Editorial: [Nombre = " + getNombre() +
-                ", Pais = " + getConsumo()  + "]";
+    public String toString(){
+        return " Electrodoméstico : [ nombre = " + getNombre() +
+                " consumo  = " + getConsumo() + " (kWh)  + ";
     }
 }

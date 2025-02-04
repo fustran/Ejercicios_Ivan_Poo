@@ -6,7 +6,7 @@ class Habitacion {
 
     private String nombre;
     private double metrosCuadrados;
-    private ArrayList<Electrodomestico> electrodomesticos; // COMPOSICIÓN: la habitación tiene electrodomesticos
+    private ArrayList<Electrodomestico> electrodomesticos; // COMPOSICIÓN: la habitación tiene electrodomésticos
 
     public Habitacion(String nombre, double metrosCuadrados) {
         this.nombre = nombre;
@@ -30,11 +30,11 @@ class Habitacion {
         this.metrosCuadrados = metrosCuadrados;
     }
 
-    public ArrayList<Electrodomestico> getelectrodomesticos() {
+    public ArrayList<Electrodomestico> getElectrodomesticos() {
         return electrodomesticos;
     }
 
-    public void setelectrodomesticos(ArrayList<Electrodomestico> electrodomesticos) {
+    public void setElectrodomesticos(ArrayList<Electrodomestico> electrodomesticos) {
         this.electrodomesticos = electrodomesticos;
     }
 
@@ -60,6 +60,7 @@ class Habitacion {
     }
 
     public double calcularConsumo() {
+
         double consumo = 0;
 
         for(Electrodomestico electrodomestico: electrodomesticos){
@@ -70,7 +71,7 @@ class Habitacion {
 
     @Override
     public String toString() {
-        return "Editorial: [Nombre = " + getNombre() +
-                ", Pais = " + getMetrosCuadrados()  + "Electrodomésticos = " + electrodomesticos  + "]";
+        return "Habitación: [Nombre = " + getNombre() +
+                ", Metros = " + getMetrosCuadrados()  + "Electrodomésticos = " + electrodomesticos  + "]";
     }
 }

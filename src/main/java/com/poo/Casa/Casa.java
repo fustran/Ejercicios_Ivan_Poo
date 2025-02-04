@@ -8,7 +8,7 @@ class Casa {
     private static final Scanner teclado = new Scanner(System.in);
 
     private final String direccion;
-    private final ArrayList<Habitacion> habitaciones; // COMPOSICIÓN: la Casa tiene habitaciones
+    private ArrayList<Habitacion> habitaciones; // COMPOSICIÓN: la Casa tiene habitaciones
     private Propietario propietario;
 
     public Casa(String direccion) {
@@ -41,14 +41,15 @@ class Casa {
 
     public Habitacion getHabitacionMasGrande(){
 
-        Habitacion aux = habitaciones.getFirst();
+        Habitacion mayor = habitaciones.get(0);
 
         for (Habitacion habitacion : habitaciones) {
-            if(habitacion.getMetrosCuadrados() > aux.getMetrosCuadrados()){
-                aux = habitacion;
+            if(habitacion.getMetrosCuadrados() > mayor.getMetrosCuadrados()){
+                mayor = habitacion;
             }
+
         }
-        return aux;
+        return mayor;
     }
 
     public void eliminarHabitacion(String nombre) {
@@ -71,5 +72,29 @@ class Casa {
         System.out.println("Edad del propietario/a");
         int edad = teclado.nextInt();
         propietario = new Propietario(nombre, edad);
+    }
+
+    public void calcularHabitacionMasConsumo(){
+
+        double aux = 0;
+        Habitacion mayor = habitaciones.get(0);
+
+        for (Habitacion habitacion : habitaciones){
+            double consumoActual = habitacion.calcularConsumo();
+            if(consumoActual > aux){
+                aux = consumoActual;
+                mayor = habitacion;
+            }
+        }
+
+        System.out.println("La habitación que más consume es: " +  mayor.getNombre() + " con " + mayor.calcularConsumo() + "kWh");
+    }
+
+    public ArrayList<Habitacion> getHabitaciones() {
+        return habitaciones;
+    }
+
+    public void setHabitaciones(ArrayList<Habitacion> habitaciones) {
+        this.habitaciones = habitaciones;
     }
 }
