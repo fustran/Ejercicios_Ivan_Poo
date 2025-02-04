@@ -19,5 +19,9 @@ public class AppCasa {
 
         casa.eliminarHabitacion("Baño");
         casa.mostrarHabitaciones();
+        
+        casa.agregarHabitacion("Salon", 40);
+
+
     }
 }

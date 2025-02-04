@@ -7,8 +7,8 @@ class Casa {
 
     private static final Scanner teclado = new Scanner(System.in);
 
-    private String direccion;
-    private ArrayList<Habitacion> habitaciones; // COMPOSICIÓN: la Casa tiene habitaciones
+    private final String direccion;
+    private final ArrayList<Habitacion> habitaciones; // COMPOSICIÓN: la Casa tiene habitaciones
     private Propietario propietario;
 
     public Casa(String direccion) {
@@ -41,7 +41,7 @@ class Casa {
 
     public Habitacion getHabitacionMasGrande(){
 
-        Habitacion aux = habitaciones.get(0);
+        Habitacion aux = habitaciones.getFirst();
 
         for (Habitacion habitacion : habitaciones) {
             if(habitacion.getMetrosCuadrados() > aux.getMetrosCuadrados()){
