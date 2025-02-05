@@ -19,7 +19,7 @@ public class Programa {
         this.listaEmpleados = new ArrayList<>();
         this.listaInvitados = new ArrayList<>();
 
-        this.director = new Empleado("Director1", "director", null);
+        this.director = new Empleado(director, "director", null);
         listaEmpleados.add(this.director);
 
         cadena.agregarPrograma(this);
@@ -69,6 +69,11 @@ public class Programa {
         this.listaEmpleados = listaEmpleados;
     }
 
+
+    public void insertarInvitado(String nombre, String profesion, int temporada) {
+        Invitado invitado = new Invitado(nombre, profesion, temporada);
+        listaInvitados.add(invitado);
+    }
 
     public ArrayList<Invitado> getListaInvitados() {
         return listaInvitados;

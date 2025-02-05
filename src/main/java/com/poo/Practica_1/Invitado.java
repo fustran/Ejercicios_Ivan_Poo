@@ -43,7 +43,7 @@ public class Invitado {
     }
 
     public void setFechaVisita() {
-        System.out.println("Introduce el año en el que acudirá el invitado " + getNombre());
+        System.out.println("Introduce el año en el que acudirá el invitado " + getNombre() + ":");
         int anyo = teclado.nextInt();
 
         System.out.println("Introduce el mes: ");

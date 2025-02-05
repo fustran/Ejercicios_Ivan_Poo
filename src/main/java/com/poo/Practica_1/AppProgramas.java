@@ -5,6 +5,8 @@ public class AppProgramas {
     public static void main (String[] args){
 
         System.out.println();
+        System.out.println();
+        System.out.println(new StringBuilder().append("   \uD83E\uDD4A    *BOOM*    \uD83E\uDD4A\n").append("  (   )          (   )\n").append("   | |            | |\n").toString());
 
         //creamos una cadena de tv
         Cadena antena3 = new Cadena("Antena 3");
@@ -27,11 +29,11 @@ public class AppProgramas {
         System.out.println(el_hormiguero.getListaEmpleados());
         System.out.println();
 
-        /*//insertamos invitados en el programa
+        //insertamos invitados en el programa
         el_hormiguero.insertarInvitado("Aitana","cantante",1);
         System.out.println();
 
         //ver invitados del programa
-        System.out.println(el_hormiguero.getListaInvitados());*/
+        System.out.println(el_hormiguero.getListaInvitados());
     }
 }
