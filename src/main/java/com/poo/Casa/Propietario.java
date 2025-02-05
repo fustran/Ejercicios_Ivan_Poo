@@ -28,9 +28,8 @@ public class Propietario {
 
     @Override
     public String toString() {
-        return "Propietario{" +
-                "nombre='" + nombre + '\'' +
-                ", edad=" + edad +
-                '}';
+        return "Propietario: [Nombre = " + getNombre() +
+                ", Edad = " + getEdad()  +
+                "]";
     }
 }
