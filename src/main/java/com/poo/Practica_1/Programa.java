@@ -9,15 +9,11 @@ public class Programa {
     private int temporadas = 0;
     private ArrayList<Empleado> empleado = null;
     private ArrayList<Invitado> invitado = null;
-    private ArrayList<Empleado> director;
+    private final Empleado director;
 
-
-    public Programa(String nombre, Cadena cadena, int temporadas, ArrayList<Empleado> empleado, ArrayList<Invitado> invitado, ArrayList<Empleado> director) {
+    public Programa(String nombre, Cadena cadena, Empleado director) {
         this.nombre = nombre;
         this.cadena = cadena;
-        this.temporadas = temporadas;
-        this.empleado = empleado;
-        this.invitado = invitado;
         this.director = director;
     }
 
@@ -61,14 +57,6 @@ public class Programa {
         this.invitado = invitado;
     }
 
-    public ArrayList<Empleado> getDirector() {
-        return director;
-    }
-
-    public void setDirector(ArrayList<Empleado> director) {
-        this.director = director;
-    }
-
     @Override
     public String toString() {
         return "Programa: " +
@@ -77,7 +65,11 @@ public class Programa {
                     ", Temporadas = " + getTemporadas() +
                     ", Empleado = " + getEmpleado() +
                     ", Invitado = " + getInvitado() +
-                    ", Director = " + getDirector() +
+                    ", Director = " + Empleado.getCargo() +
                     "]";
+    }
+
+    public Empleado getDirector() {
+        return director;
     }
 }
