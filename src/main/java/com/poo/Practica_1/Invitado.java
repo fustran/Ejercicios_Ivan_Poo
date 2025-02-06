@@ -15,7 +15,7 @@ public class Invitado {
     public Invitado(String nombre, String profesion, int temporada) {
         this.nombre = nombre;
         this.profesion = profesion;
-        setFechaVisita();
+        setFechaVisita(); // a) Modifica el constructor de Invitados para que llame al set de fecha_visita
         this.temporada = temporada;
     }
 
@@ -42,6 +42,7 @@ public class Invitado {
         return fechaVisita;
     }
 
+    // a.1) Fecha que levamos a preguntar al usuario para guardar cuándo tienen que ir al Programa.
     public void setFechaVisita() {
         System.out.println("Introduce el año en el que acudirá el invitado " + getNombre() + ":");
         int anyo = teclado.nextInt();

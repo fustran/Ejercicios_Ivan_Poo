@@ -109,6 +109,40 @@ public class Programa {
     }
 
 
+    public int vecesInvitado(String nombre) {
+
+        int contador = 0;
+
+        for (Invitado invitado : listaInvitados) {
+            if (invitado.getNombre().equals(nombre)) {
+                contador++;
+            }
+        }
+
+        return contador;
+    }
+
+
+    public void rastrearInvitado(String nombre) {
+
+        for (Invitado invitado : listaInvitados) {
+            if (invitado.getNombre().equals(nombre)) {
+                System.out.println(invitado.getNombre() + ":" + " Ha sido invitad@: " + vecesInvitado(nombre) + " vez/es" + ", Con fecha: " + invitado.getFechaVisita() + ", En la temporada: " + invitado.getTemporada());
+            }
+        }
+    }
+
+
+    public boolean buscarInvitado(String nombre) {
+        return true;
+    }
+
+
+    public void invitadoAntes(String nombre) {
+        buscarInvitado(nombre);
+    }
+
+
     @Override
     public String toString() {
         return "Programa: " +
