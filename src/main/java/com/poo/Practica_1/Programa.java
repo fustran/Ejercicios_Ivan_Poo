@@ -1,6 +1,7 @@
 package com.poo.Practica_1;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class Programa {
 
@@ -103,9 +104,12 @@ public class Programa {
                    System.out.println("Nombre: " + invitado.getNombre() + ", Profesión: " + invitado.getProfesion());
                    contador++;
             }
+            if (contador == 0) {
+                System.out.println("No ha habido invitad@s a: " + getNombre());
+            }
         }
 
-        System.out.println("Temporada: " + temporada + ", " + "Invitados: " + contador);
+        System.out.println(getNombre() + ", " + "Temporada: " + temporada + ", " + "Invitad@s: " + contador);
     }
 
 
@@ -116,6 +120,8 @@ public class Programa {
         for (Invitado invitado : listaInvitados) {
             if (invitado.getNombre().equals(nombre)) {
                 contador++;
+            }else {
+                System.out.println(nombre + " no ha ido nunca a: " + getNombre());
             }
         }
 
@@ -127,19 +133,49 @@ public class Programa {
 
         for (Invitado invitado : listaInvitados) {
             if (invitado.getNombre().equals(nombre)) {
-                System.out.println(invitado.getNombre() + ":" + " Ha sido invitad@: " + vecesInvitado(nombre) + " vez/es" + ", Con fecha: " + invitado.getFechaVisita() + ", En la temporada: " + invitado.getTemporada());
+                System.out.println(invitado.getNombre() + ":" + " Ha sido invitad@ " + vecesInvitado(nombre) + " vez/es" + " a: " + getNombre() + ", Con fecha: " + invitado.getFechaVisita() + ", En la temporada: " + invitado.getTemporada());
+            }else{
+                System.out.println(nombre + " no ha sido invitado nunca");
             }
         }
     }
 
 
     public boolean buscarInvitado(String nombre) {
-        return true;
+
+        for (Invitado invitado : listaInvitados) {
+            if (invitado.getNombre().equals(nombre)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
     public void invitadoAntes(String nombre) {
-        buscarInvitado(nombre);
+
+        Programa primerPrograma = this;
+        LocalDate fechaMasAntigua = null;
+
+        for (Programa programa : cadena.getListaProgramas()) {
+
+            if (programa.buscarInvitado(nombre)) {
+                for (Invitado invitado : programa.getListaInvitados()) {
+
+                    if (invitado.getNombre().equals(nombre)) {
+                        LocalDate fechaActual = invitado.getFechaVisita();
+
+                        if (fechaMasAntigua == null || fechaActual.isBefore(fechaMasAntigua)) {
+                            fechaMasAntigua = fechaActual;
+                            primerPrograma = programa;
+                        }
+                    }
+                }
+            }
+        }
+
+        System.out.println("Búsqueda = " + nombre + " estuvo primero en " + primerPrograma.getNombre() + " el " + fechaMasAntigua);
     }
 
 

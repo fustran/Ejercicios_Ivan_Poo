@@ -8,7 +8,7 @@ public class AppProgramas {
 
         System.out.println();
         System.out.println();
-        System.out.println(new StringBuilder().append("   \uD83E\uDD4A    *BOOM*    \uD83E\uDD4A\n").append("  (   )          (   )\n").append("   | |            | |\n").toString());
+        System.out.println(new StringBuilder().append("   \uD83E\uDD4A    *BOOM*    \uD83E\uDD4A\n").append("  (   )          (   )\n").append("   | |            | |\n"));
 
 
         // Creamos 2 cadenas de tv.
@@ -30,8 +30,8 @@ public class AppProgramas {
         System.out.println();
 
         // Programa 2:
-        /*Programa La_Revuelta = new Programa("La Revuelta", Tv1, "director1");
-        System.out.println(La_Revuelta);
+        Programa La_Revuelta = new Programa("La Revuelta", antena3, "director1");
+        /*System.out.println(La_Revuelta);
         System.out.println();
         System.out.println(Tv1);
         System.out.println();*/
@@ -42,17 +42,17 @@ public class AppProgramas {
         System.out.println(El_Hormiguero);
         System.out.println();
 
-        /*La_Revuelta.insertarEmpleado("David Broncano","presentador", null);
+        La_Revuelta.insertarEmpleado("David Broncano","presentador", null);
         System.out.println(La_Revuelta);
-        System.out.println();*/
+        System.out.println();
 
 
         // Ver empleados del los programas.
         System.out.println(El_Hormiguero.getListaEmpleados());
         System.out.println();
 
-        /*System.out.println(La_Revuelta.getListaEmpleados());
-        System.out.println();*/
+        System.out.println(La_Revuelta.getListaEmpleados());
+        System.out.println();
 
 
         // Insertamos invitados en el programa 1.
@@ -70,10 +70,13 @@ public class AppProgramas {
 
 
         // Insertamos invitados en el programa 2.
+        La_Revuelta.insertarInvitado("Aitana","cantante",1);
+        System.out.println();
+
         /*La_Revuelta.insertarInvitado("Arturo Coello","deportista",1);
         System.out.println();
 
-        La_Revuelta.insertarInvitado("Agustín Tapia","deportista",1);
+        /*La_Revuelta.insertarInvitado("Agustín Tapia","deportista",1);
         System.out.println();
 
         La_Revuelta.insertarInvitado("Antonio Resines","actor",2);
@@ -85,28 +88,40 @@ public class AppProgramas {
 
         // ver invitados del programa.
         System.out.println(El_Hormiguero.getListaInvitados());
-        /*System.out.println(La_Revuelta.getListaInvitados());*/
+        System.out.println(La_Revuelta.getListaInvitados());
+        System.out.println();
 
 
         // b) Ver invitados del programa de una temporada concreta.
         El_Hormiguero.invitadosTemporada(1);
        /* El_Hormiguero.invitadosTemporada(2);*/
 
-        /*La_Revuelta.invitadosTemporada(1);
-        La_Revuelta.invitadosTemporada(2);*/
+        La_Revuelta.invitadosTemporada(1);
+        System.out.println();
+        /*La_Revuelta.invitadosTemporada(2);*/
 
 
         // c) Ver la cantidad de veces que ha ido un Invitado al Programa.
-        System.out.println("Ha sido invitad@: " + El_Hormiguero.vecesInvitado("Aitana") + " vez.");
+        System.out.println("Ha sido invitad@: " + El_Hormiguero.vecesInvitado("Aitana") + " vez/ces a: " + El_Hormiguero.getNombre());
+        System.out.println("Ha sido invitad@: " + La_Revuelta.vecesInvitado("Aitana") + " vez/ces a: " + La_Revuelta.getNombre());
+        System.out.println();
+
 
 
         // d) Usar el metodo creado en el apartado anterior e imprima las veces que ha ido un Invitado al Programa, además de mostrar también en qué fechas
         El_Hormiguero.rastrearInvitado("Aitana");
+        La_Revuelta.rastrearInvitado("Aitana");
+        System.out.println();
 
 
-        // e) Metodo  para que dado un Invitado sea capaz de buscar si ha acudido a un Programa.
+        // e) Metodo para que dado un Invitado sea capaz de buscar si ha acudido a un Programa.
+        System.out.println("Búsqueda = " + El_Hormiguero.buscarInvitado("Aitana"));
+        System.out.println("Búsqueda = " + La_Revuelta.buscarInvitado("Aitana"));
+        System.out.println();
 
 
         // f) Usar el metodo implementado en el apartado anterior para que en caso de haber devuelto true buscando en dos Programas distintos, muestre en cuál ha estado antes.
+        La_Revuelta.invitadoAntes("Aitana");
+
     }
 }
