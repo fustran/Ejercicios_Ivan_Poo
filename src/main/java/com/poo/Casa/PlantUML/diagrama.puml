@@ -1,0 +1,65 @@
+@startuml
+@startuml
+package "com.poo.Casa" {
+
+    class Casa {
+        - static final Scanner teclado
+        - final String direccion
+        - ArrayList<Habitacion> habitaciones
+        - Propietario propietario
+        + Casa(String direccion)
+        + void agregarHabitacion(String nombre, double metrosCuadrados)
+        + void mostrarHabitaciones()
+        + Habitacion getHabitacionMasGrande()
+        + void eliminarHabitacion(String nombre)
+        + Propietario getPropietario()
+        + void setPropietario()
+        + void calcularHabitacionMasConsumo()
+        + ArrayList<Habitacion> getHabitaciones()
+        + void setHabitaciones(ArrayList<Habitacion> habitaciones)
+    }
+
+    class Habitacion {
+        - String nombre
+        - double metrosCuadrados
+        - ArrayList<Electrodomestico> electrodomesticos
+        + Habitacion(String nombre, double metrosCuadrados)
+        + String getNombre()
+        + void setNombre(String nombre)
+        + double getMetrosCuadrados()
+        + void setMetrosCuadrados(double metrosCuadrados)
+        + ArrayList<Electrodomestico> getElectrodomesticos()
+        + void setElectrodomesticos(ArrayList<Electrodomestico> electrodomesticos)
+        + void agregarElectrodomestico(String nombre, double consumo)
+        + void mostrarElectrodomesticos()
+        + double calcularConsumo()
+        + String toString()
+    }
+
+    class Electrodomestico {
+        - String nombre
+        - double consumo
+        + Electrodomestico(String nombre, double consumo)
+        + String getNombre()
+        + void setNombre(String nombre)
+        + double getConsumo()
+        + void setConsumo(double consumo)
+        + String toString()
+    }
+
+    class Propietario {
+        - String nombre
+        - int edad
+        + Propietario(String nombre, int edad)
+        + String getNombre()
+        + void setNombre(String nombre)
+        + int getEdad()
+        + void setEdad(int edad)
+        + String toString()
+    }
+
+    Casa "1" *-- "0..*" Habitacion : tiene >
+    Habitacion "1" *-- "0..*" Electrodomestico : contiene >
+    Casa "1" -- "1" Propietario : pertenece a >
+}
+@enduml

@@ -1,0 +1,93 @@
+@startuml
+package "com.poo.Biblioteca" {
+
+    class Editorial {
+        - String nombre
+        - String pais
+        - ArrayList<Libro> librosPublicados
+        + Editorial(String nombre, String pais)
+        + String getNombre()
+        + void setNombre(String nombre)
+        + String getPais()
+        + void setPais(String pais)
+        + ArrayList<Libro> getLibrosPublicados()
+        + void setLibrosPublicados(ArrayList<Libro> librosPublicados)
+        + void agregarLibro(Libro libro)
+        + void borrarLibro(Libro libro)
+        + String toString()
+    }
+
+    class Estudiante {
+        - static final String CORREO_VALIDO
+        - static int contadorEstudiantes
+        - String nombre
+        - String curso
+        - final int nia
+        - String email
+        - ArrayList<Libro> librosPrestados
+        + Estudiante(String nombre, String curso, String email)
+        + Estudiante(String nombre)
+        + static Boolean validarEmail(String email)
+        + static int obtenerTotalEstudiantes()
+        + String getNombre()
+        + void setNombre(String nombre)
+        + String getCurso()
+        + void setCurso(String curso)
+        + int getNia()
+        + String getEmail()
+        + void setEmail(String email)
+        + ArrayList<Libro> getLibrosPrestados()
+        + void setLibrosPrestados(ArrayList<Libro> librosPrestados)
+        + void agregarLibro(Libro libro)
+        + void borrarLibro(Libro libro)
+        + String toString()
+    }
+
+    class Libro {
+        - static int cantidadLibros
+        - static int librosDisponibles
+        - static final String ID_LIBROS
+        - String titulo
+        - String autor
+        - final String id
+        - boolean disponible
+        - Estudiante estudiantePrestado
+        - Editorial editorialLibro
+        + Libro(String titulo, String autor, Editorial editorial)
+        + Prestamo prestar(Estudiante estudiante)
+        + void devolver(Estudiante estudiante)
+        + boolean getDisponible()
+        + void setDisponible(boolean disponible)
+        + String getId()
+        + String getTitulo()
+        + void setTitulo(String titulo)
+        + String getAutor()
+        + void setAutor(String autor)
+        + static int getLibrosDisponibles()
+        + static int getTotalLibros()
+        + Estudiante getEstudiantePrestado()
+        + void setEstudiantePrestado(Estudiante estudiantePrestado)
+        + Editorial getEditorialLibro()
+        + void setEditorialLibro(Editorial editorialLibro)
+        + String toString()
+    }
+
+    class Prestamo {
+        - Estudiante estudiantePrestamo
+        - Libro libroPrestamo
+        - final LocalDate fechaPrestamo
+        + Prestamo(Estudiante estudiante, Libro libro)
+        + Libro getLibroPrestamo()
+        + void setLibroPrestamo(Libro libroPrestamo)
+        + LocalDate getFechaPrestamo()
+        + Estudiante getEstudiantePrestamo()
+        + void setEstudiantePrestamo(Estudiante estudiantePrestamo)
+        + String toString()
+    }
+
+    Estudiante "1" o-- "0..*" Prestamo : realiza >
+    Libro "1" -- "1" Editorial : pertenece a >
+    Prestamo "1" -- "1" Libro : se asocia con >
+    Prestamo "1" -- "1" Estudiante : realizado por >
+}
+@enduml
