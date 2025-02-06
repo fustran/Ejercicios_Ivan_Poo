@@ -2,6 +2,11 @@ package com.poo.PruebaLombok;
 
 import lombok.*;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Estudiante {
 
     @NonNull
