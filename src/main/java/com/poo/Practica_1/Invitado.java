@@ -67,7 +67,7 @@ public class Invitado {
 
     @Override
     public String toString() {
-        return "Invitado: " +
+        return "\nInvitado: " +
                         "[Nombre = " + getNombre() +
                         ", Profesión = " + getProfesion() +
                         ", FechaVisita = " + getFechaVisita() +

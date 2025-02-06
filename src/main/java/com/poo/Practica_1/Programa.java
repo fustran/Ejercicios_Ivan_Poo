@@ -93,6 +93,22 @@ public class Programa {
     }
 
 
+    public void invitadosTemporada(int temporada) {
+
+        int  contador = 0;
+        System.out.println();
+
+        for (Invitado invitado : listaInvitados) {
+            if (invitado.getTemporada() == temporada) {
+                   System.out.println("Nombre: " + invitado.getNombre() + ", Profesión: " + invitado.getProfesion());
+                   contador++;
+            }
+        }
+
+        System.out.println("Temporada: " + temporada + ", " + "Invitados: " + contador);
+    }
+
+
     @Override
     public String toString() {
         return "Programa: " +
