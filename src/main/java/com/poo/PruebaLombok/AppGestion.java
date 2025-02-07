@@ -7,6 +7,7 @@ public class AppGestion {
 
         Instituto instituto = new Instituto("IES MUTXAMIEL", "Alicante", new ArrayList<>(), new ArrayList<>());
         instituto.getNombre();
+        
         //Crear cursos
         Curso cursoJava = new Curso("Java", 100);
         System.out.println(cursoJava);
