@@ -4,13 +4,14 @@ import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class Estudiante {
 
     @NonNull
     private String nombre;
     private int edad;
-    private String curso;
+    private Curso curso;
+
 }

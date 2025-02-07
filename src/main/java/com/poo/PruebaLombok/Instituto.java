@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @ToString
 public class Instituto {
@@ -13,9 +14,15 @@ public class Instituto {
     private String nombre;
     private String poblacion;
     @NonNull
-    private ArrayList<Estudiante> estudiantes = new ArrayList<>();
+    private ArrayList<Estudiante> listaEstudiantes;
     @NonNull
-    private ArrayList<Curso> cursos = new ArrayList<>();
+    private ArrayList<Curso> listaCursos;
 
+    public void agregarEstudiante(Estudiante estudiante) {
+        this.listaEstudiantes.add(estudiante);
+    }
 
+    public void agregarCurso(Curso curso) {
+        this.listaCursos.add(curso);
+    }
 }

@@ -4,8 +4,8 @@ import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class Curso {
 
@@ -13,9 +13,4 @@ public class Curso {
     private String nombre;
     private int horas;
 
-
-    public void agregarCurso(String nombre, int horas) {
-        this.nombre = nombre;
-        this.horas = horas;
-    }
 }
