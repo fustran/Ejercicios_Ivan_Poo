@@ -60,6 +60,6 @@ package "com.poo.Casa" {
 
     Casa "1" *-- "0..*" Habitacion : tiene >
     Habitacion "1" *-- "0..*" Electrodomestico : contiene >
-    Casa "1" -- "1" Propietario : pertenece a >
+    Casa "1" *-- "1" Propietario : pertenece a >
 }
 @enduml
