@@ -1,6 +1,7 @@
 package com.poo.concurso_programamelo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Equipo {
 
@@ -10,9 +11,8 @@ public class Equipo {
     private int puntuacion = 0;
 
     public Equipo(String nombre_equipo) {
-        this.problemas_resueltos = problemas_resueltos;
-        this.puntuacion = puntuacion;
         this.nombre_equipo = nombre_equipo;
+        this.listaMiembros = new ArrayList<>();
     }
 
     public ArrayList<String> getListaMiembros() {
@@ -47,9 +47,8 @@ public class Equipo {
         this.puntuacion = puntuacion;
     }
 
-    public void agregarMiembro() {
-
-        listaMiembros.add("");
+    public void agregarMiembros(String... nombre) {
+        this.listaMiembros.addAll(Arrays.asList(nombre));
     }
 
     @Override
