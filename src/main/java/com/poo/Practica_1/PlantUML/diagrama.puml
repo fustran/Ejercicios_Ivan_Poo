@@ -73,9 +73,10 @@ class Invitado {
     + String toString()
 }
 
-Cadena "1" -- "*" Programa : tiene // Asociación
-Programa "1" *-- "*" Empleado : trabaja // Composición
-Programa "1" *-- "*" Invitado : recibe // Composición
-Empleado "1" -- "0..1" Empleado : dirige // Asociación
+Cadena "1 " o-- "0..* " Programa : contiene
+Programa "1   " *-- "0..* " Empleado : trabaja
+Programa "1 " *-- "1" Empleado : dirige
+Programa "1" *-- "0..*    " Invitado : recibe
+Empleado " 0..1" --> "   0..1" Empleado : supervisa // Reflexión
 
 @enduml
