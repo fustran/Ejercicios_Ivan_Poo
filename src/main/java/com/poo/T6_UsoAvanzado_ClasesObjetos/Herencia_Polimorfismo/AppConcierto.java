@@ -4,16 +4,26 @@ public class AppConcierto {
 
     public static void main(String[] args) {
 
-        Asistente a1 = new Asistente("Carlos", 25, "VIP");
-        Artista art1 = new Artista("Dua Lipa", 28, "Pop");
+        Asistente asistente1 = new Asistente("Carlos", 25, "VIP");
+        Artista artista1 = new Artista("Dua Lipa", 28, "Pop");
+        Organizador organizador1 = new Organizador("Iván", 40, "Seguridad");
+
+        System.out.println();
 
         System.out.println("Información del asistente:");
-        a1.mostrarInfo();
+        asistente1.mostrarInfo();
 
         System.out.println();
 
         System.out.println("Información del artista:");
-        art1.mostrarInfo();
+        artista1.mostrarInfo();
+
+        System.out.println();
+
+        System.out.println("Información del organizador:");
+        organizador1.mostrarInfo();
+
+
 
     }
 }
