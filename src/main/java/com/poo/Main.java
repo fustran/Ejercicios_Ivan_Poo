@@ -1,8 +1,8 @@
 package com.poo;
 
 //import java.util.Scanner;
+import com.poo.T5_Introduccion_Poo.Persona.Persona;
 
-/*
 public class Main {
     public static void main(String[] args) {
 
@@ -23,7 +23,7 @@ public class Main {
         System.out.println(persona3);
     }
 }
-*/
+
 
 
 /*import com.poo.ClaseTelevisor.Televisor;
@@ -55,7 +55,7 @@ public class Main {
 }*/
 
 
-/*import com.poo.Paciente.Paciente;
+/*import com.poo.IntroduccionPoo.Paciente.Paciente;
 
 public class Main {
     public static void main(String[] args) {
@@ -146,10 +146,10 @@ public class Main {
     }
 }*/
 
-/*import com.poo.Biblioteca.Editorial;
-import com.poo.Biblioteca.Estudiante;
-import com.poo.Biblioteca.Libro;
-import com.poo.Biblioteca.Prestamo;
+/*import com.poo.IntroduccionPoo.Biblioteca.Editorial;
+import com.poo.IntroduccionPoo.Biblioteca.Estudiante;
+import com.poo.IntroduccionPoo.Biblioteca.Libro;
+import com.poo.IntroduccionPoo.Biblioteca.Prestamo;
 
 public class Main {
     public static void main(String[] args) {
@@ -209,12 +209,10 @@ public class Main {
     }
 }*/
 
-import com.poo.PruebaLombok.Instituto;
-
-public class Main {
+/*public class Main {
     public static void main(String[] args) {
 
-     /*   try {
+        try {
             Instituto balmis = new Instituto(null);
             System.out.println(balmis);
         }catch (NullPointerException e){
@@ -225,7 +223,7 @@ public class Main {
         System.out.println(poblenou);
 
         Instituto poblenou1 = new Instituto(null);
-        System.out.println(poblenou1);*/
+        System.out.println(poblenou1);
     }
-}
+}*/
 
