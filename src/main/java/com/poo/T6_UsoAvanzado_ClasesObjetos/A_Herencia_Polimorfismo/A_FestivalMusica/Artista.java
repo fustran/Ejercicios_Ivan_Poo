@@ -1,7 +1,7 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.A_Herencia_Polimorfismo.A_FestivalMusica;
 
 //SUBCLASE QUE TAMBIÉN HEREDA DE PERSONA (EXTENDS)
-class Artista extends Persona {
+public class Artista extends Persona {
 
     String generoMusical;
 
