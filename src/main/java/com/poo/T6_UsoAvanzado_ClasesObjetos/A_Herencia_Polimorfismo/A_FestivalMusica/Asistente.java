@@ -1,4 +1,4 @@
-package com.poo.T6_UsoAvanzado_ClasesObjetos.A_Herencia_Polimorfismo.Concierto;
+package com.poo.T6_UsoAvanzado_ClasesObjetos.A_Herencia_Polimorfismo.A_FestivalMusica;
 
 //SUBCLASE QUE HEREDA DE PERSONA (EXTENDS)
 class Asistente extends Persona {
