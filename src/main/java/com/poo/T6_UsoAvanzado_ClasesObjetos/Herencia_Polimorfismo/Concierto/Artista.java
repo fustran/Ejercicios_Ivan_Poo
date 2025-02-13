@@ -1,4 +1,4 @@
-package com.poo.T6_UsoAvanzado_ClasesObjetos.Herencia_Polimorfismo;
+package com.poo.T6_UsoAvanzado_ClasesObjetos.Herencia_Polimorfismo.Concierto;
 
 //SUBCLASE QUE TAMBIÉN HEREDA DE PERSONA (EXTENDS)
 class Artista extends Persona {

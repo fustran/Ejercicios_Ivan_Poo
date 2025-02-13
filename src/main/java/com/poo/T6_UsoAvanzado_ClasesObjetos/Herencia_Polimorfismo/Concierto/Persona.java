@@ -1,4 +1,4 @@
-package com.poo.T6_UsoAvanzado_ClasesObjetos.Herencia_Polimorfismo;
+package com.poo.T6_UsoAvanzado_ClasesObjetos.Herencia_Polimorfismo.Concierto;
 
 //SUPERCLASE
 class Persona {
