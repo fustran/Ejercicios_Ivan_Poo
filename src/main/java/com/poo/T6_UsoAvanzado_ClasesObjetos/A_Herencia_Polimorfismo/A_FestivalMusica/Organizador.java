@@ -13,6 +13,10 @@ public class Organizador extends Persona {
     public void mostrarInfo() {
         super.mostrarInfo();
         System.out.println("Rol: " + rol);
+    }
 
+    @Override
+    public void accederEvento() {
+        System.out.println("Accediendo como Organizador: Coordinando el evento.");
     }
 }

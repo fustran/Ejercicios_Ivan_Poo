@@ -32,10 +32,27 @@ public class AppConcierto {
                 new Organizador("Martín", 30, "Producción")
         };
 
-        for (Persona p : personas) {
+        for (Persona persona : personas) {
             System.out.println();
-            p.mostrarInfo(); //se ejecuta la versión sobrescrita de cada subclase
+            persona.mostrarInfo(); //se ejecuta la versión sobrescrita de cada subclase
         }
+
+        System.out.println();
+
+        // Creación de los objetos de cada tipo.
+        Persona artista2 = new Artista("Sofía", 25, "Rock Alternativo");
+        Persona asistente2 = new Asistente("Lucas", 18, "VIP");
+        Persona organizador2 = new Organizador("Martín", 30, "Producción");
+
+        // Usar el metodo con polimorfismo.
+        mostrarAcceso(artista2);      //Accediendo como Artista: Preparando el show.
+        mostrarAcceso(asistente2);    //Accediendo como Asistente: Buscando su asiento.
+        mostrarAcceso(organizador2);  //Accediendo como Organizador: Coordinando el evento.
+
+    }
+
+    public static void mostrarAcceso(Persona persona) {
+        persona.accederEvento();
 
     }
 }
