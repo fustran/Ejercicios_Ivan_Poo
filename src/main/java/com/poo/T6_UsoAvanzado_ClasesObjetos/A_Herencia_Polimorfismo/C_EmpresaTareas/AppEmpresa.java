@@ -17,13 +17,13 @@ public class AppEmpresa {
         }
 
         Empleado gerente = new Gerente();
-        Empleado desarrolador = new Desarrollador();
+        Empleado desarrollador = new Desarrollador();
 
         System.out.println();
 
         System.out.println("=== Usando el metodo asignarTarea() ===");
         asignarTarea(gerente);
-        asignarTarea(desarrolador);
+        asignarTarea(desarrollador);
 
     }
 
