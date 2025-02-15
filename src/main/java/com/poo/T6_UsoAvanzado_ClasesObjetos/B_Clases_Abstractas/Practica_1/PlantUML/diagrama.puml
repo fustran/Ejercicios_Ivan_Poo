@@ -1,0 +1,24 @@
+@startuml
+package com.poo.T6_UsoAvanzado_ClasesObjetos.A_Herencia_Polimorfismo.C_EmpresaTareas {
+
+    class Empleado {
+        + void realizarTarea()
+    }
+
+    class Desarrollador {
+        + void realizarTarea()
+    }
+
+    class Diseñador {
+        + void realizarTarea()
+    }
+
+    class Gerente {
+        + void realizarTarea()
+    }
+
+    Empleado <|-- Desarrollador
+    Empleado <|-- Diseñador
+    Empleado <|-- Gerente
+}
+@enduml
