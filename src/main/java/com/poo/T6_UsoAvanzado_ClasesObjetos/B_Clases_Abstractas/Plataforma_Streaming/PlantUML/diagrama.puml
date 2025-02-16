@@ -1,0 +1,57 @@
+@startuml
+package "com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Plataforma_Streaming" {
+
+abstract class Suscripcion {
+    - nombrePlan : String
+    - precio : double
+    --
+    # Suscripcion(nombrePlan: String, precio: double)
+    + static mostrarBienvenida()
+    + mostrarInfo() : void
+    + obtenerBeneficios() : void
+    + obtenerPeriodoPrueba() : void
+}
+
+class PlanGratis {
+    - PRECIO : double = 0.0
+    - NOMBRE_PLAN : String = "Gratis"
+    --
+    # PlanGratis()
+    + obtenerBeneficios() : void
+    + obtenerPeriodoPrueba() : void
+}
+
+class PlanBasico {
+    - PRECIO : double = 9.99
+    - NOMBRE_PLAN : String = “Básico”
+    --
+    # PlanBasico()
+    + obtenerBeneficios() : void
+    + obtenerPeriodoPrueba() : void
+}
+
+class PlanPremium {
+    - PRECIO : double = 14.99
+    - NOMBRE_PLAN : String = “Premium”
+    --
+    # PlanPremium()
+    + obtenerBeneficios() : void
+    + obtenerPeriodoPrueba() : void
+}
+
+class PlanFamiliar {
+    - PRECIO : double = 19.99
+    - NOMBRE_PLAN : String = “Familiar”
+    --
+    # PlanFamiliar()
+    + obtenerBeneficios() : void
+    + obtenerPeriodoPrueba() : void
+}
+
+Suscripcion <|-- PlanGratis
+Suscripcion <|-- PlanBasico
+Suscripcion <|-- PlanPremium
+Suscripcion <|-- PlanFamiliar
+}
+
+@enduml
