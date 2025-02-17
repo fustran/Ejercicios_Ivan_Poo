@@ -48,7 +48,7 @@ public class Bizum extends MetodoPago {
             System.out.println("Teléfono y pin incorrectos...(Vuelve a intentarlo).");
         }else if (!validarPin(pinValido)) {
             System.out.println("Pin incorrecto");
-        }else {
+        }else{
             System.out.println("Teléfono incorrecto...");
         }
     }

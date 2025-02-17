@@ -6,8 +6,7 @@ public class Tienda {
 
     private static final Scanner TECLADO = new Scanner(System.in);
 
-    protected static void realizarPago(MetodoPago metodo, double importe){
-
+    protected static void realizarPago(MetodoPago metodo, double importe) {
         metodo.procesarPago(importe);
     }
 
@@ -21,29 +20,53 @@ public class Tienda {
 
         switch (opcion){
             case "tarjeta":
+                TarjetaCredito tarjetaCredito = new TarjetaCredito();
                 System.out.println("Has elegido el pago con Tarjeta de crédito...");
+                System.out.println();
+
+                System.out.println("Introduce los datos de tu tarjeta:");
+                System.out.println("Número de (16 dígitos)");
+                String tarjeta = TECLADO.nextLine().trim();
+                tarjetaCredito.setNumTarjeta(tarjeta);
+
+                System.out.println("Introduce el tipo: [VISA, MASTERCARD ó MAESTRO]");
+                String tipo = TECLADO.nextLine().trim().toUpperCase();
+                tarjetaCredito.setTipo(tipo);
+                tarjetaCredito.validarTarjeta();
                 break;
 
             case "bizum":
                 Bizum bizum = new Bizum();
                 System.out.println("Has elegido el pago con Bizum...");
-                System.out.println("Introduce el teléfono: ");
+                System.out.println();
+
+                System.out.println("Introduce el número de teléfono: ");
                 String telefono = TECLADO.nextLine();
                 bizum.setTelefono(telefono); // Asignar el teléfono para usarlo
-                System.out.println(bizum.getTelefono());
+
                 bizum.mostrarPin(); // Mostrar el pin para introducirlo
+
                 System.out.println("Introduce el pin para validar la compra...");
                 int pinMovil = TECLADO.nextInt();
-                TECLADO.nextLine();
+                TECLADO.nextLine(); // Consumir el salto de línea residual
+
                 bizum.validarBizum(pinMovil);
                 break;
 
             case "paypal":
+                PayPal payPal = new PayPal();
                 System.out.println("Has elegido el pago con Paypal...");
+                System.out.println();
+
+                System.out.println("Introduce la cuenta de Paypal:");
+                String cuentaPaypal = TECLADO.nextLine().trim().toLowerCase();
+                payPal.setCuenta(cuentaPaypal);
+                payPal.validadPaypal();
+
                 break;
 
             default:
-                System.out.println("opción incorrecta");
+                System.out.println("Opción incorrecta");
         }
     }
 }
