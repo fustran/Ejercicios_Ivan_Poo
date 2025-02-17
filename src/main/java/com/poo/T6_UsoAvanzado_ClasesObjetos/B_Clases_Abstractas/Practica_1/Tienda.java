@@ -63,6 +63,9 @@ public class Tienda {
                 payPal.setCuenta(cuentaPaypal);
                 payPal.validadPaypal();
 
+                payPal.mostrarSaldo();
+                payPal.mensajeIngresoSaldo();
+
                 break;
 
             default:

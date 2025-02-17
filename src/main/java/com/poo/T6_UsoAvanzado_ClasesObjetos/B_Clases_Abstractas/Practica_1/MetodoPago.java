@@ -6,4 +6,3 @@ public abstract class MetodoPago {
     protected abstract void procesarPago(double importe);
 
 }
-
