@@ -61,13 +61,12 @@ public class Tienda {
                 System.out.println("Introduce la cuenta de Paypal:");
                 String cuentaPaypal = TECLADO.nextLine().trim().toLowerCase();
                 payPal.setCuenta(cuentaPaypal);
-                payPal.validadPaypal();
 
-                payPal.mostrarSaldo();
-                payPal.mensajeIngresoSaldo();
+                System.out.println("Qué importe quieres pagar?");
+                double importe = TECLADO.nextInt();
+                payPal.validarPaypal(importe); // Para validar solo el formato del correo
 
                 break;
-
             default:
                 System.out.println("Opción incorrecta");
         }

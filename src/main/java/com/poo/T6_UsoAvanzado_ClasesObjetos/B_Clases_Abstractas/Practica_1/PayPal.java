@@ -20,15 +20,17 @@ public class PayPal extends MetodoPago {
         this.saldo = 23;
     }
 
-    protected void validadPaypal() {
-        assert cuenta != null;
-        if(cuenta.matches(FORMATO_CORREO)) {
-            System.out.println("Correo válido...");
-        }else{
-            System.out.println("Correo NO válido.");
+    protected void validarPaypal(double importe) {
+        if(cuenta != null && cuenta.matches(FORMATO_CORREO)) {
+            System.out.println("Validando Paypal...");
+            if (importe > saldo) {
+                System.out.println("No se puede procesar el pago, SALDO INSUFICIENTE.");
+                mensajeIngresoSaldo();
+            }
+        } else {
+            System.out.println("Validando Paypal...");
+            System.out.println("Correo invalido!");
         }
-        // Añadir validación del saldo.
-
     }
 
     // Metodo para ingresar saldo en la cuenta de Paypal
