@@ -2,17 +2,25 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1;
 
 public class TarjetaCredito extends MetodoPago {
 
-    private final String numTarjeta;
-    private final String tipo;
+    private String numTarjeta;
+    private String tipo;
 
-    public TarjetaCredito(String numTarjeta, String tipo) {
+    protected TarjetaCredito(String numTarjeta, String tipo) {
         this.numTarjeta = numTarjeta;
         this.tipo = tipo;
+        validarTarjeta();
     }
 
-    // Metodo para validar la tarjeta, numeración y tipo.
-    public String validarTarjeta() {
-        return "";
+    public TarjetaCredito() {
+
+    }
+
+    // Metodo para validar la tarjeta, (numeración y tipo).
+    protected void validarTarjeta() {
+        if (tipo != null && numTarjeta != null && numTarjeta.length() == 16 && (tipo.equals("VISA") || tipo.equals("MASTERCARD") || tipo.equals("MAESTRO"))) {
+            System.out.println("Datos de la tarjeta correctos...");
+        }
+
     }
 
     @Override
