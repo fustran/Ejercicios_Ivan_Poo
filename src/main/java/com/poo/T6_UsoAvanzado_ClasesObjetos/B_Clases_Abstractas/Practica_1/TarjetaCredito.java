@@ -1,7 +1,6 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1;
 
 import lombok.*;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,7 +12,7 @@ public class TarjetaCredito extends MetodoPago {
     private String tipo;
     private static ArrayList<String> tiposTarjetas = new ArrayList<>(Arrays.asList("VISA", "MASTERCARD", "MAESTRO")); // Lo he cambiado como me dijiste
 
-    // Lo he dejado vacío para que se haga por terminal y se actualicen los valores cuando se introduzcan
+    // Lo he dejado vacío para que se haga por terminal y se actualicen los valores cuando se introduzcan con el setter
     protected TarjetaCredito() {
 
     }
@@ -30,6 +29,6 @@ public class TarjetaCredito extends MetodoPago {
 
     @Override // Sobrescritura del metodo heredado de la clase abstracta
     protected void procesarPago(double importe) {
-        System.out.println("Procesando pago de " + importe + "€ " + "con tarjeta de crédito " + tipo);
+        System.out.println("Procesando pago de " + importe + "€ " + "con tarjeta de crédito: " + tipo);
     }
 }

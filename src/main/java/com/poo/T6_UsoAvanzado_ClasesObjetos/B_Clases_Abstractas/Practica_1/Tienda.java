@@ -34,8 +34,8 @@ public class Tienda {
                 System.out.println("Qué importe quieres pagar?");
                 double importeTarjeta = TECLADO.nextInt();
 
-                MetodoPago pagarTarjeta = new TarjetaCredito();
-                realizarPago(pagarTarjeta, importeTarjeta);
+                realizarPago(tarjetaCredito, importeTarjeta);
+
                 break;
 
             case "bizum":
@@ -57,8 +57,7 @@ public class Tienda {
                 System.out.println("Qué importe quieres pagar?");
                 double importeBizum = TECLADO.nextInt();
 
-                MetodoPago pagarBizum = new Bizum();
-                realizarPago(pagarBizum, importeBizum);
+                realizarPago(bizum, importeBizum);
                 break;
 
             case "paypal":
@@ -72,16 +71,23 @@ public class Tienda {
 
                 System.out.println("Qué importe quieres pagar?");
                 double importePaypal = TECLADO.nextInt();
-                payPal.validarPaypal(importePaypal); // Para validar solo el formato del correo
 
-                MetodoPago pagarPaypal = new PayPal();
-                realizarPago(pagarPaypal, importePaypal);
+                boolean validarSaldo = false;
+                while(!validarSaldo){
+                    payPal.validarPaypal(importePaypal);
+
+                    if (importePaypal > payPal.getSaldo()) {
+                        payPal.validarPaypal(importePaypal);
+                    }else {
+                        realizarPago(payPal, importePaypal);
+                        validarSaldo = true;
+                    }
+                }
                 break;
 
             default:
                 System.out.println("Opción incorrecta");
         }
-
     }
 
     protected static void realizarPago(MetodoPago metodo, double importe) {
