@@ -11,29 +11,21 @@ public class TarjetaCredito extends MetodoPago {
 
     private String numTarjeta;
     private String tipo;
-    private final ArrayList<String> tiposTarjetas;
+    private static ArrayList<String> tiposTarjetas = new ArrayList<>(Arrays.asList("VISA", "MASTERCARD", "MAESTRO")); // Lo he cambiado como me dijiste
 
+    // Lo he dejado vacío para que se haga por terminal y se actualicen los valores cuando se introduzcan
     protected TarjetaCredito() {
-       tiposTarjetas = new ArrayList<>();
-       anyadirTiposTarjeta();
+
     }
 
     // Metodo para validar la tarjeta, (numeración y tipo).
     protected void validarTarjeta() {
-        /*if (tipo != null && numTarjeta != null && numTarjeta.length() == 16 && (tipo.equals("VISA") || tipo.equals("MASTERCARD") || tipo.equals("MAESTRO"))) {
-            System.out.println("Datos de la tarjeta correctos...");
-        }*/
-
         if (tipo != null && numTarjeta != null && numTarjeta.length() == 16 && tiposTarjetas.contains(tipo)) {
             System.out.println("Validando Tarjeta...");
         }else{
             System.out.println("Validando tarjeta...");
             System.out.println("Los datos de tu tarjeta son incorrectos.");
         }
-    }
-
-    public void anyadirTiposTarjeta() {
-        tiposTarjetas.addAll(Arrays.asList("VISA", "MASTERCARD", "MAESTRO"));
     }
 
     @Override // Sobrescritura del metodo heredado de la clase abstracta

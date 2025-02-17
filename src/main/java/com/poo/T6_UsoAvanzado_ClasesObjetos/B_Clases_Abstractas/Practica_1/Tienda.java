@@ -6,10 +6,7 @@ public class Tienda {
 
     private static final Scanner TECLADO = new Scanner(System.in);
 
-    protected static void realizarPago(MetodoPago metodo, double importe) {
-        metodo.procesarPago(importe);
-    }
-
+    // Metodo para interactuar con el usuario e ir usando las opciones necesarias
     protected static void iniciarPago() {
         System.out.println();
         System.out.println("Elige el método de pago:");
@@ -33,6 +30,12 @@ public class Tienda {
                 String tipo = TECLADO.nextLine().trim().toUpperCase();
                 tarjetaCredito.setTipo(tipo);
                 tarjetaCredito.validarTarjeta();
+
+                System.out.println("Qué importe quieres pagar?");
+                double importeTarjeta = TECLADO.nextInt();
+
+                MetodoPago pagarTarjeta = new TarjetaCredito();
+                realizarPago(pagarTarjeta, importeTarjeta);
                 break;
 
             case "bizum":
@@ -51,6 +54,11 @@ public class Tienda {
                 TECLADO.nextLine(); // Consumir el salto de línea residual
 
                 bizum.validarBizum(pinMovil);
+                System.out.println("Qué importe quieres pagar?");
+                double importeBizum = TECLADO.nextInt();
+
+                MetodoPago pagarBizum = new Bizum();
+                realizarPago(pagarBizum, importeBizum);
                 break;
 
             case "paypal":
@@ -63,12 +71,20 @@ public class Tienda {
                 payPal.setCuenta(cuentaPaypal);
 
                 System.out.println("Qué importe quieres pagar?");
-                double importe = TECLADO.nextInt();
-                payPal.validarPaypal(importe); // Para validar solo el formato del correo
+                double importePaypal = TECLADO.nextInt();
+                payPal.validarPaypal(importePaypal); // Para validar solo el formato del correo
 
+                MetodoPago pagarPaypal = new PayPal();
+                realizarPago(pagarPaypal, importePaypal);
                 break;
+
             default:
                 System.out.println("Opción incorrecta");
         }
+
+    }
+
+    protected static void realizarPago(MetodoPago metodo, double importe) {
+        metodo.procesarPago(importe);
     }
 }

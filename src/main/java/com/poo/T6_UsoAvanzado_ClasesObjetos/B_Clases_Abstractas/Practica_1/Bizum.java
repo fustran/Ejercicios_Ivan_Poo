@@ -21,7 +21,7 @@ public class Bizum extends MetodoPago {
 
     // Generar el pin de 6 cifras de forma aleatoria
     public int generarPin() {
-        return aleatorio.nextInt(0, 999999);
+        return aleatorio.nextInt(000000, 999999);
     }
 
     // Mostrar el pin para usarlo en la clase tienda
@@ -42,8 +42,10 @@ public class Bizum extends MetodoPago {
     // Validación del bizum llamando a validarPin() y validarTelefono()
     public void validarBizum(int pinValido) {
 
+        System.out.println("Validando Bizum");
+
         if (validarTelefono() && validarPin(pinValido)) {
-            System.out.println("Validando Bizum...");
+            System.out.println("Bizum correcto...");
         }else if (!validarTelefono() && !validarPin(pinValido)) {
             System.out.println("Teléfono y pin incorrectos...(Vuelve a intentarlo).");
         }else if (!validarPin(pinValido)) {
@@ -55,6 +57,6 @@ public class Bizum extends MetodoPago {
 
     @Override // Sobrescritura del metodo heredado de la clase abstracta
     protected void procesarPago(double importe) {
-        System.out.println("Procesando pago de " + importe + "€ " + "con Bizum");
+        System.out.println("Procesando pago de " + importe + "€ " + "con Bizum" + ", asociado al número de teléfono: " + telefono);
     }
 }
