@@ -13,8 +13,10 @@ public class Tienda {
 
     protected static void iniciarPago() {
         System.out.println();
-        System.out.println("¿Qué método de pago quieres usar?");
-        System.out.println("Opciones: Tarjeta, Bizum o Paypal");
+        System.out.println("Elige el método de pago:");
+        System.out.println("==> Tarjeta:");
+        System.out.println("==> Bizum:");
+        System.out.println("==> Paypal:");
         String opcion = TECLADO.nextLine().trim().toLowerCase();
 
         switch (opcion){
@@ -27,12 +29,13 @@ public class Tienda {
                 System.out.println("Has elegido el pago con Bizum...");
                 System.out.println("Introduce el teléfono: ");
                 String telefono = TECLADO.nextLine();
-                bizum.setTelefono(telefono);
-                bizum.mostrarPin();
+                bizum.setTelefono(telefono); // Asignar el teléfono para usarlo
+                System.out.println(bizum.getTelefono());
+                bizum.mostrarPin(); // Mostrar el pin para introducirlo
                 System.out.println("Introduce el pin para validar la compra...");
-                int pin = TECLADO.nextInt();
+                int pinMovil = TECLADO.nextInt();
                 TECLADO.nextLine();
-                bizum.validarBizum(pin);
+                bizum.validarBizum(pinMovil);
                 break;
 
             case "paypal":

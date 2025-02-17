@@ -1,50 +1,50 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1;
 
-import lombok.Getter;
-
+import lombok.*;
 import java.util.Random;
 
 public class Bizum extends MetodoPago {
 
+    // He creado la instancia aquí fuera del metodo para no crear un objeto cada vez que se vaya a generar un número
     Random aleatorio = new Random();
 
-    @Getter
+    @Getter @Setter
     private String telefono;
-    @Getter
+    @Getter // Sin Setter, porque el pin no lo quiero modificar
     private int pin;
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
 
+    // Asignar el pin generado al atributo del objeto creado
     public Bizum() {
-        pin = generarPin();
-        setTelefono(telefono);
+        this.pin = generarPin();
     }
 
+    // Generar el pin de 6 cifras de forma aleatoria
     public int generarPin() {
         return aleatorio.nextInt(000000, 999999);
     }
 
+    // Mostrar el pin para usarlo en la clase tienda
     public void mostrarPin() {
         System.out.println("Pin generado: " + pin);
     }
 
-    // Validar el pin
+    // Validar el pin siendo siempre true, cuando se valide en el metodo validarBizum, lo contrario a este retorno, será false
     public boolean validarPin(int pinRecibido) {
         return pinRecibido == pin;
     }
 
-    // Validar el teléfono
+    // Validar el teléfono siendo siempre true, cuando se valide en el metodo validarBizum, lo contrario a este retorno, será false
     public boolean validarTelefono() {
         return telefono.length() == 9;
     }
 
+    // Validación del bizum llamando a los métodos que devuelven true con esa condición
     public void validarBizum(int pinValido) {
 
-        if (validarTelefono() && validarPin(pinValido)){
+        if (validarTelefono() && validarPin(pinValido)) {
             System.out.println("Validando Bizum...");
-        }else if (!validarTelefono() && !validarPin(pinValido)){
+        }else if (!validarTelefono() && !validarPin(pinValido)) {
             System.out.println("Teléfono y pin incorrectos...(Vuelve a intentarlo).");
         }else if (!validarPin(pinValido)) {
             System.out.println("Pin incorrecto");
@@ -53,7 +53,7 @@ public class Bizum extends MetodoPago {
         }
     }
 
-    @Override
+    @Override // Sobrescritura del metodo heredado de la clase abstracta
     protected void procesarPago(double importe) {
         System.out.println("Procesando pago de " + importe + "€ " + "con Bizum");
     }
