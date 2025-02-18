@@ -10,14 +10,12 @@ public class TarjetaCredito extends MetodoPago {
 
     private String numTarjeta;
     private String tipo;
-    private static ArrayList<String> tiposTarjetas = new ArrayList<>(Arrays.asList("VISA", "MASTERCARD", "MAESTRO")); // Lo he cambiado como me dijiste
+    private static ArrayList<String> tiposTarjetas = new ArrayList<>(Arrays.asList("VISA", "MASTERCARD", "MAESTRO"));
 
-    // Lo he dejado vacío para que se haga por terminal y se actualicen los valores cuando se introduzcan con el setter
     protected TarjetaCredito() {
 
     }
 
-    // Metodo para validar la tarjeta, (numeración y tipo).
     protected boolean validarTarjeta() {
         if (tipo != null && numTarjeta != null && numTarjeta.matches("\\d{16}") && tiposTarjetas.contains(tipo)) {
             System.out.println("Validando Tarjeta...");
@@ -30,7 +28,7 @@ public class TarjetaCredito extends MetodoPago {
         }
     }
 
-    @Override // Sobrescritura del metodo heredado de la clase abstracta
+    @Override
     protected void procesarPago(double importe) {
         System.out.println("Procesando pago de " + importe + "€ " + "con tarjeta de crédito: " + tipo);
     }

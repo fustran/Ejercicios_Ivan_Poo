@@ -13,7 +13,7 @@ public class PayPal extends MetodoPago {
     private String cuenta;
     private double saldo;
 
-    // Asignación del valor por defecto al saldo cuando se crea el objeto
+
     public PayPal() {
         this.saldo = 23;
     }
@@ -32,14 +32,14 @@ public class PayPal extends MetodoPago {
         }
     }
 
-    // Metodo para ingresar saldo en la cuenta de Paypal
+
     public void ingresarSaldo(double ingreso) {
         saldo += ingreso;
         System.out.println("Su saldo ha sido actualizado, dispone de " + saldo + "€" + " en su cuenta de PayPal.");
 
     }
 
-    // Metodo para solicitar al usuario si quiere añadir saldo en su cuenta
+
     public void mensajeIngresoSaldo() {
         System.out.println("Desea añadir fondos a su cuenta? S/N");
         String opcion = TECLADO.nextLine().toUpperCase();
@@ -60,7 +60,7 @@ public class PayPal extends MetodoPago {
         }
     }
 
-    @Override // Sobrescritura del metodo heredado de la clase abstracta
+    @Override
     protected void procesarPago(double importe) {
         System.out.println("Procesando pago de " + importe + "€ " + "con PayPal, " + "cuenta: " + cuenta);
         System.out.println("Saldo en cuenta después de la compra: " + (saldo - importe) + "€");

@@ -6,7 +6,6 @@ public class Tienda {
 
     private static final Scanner TECLADO = new Scanner(System.in);
 
-    // Metodo para interactuar con el usuario e ir usando las opciones necesarias
     protected static void iniciarPago() {
 
         boolean entradaValida = false;
@@ -37,7 +36,7 @@ public class Tienda {
                         String tipo = TECLADO.nextLine().trim().toUpperCase();
                         tarjetaCredito.setTipo(tipo);
 
-                        validacionTarjeta = tarjetaCredito.validarTarjeta(); // Le pasa el booleano a la variable
+                        validacionTarjeta = tarjetaCredito.validarTarjeta();
                     }
 
                     System.out.println("¿Qué importe quieres pagar?");
@@ -47,7 +46,7 @@ public class Tienda {
                     }
                     double importeTarjeta = TECLADO.nextDouble();
 
-                    realizarPago(tarjetaCredito, importeTarjeta); // Llamada al metodo para realizar el pago
+                    realizarPago(tarjetaCredito, importeTarjeta);
                     break;
 
                 // Bizum
@@ -71,7 +70,7 @@ public class Tienda {
                         int pinMovil = TECLADO.nextInt();
                         TECLADO.nextLine();
 
-                        validacionBizum = bizum.validarBizum(pinMovil); // Le pasa el booleano a la variable
+                        validacionBizum = bizum.validarBizum(pinMovil);
                     }
 
                     System.out.println("¿Qué importe quieres pagar?");
@@ -81,7 +80,7 @@ public class Tienda {
                     }
                     double importeBizum = TECLADO.nextDouble();
 
-                    realizarPago(bizum, importeBizum); // Llamada al metodo para realizar el pago
+                    realizarPago(bizum, importeBizum);
                     break;
 
                 // PayPal
@@ -97,7 +96,7 @@ public class Tienda {
                         payPal.setCuenta(cuentaPaypal);
 
                         if (!payPal.cuentaCorrecta()){
-                            System.out.println("ERROR: Cuenta erronea...Vuelve a intentarlo");
+                            System.out.println("ERROR: Cuenta errónea...Vuelve a intentarlo");
                         }
                         emailValido = payPal.cuentaCorrecta();
                     }
@@ -116,7 +115,7 @@ public class Tienda {
                         if (importePaypal > payPal.getSaldo()) {
                             payPal.validarPaypal(importePaypal);
                         }else {
-                            realizarPago(payPal, importePaypal); // Llamada al metodo para realizar el pago
+                            realizarPago(payPal, importePaypal);
                             validarSaldo = true;
                         }
                     }
