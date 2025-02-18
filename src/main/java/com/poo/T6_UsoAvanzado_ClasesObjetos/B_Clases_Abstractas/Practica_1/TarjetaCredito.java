@@ -1,21 +1,28 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1;
 
-import lombok.*;
+import lombok.*;  // Uso de la librería para poder usar etiquetas Getter y Setter.
 import java.util.ArrayList;
 import java.util.Arrays;
 
 @Getter
 @Setter
+
+// Clase que extiende de la clase padre MetodoPago
 public class TarjetaCredito extends MetodoPago {
 
     private String numTarjeta;
     private String tipo;
     private static ArrayList<String> tiposTarjetas = new ArrayList<>(Arrays.asList("VISA", "MASTERCARD", "MAESTRO"));
 
+    // Constructor vacío para no tener que inicializar valores al crear la instancia de la clase.
     protected TarjetaCredito() {
 
     }
 
+    /**
+     * Metodo para validar ciertas condiciones de la tarjeta, que no sea null, que el número de tarjeta tenga 16 dígitos y que el tipo esté incluido dentro de la lista anteriormente definida.
+     * @return La validación como true or false.
+     */
     protected boolean validarTarjeta() {
         if (tipo != null && numTarjeta != null && numTarjeta.matches("\\d{16}") && tiposTarjetas.contains(tipo)) {
             System.out.println("Validando Tarjeta...");
@@ -28,6 +35,7 @@ public class TarjetaCredito extends MetodoPago {
         }
     }
 
+    // Metodo que sobreescribe el metodo abstracto de la clase padre.
     @Override
     protected void procesarPago(double importe) {
         System.out.println("Procesando pago de " + importe + "€ " + "con tarjeta de crédito: " + tipo);

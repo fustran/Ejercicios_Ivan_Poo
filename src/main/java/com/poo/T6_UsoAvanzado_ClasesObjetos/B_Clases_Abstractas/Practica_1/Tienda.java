@@ -6,6 +6,9 @@ public class Tienda {
 
     private static final Scanner TECLADO = new Scanner(System.in);
 
+    /**
+     * Metodo principal para la lógica de las compras y las validaciones de cada clase hija de MetodoPago.
+     */
     protected static void iniciarPago() {
 
         boolean entradaValida = false;

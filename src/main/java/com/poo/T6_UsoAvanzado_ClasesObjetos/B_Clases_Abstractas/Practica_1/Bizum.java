@@ -1,8 +1,9 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1;
 
-import lombok.*;
+import lombok.*; // Uso de la librería para poder usar etiquetas Getter y Setter.
 import java.util.Random;
 
+// Clase que extiende de la clase padre MetodoPago.
 public class Bizum extends MetodoPago {
 
     Random aleatorio = new Random();
@@ -12,10 +13,15 @@ public class Bizum extends MetodoPago {
     @Getter
     private int pin;
 
+    // Constructor donde se asigna al atributo pin el número aleatorio que se ha generado cuando se crea el objeto.
     public Bizum() {
         this.pin = generarPin();
     }
 
+    /**
+     * Metodo para generar un numero aleatorio de 6 cifras usando la instancia de Random.
+     * @return El número generado.
+     */
     public int generarPin() {
         return aleatorio.nextInt(900000) + 100000;
     }
@@ -24,6 +30,11 @@ public class Bizum extends MetodoPago {
         System.out.println("Pin generado: " + pin);
     }
 
+    /**
+     * Metodo para
+     * @param pinRecibido
+     * @return
+     */
     public boolean validarPin(int pinRecibido) {
         return pinRecibido == pin;
     }

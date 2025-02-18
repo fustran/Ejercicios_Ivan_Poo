@@ -1,8 +1,11 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1;
 
-// Clase Abstracta padre para interactuar con las clases que van a heredar un metodo OBLIGATORIO.
 public abstract class MetodoPago {
 
+    /**
+     * Metodo abstracto para implementar de forma obligatoria en las clases hijas
+     * @param importe El importe que se va a pagar en la tienda
+     */
     protected abstract void procesarPago(double importe);
 
 }
