@@ -18,14 +18,19 @@ public class PayPal extends MetodoPago {
         this.saldo = 23;
     }
 
-    protected void validarPaypal(double importe) {
-        if(cuenta != null && cuenta.matches(FORMATO_CORREO)) {
-            System.out.println("Validando PayPal...");
-            if (importe > saldo) {
-                System.out.println("No se puede procesar el pago, SALDO INSUFICIENTE.");
-                mensajeIngresoSaldo();
-            }
+    protected boolean cuentaCorrecta() {
+        return cuenta != null && cuenta.matches(FORMATO_CORREO);
+    }
+
+    protected boolean validarPaypal(double importe) {
+        cuentaCorrecta();
+        if (importe > saldo) {
+            System.out.println("No se puede procesar el pago, SALDO INSUFICIENTE.");
+            mensajeIngresoSaldo();
+        }else {
+            System.out.println("Email incorrecto...");
         }
+        return false;
     }
 
     // Metodo para ingresar saldo en la cuenta de Paypal
@@ -42,8 +47,11 @@ public class PayPal extends MetodoPago {
 
         if(opcion.contains("S")) {
             System.out.println("Cuánto desea ingresar?");
+            while (!TECLADO.hasNextDouble()){ // Controlar la entrada
+                System.out.println("ERROR: debes introducir números...");
+                TECLADO.nextLine();
+            }
             double ingreso = TECLADO.nextDouble();
-            TECLADO.nextLine(); // Consumir el salto de línea
             ingresarSaldo(ingreso);
         }else if(opcion.contains("N")) {
             System.out.println("Su saldo sigue siendo " + saldo + "€" + " en su cuenta de PayPal.");
@@ -51,10 +59,6 @@ public class PayPal extends MetodoPago {
         }else {
             System.out.println("Opción incorrecta.");
         }
-    }
-
-    public void mostrarSaldo() {
-        System.out.println("Su saldo actual es de: " + saldo + "€");
     }
 
     @Override // Sobrescritura del metodo heredado de la clase abstracta

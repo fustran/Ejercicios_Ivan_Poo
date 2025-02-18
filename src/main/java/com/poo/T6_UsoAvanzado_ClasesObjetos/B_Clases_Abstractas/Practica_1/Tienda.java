@@ -98,15 +98,18 @@ public class Tienda {
                         cuentaPaypal = TECLADO.nextLine().trim().toLowerCase();
                         payPal.setCuenta(cuentaPaypal);
 
-                        if (payPal.getCuenta().matches(FORMATO_CORREO)) {
-                            emailValido = true;
-                        } else {
-                            System.out.println("Correo incorrecto, vuelve a intentarlo.");
-                            System.out.println();
+                        if (!payPal.cuentaCorrecta()){
+                            System.out.println("ERROR: Cuenta erronea...Vuelve a intentarlo");
                         }
+                        emailValido = payPal.cuentaCorrecta();
+
                     }
 
                     System.out.println("Qué importe quiere pagar?");
+                    while (!TECLADO.hasNextDouble()) {
+                        System.out.println("ERROR: debes introducir números...");
+                        TECLADO.nextLine();
+                    }
                     double importePaypal = TECLADO.nextDouble();
 
                     boolean validarSaldo = false;
