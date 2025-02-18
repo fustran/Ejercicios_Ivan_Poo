@@ -4,48 +4,26 @@ class AppEcommerce {
     +main(String[] args)
 }
 
-class Tienda {
-    - static Scanner TECLADO
-    + static void iniciarPago()
-    + static void realizarPago(MetodoPago metodo, double importe)
-}
-
 abstract class MetodoPago {
     # abstract void procesarPago(double importe)
 }
 
-class TarjetaCredito {
+class Tienda {
+    - static Scanner TECLADO
+    # static void iniciarPago()
+    # static void realizarPago(MetodoPago metodo, double importe)
+}
+
+class TarjetaCredito extends MetodoPago {
     - String numTarjeta
     - String tipo
     - static ArrayList<String> tiposTarjetas
     + TarjetaCredito()
-    + boolean validarTarjeta()
-    + void procesarPago(double importe)
-    + String getNumTarjeta()
-    + void setNumTarjeta(String numTarjeta)
-    + String getTipo()
-    + void setTipo(String tipo)
-    + static ArrayList<String> getTiposTarjetas()
+    # boolean validarTarjeta()
+    # procesarPago(double importe)
 }
 
-class PayPal {
-    - static Scanner TECLADO
-    - static final String FORMATO_CORREO
-    - String cuenta
-    - double saldo
-    + PayPal()
-    + void validarPaypal(double importe)
-    + void ingresarSaldo(double ingreso)
-    + void mensajeIngresoSaldo()
-    + void mostrarSaldo()
-    + void procesarPago(double importe)
-    + String getCuenta()
-    + void setCuenta(String cuenta)
-    + double getSaldo()
-    + void setSaldo(double saldo)
-}
-
-class Bizum {
+class Bizum extends MetodoPago {
     - Random aleatorio
     - String telefono
     - int pin
@@ -54,17 +32,28 @@ class Bizum {
     + void mostrarPin()
     + boolean validarPin(int pinRecibido)
     + boolean validarTelefono()
-    + boolean validarBizum(int pinValido)
-    + void procesarPago(double importe)
-    + String getTelefono()
-    + void setTelefono(String telefono)
-    + int getPin()
+    # boolean validarBizum(int pinValido)
+    # procesarPago(double importe)
 }
 
-AppEcommerce -> Tienda : llama a
-Tienda -> MetodoPago : utiliza
-MetodoPago <|-- TarjetaCredito
-MetodoPago <|-- PayPal
-MetodoPago <|-- Bizum
+class PayPal extends MetodoPago {
+    - static Scanner TECLADO
+    - static String FORMATO_CORREO
+    - String cuenta
+    - double saldo
+    + PayPal()
+    + boolean cuentaCorrecta()
+    + void ingresarSaldo(double ingreso)
+    + void mensajeIngresoSaldo()
+    # void validarPaypal(double importe)
+    # procesarPago(double importe)
+}
+
+AppEcommerce --> Tienda : "Usa"
+Tienda --> MetodoPago : "Gestiona"
+
+MetodoPago -[hidden]-> TarjetaCredito
+MetodoPago -[hidden]-> Bizum
+MetodoPago -[hidden]-> PayPal
 
 @enduml

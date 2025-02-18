@@ -14,10 +14,13 @@ public class TarjetaCredito extends MetodoPago {
     private String tipo;
     private static ArrayList<String> tiposTarjetas = new ArrayList<>(Arrays.asList("VISA", "MASTERCARD", "MAESTRO"));
 
-    // Constructor vacío para no tener que inicializar valores al crear la instancia de la clase.
-    protected TarjetaCredito() {
+    /**
+     * Constructor vacío para no tener que inicializar valores al crear la instancia de la clase.
+     */
+    public TarjetaCredito() {
 
     }
+
 
     /**
      * Metodo para validar ciertas condiciones de la tarjeta, que no sea null, que el número de tarjeta tenga 16 dígitos y que el tipo esté incluido dentro de la lista anteriormente definida.
@@ -35,7 +38,11 @@ public class TarjetaCredito extends MetodoPago {
         }
     }
 
-    // Metodo que sobreescribe el metodo abstracto de la clase padre.
+
+    /**
+     * Metodo que sobreescribe el metodo abstracto de la clase padre.
+     * @param importe El importe que se va a pagar en la tienda.
+     */
     @Override
     protected void procesarPago(double importe) {
         System.out.println("Procesando pago de " + importe + "€ " + "con tarjeta de crédito: " + tipo);

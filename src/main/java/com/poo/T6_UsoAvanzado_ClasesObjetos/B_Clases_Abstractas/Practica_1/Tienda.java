@@ -2,12 +2,16 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1;
 
 import java.util.Scanner;
 
+/**
+ * Clase que gestiona los pagos de la tienda.
+ * Permite al usuario seleccionar diferentes tipos de pagos y validarlos antes de pagar.
+ */
 public class Tienda {
 
     private static final Scanner TECLADO = new Scanner(System.in);
 
     /**
-     * Metodo principal para la lógica de las compras y las validaciones de cada clase hija de MetodoPago.
+     * Metodo principal para la lógica de las compras y las validaciones de cada clase hija del padre MetodoPago.
      */
     protected static void iniciarPago() {
 
@@ -131,6 +135,11 @@ public class Tienda {
         }
     }
 
+    /**
+     * Metodo para llamar a procesarPago de la clase abstracta que está sobreescrita en sus hijos.
+     * @param metodo Tipo de objeto que se le va a pasar como parámetro.
+     * @param importe La cantidad de dinero a pagar.
+     */
     protected static void realizarPago(MetodoPago metodo, double importe) {
         metodo.procesarPago(importe);
     }
