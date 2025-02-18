@@ -18,12 +18,15 @@ public class TarjetaCredito extends MetodoPago {
     }
 
     // Metodo para validar la tarjeta, (numeración y tipo).
-    protected void validarTarjeta() {
-        if (tipo != null && numTarjeta != null && numTarjeta.length() == 16 && tiposTarjetas.contains(tipo)) {
+    protected boolean validarTarjeta() {
+        if (tipo != null && numTarjeta != null && numTarjeta.matches("\\d{16}") && tiposTarjetas.contains(tipo)) {
             System.out.println("Validando Tarjeta...");
+            return true;
         }else{
             System.out.println("Validando tarjeta...");
-            System.out.println("Los datos de tu tarjeta son incorrectos.");
+            System.out.println("Los datos de su tarjeta son incorrectos.");
+            System.out.println();
+            return false;
         }
     }
 

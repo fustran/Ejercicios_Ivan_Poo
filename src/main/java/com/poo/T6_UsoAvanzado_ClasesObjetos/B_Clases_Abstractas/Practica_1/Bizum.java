@@ -21,8 +21,9 @@ public class Bizum extends MetodoPago {
 
     // Generar el pin de 6 cifras de forma aleatoria
     public int generarPin() {
-        return aleatorio.nextInt(000000, 999999);
+        return aleatorio.nextInt(900000) + 100000;
     }
+
 
     // Mostrar el pin para usarlo en la clase tienda
     public void mostrarPin() {
@@ -36,22 +37,29 @@ public class Bizum extends MetodoPago {
 
     // Validar el teléfono siendo siempre true, cuando se valide en validarBizum(), lo contrario a este retorno, será false
     public boolean validarTelefono() {
-        return telefono.length() == 9;
+        return telefono.matches("\\d{9}");
     }
 
     // Validación del bizum llamando a validarPin() y validarTelefono()
-    public void validarBizum(int pinValido) {
+    public boolean validarBizum(int pinValido) {
 
         System.out.println("Validando Bizum");
 
         if (validarTelefono() && validarPin(pinValido)) {
             System.out.println("Bizum correcto...");
+            return true;
         }else if (!validarTelefono() && !validarPin(pinValido)) {
             System.out.println("Teléfono y pin incorrectos...(Vuelve a intentarlo).");
+            System.out.println();
+            return false;
         }else if (!validarPin(pinValido)) {
             System.out.println("Pin incorrecto");
+            System.out.println();
+            return false;
         }else{
             System.out.println("Teléfono incorrecto...");
+            System.out.println();
+            return false;
         }
     }
 
