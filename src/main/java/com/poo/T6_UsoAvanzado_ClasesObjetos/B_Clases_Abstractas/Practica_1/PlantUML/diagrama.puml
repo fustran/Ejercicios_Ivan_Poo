@@ -1,24 +1,70 @@
 @startuml
-package com.poo.T6_UsoAvanzado_ClasesObjetos.A_Herencia_Polimorfismo.C_EmpresaTareas {
 
-    class Empleado {
-        + void realizarTarea()
-    }
-
-    class Desarrollador {
-        + void realizarTarea()
-    }
-
-    class Diseñador {
-        + void realizarTarea()
-    }
-
-    class Gerente {
-        + void realizarTarea()
-    }
-
-    Empleado <|-- Desarrollador
-    Empleado <|-- Diseñador
-    Empleado <|-- Gerente
+class AppEcommerce {
+    +main(String[] args)
 }
+
+class Tienda {
+    - static Scanner TECLADO
+    + static void iniciarPago()
+    + static void realizarPago(MetodoPago metodo, double importe)
+}
+
+abstract class MetodoPago {
+    # abstract void procesarPago(double importe)
+}
+
+class TarjetaCredito {
+    - String numTarjeta
+    - String tipo
+    - static ArrayList<String> tiposTarjetas
+    + TarjetaCredito()
+    + boolean validarTarjeta()
+    + void procesarPago(double importe)
+    + String getNumTarjeta()
+    + void setNumTarjeta(String numTarjeta)
+    + String getTipo()
+    + void setTipo(String tipo)
+    + static ArrayList<String> getTiposTarjetas()
+}
+
+class PayPal {
+    - static Scanner TECLADO
+    - static final String FORMATO_CORREO
+    - String cuenta
+    - double saldo
+    + PayPal()
+    + void validarPaypal(double importe)
+    + void ingresarSaldo(double ingreso)
+    + void mensajeIngresoSaldo()
+    + void mostrarSaldo()
+    + void procesarPago(double importe)
+    + String getCuenta()
+    + void setCuenta(String cuenta)
+    + double getSaldo()
+    + void setSaldo(double saldo)
+}
+
+class Bizum {
+    - Random aleatorio
+    - String telefono
+    - int pin
+    + Bizum()
+    + int generarPin()
+    + void mostrarPin()
+    + boolean validarPin(int pinRecibido)
+    + boolean validarTelefono()
+    + boolean validarBizum(int pinValido)
+    + void procesarPago(double importe)
+    + String getTelefono()
+    + void setTelefono(String telefono)
+    + int getPin()
+}
+
+AppEcommerce -> Tienda : llama a
+Tienda -> MetodoPago : utiliza
+MetodoPago <|-- TarjetaCredito
+MetodoPago <|-- PayPal
+MetodoPago <|-- Bizum
+
 @enduml
