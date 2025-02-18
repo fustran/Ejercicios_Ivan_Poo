@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1"}];updateSearchResults();

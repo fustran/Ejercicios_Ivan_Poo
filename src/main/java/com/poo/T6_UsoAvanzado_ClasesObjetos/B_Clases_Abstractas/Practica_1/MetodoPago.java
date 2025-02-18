@@ -1,5 +1,8 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1;
 
+/**
+ * Clase Abstracta padre.
+ */
 public abstract class MetodoPago {
 
     /**

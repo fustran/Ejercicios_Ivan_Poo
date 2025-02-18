@@ -1,13 +1,15 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1;
 
-import lombok.*;  // Uso de la librería para poder usar etiquetas Getter y Setter.
+import lombok.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 @Getter
 @Setter
 
-// Clase que extiende de la clase padre MetodoPago
+/*
+ * Clase para gestionar pagos con Tarjeta de crédito.
+ */
 public class TarjetaCredito extends MetodoPago {
 
     private String numTarjeta;

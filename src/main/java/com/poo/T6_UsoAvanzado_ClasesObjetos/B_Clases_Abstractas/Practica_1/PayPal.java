@@ -1,12 +1,14 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1;
 
-import lombok.*; // Uso de la librería para poder usar etiquetas Getter y Setter.
+import lombok.*;
 import java.util.Scanner;
 
 @Getter
 @Setter
 
-// Clase que extiende de la clase padre MetodoPago
+/*
+ * Clase para gesionar pagos con PayPal.
+ */
 public class PayPal extends MetodoPago {
 
     private static final Scanner TECLADO = new Scanner(System.in);

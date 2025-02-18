@@ -1,9 +1,11 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1;
 
-import lombok.*; // Uso de la librería para poder usar etiquetas Getter y Setter.
+import lombok.*;
 import java.util.Random;
 
-// Clase que extiende de la clase padre MetodoPago.
+/*
+ * Clase gestionar pagos con Bizum.
+ */
 public class Bizum extends MetodoPago {
 
     Random aleatorio = new Random();
