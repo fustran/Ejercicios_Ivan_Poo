@@ -13,7 +13,6 @@ public class Bizum extends MetodoPago {
     @Getter // Sin Setter, porque el pin no lo quiero modificar
     private int pin;
 
-
     // Asignar el pin generado al atributo del objeto creado
     public Bizum() {
         this.pin = generarPin();
@@ -23,7 +22,6 @@ public class Bizum extends MetodoPago {
     public int generarPin() {
         return aleatorio.nextInt(900000) + 100000;
     }
-
 
     // Mostrar el pin para usarlo en la clase tienda
     public void mostrarPin() {
