@@ -2,8 +2,6 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1;
 
 import java.util.Scanner;
 
-import static com.poo.T6_UsoAvanzado_ClasesObjetos.B_Clases_Abstractas.Practica_1.PayPal.FORMATO_CORREO;
-
 public class Tienda {
 
     private static final Scanner TECLADO = new Scanner(System.in);
@@ -102,7 +100,6 @@ public class Tienda {
                             System.out.println("ERROR: Cuenta erronea...Vuelve a intentarlo");
                         }
                         emailValido = payPal.cuentaCorrecta();
-
                     }
 
                     System.out.println("Qué importe quiere pagar?");

@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class PayPal extends MetodoPago {
 
     private static final Scanner TECLADO = new Scanner(System.in);
-    static final String FORMATO_CORREO = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.com$";  // Expresión regular para validar un correo acabado en .com
+    private static final String FORMATO_CORREO = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.com$";  // Expresión regular para validar un correo acabado en .com
 
     private String cuenta;
     private double saldo;
@@ -22,7 +22,7 @@ public class PayPal extends MetodoPago {
         return cuenta != null && cuenta.matches(FORMATO_CORREO);
     }
 
-    protected boolean validarPaypal(double importe) {
+    protected void validarPaypal(double importe) {
         cuentaCorrecta();
         if (importe > saldo) {
             System.out.println("No se puede procesar el pago, SALDO INSUFICIENTE.");
@@ -30,7 +30,6 @@ public class PayPal extends MetodoPago {
         }else {
             System.out.println("Email incorrecto...");
         }
-        return false;
     }
 
     // Metodo para ingresar saldo en la cuenta de Paypal
