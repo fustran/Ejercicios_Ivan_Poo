@@ -7,7 +7,7 @@ import java.util.Scanner;
 @Setter
 
 /*
- * Clase para gesionar pagos con PayPal.
+ * Clase para gestionar pagos con PayPal.
  */
 public class PayPal extends MetodoPago {
 

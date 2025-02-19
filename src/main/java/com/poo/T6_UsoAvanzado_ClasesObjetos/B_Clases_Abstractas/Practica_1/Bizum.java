@@ -4,7 +4,7 @@ import lombok.*;
 import java.util.Random;
 
 /*
- * Clase gestionar pagos con Bizum.
+ * Clase para gestionar pagos con Bizum.
  */
 public class Bizum extends MetodoPago {
 
