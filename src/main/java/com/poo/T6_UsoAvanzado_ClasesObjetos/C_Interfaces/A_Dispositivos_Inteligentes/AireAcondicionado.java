@@ -2,12 +2,14 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.C_Interfaces.A_Dispositivos_Intelig
 
 public class AireAcondicionado extends Dispositivo implements ControlRemoto {
 
-    @Override
+    protected AireAcondicionado(String nombre) {
+        super(nombre);
+    }
+
     public void sincronizar() {
 
     }
 
-    @Override
     protected void encender() {
     }
 }

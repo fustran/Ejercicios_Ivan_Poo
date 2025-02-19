@@ -2,7 +2,10 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.C_Interfaces.A_Dispositivos_Intelig
 
 public class ParlanteInteligente extends Dispositivo {
 
-    @Override
+    protected ParlanteInteligente(String nombre) {
+        super(nombre);
+    }
+
     protected void encender() {
     }
 }

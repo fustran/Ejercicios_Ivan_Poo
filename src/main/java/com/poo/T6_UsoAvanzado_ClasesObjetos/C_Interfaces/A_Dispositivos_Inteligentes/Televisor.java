@@ -2,12 +2,15 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.C_Interfaces.A_Dispositivos_Intelig
 
 public class Televisor extends Dispositivo implements ControlRemoto {
 
-    @Override
+    protected Televisor(String nombre) {
+        super(nombre);
+    }
+
     public void sincronizar() {
 
     }
 
-    @Override
     protected void encender() {
+
     }
 }
