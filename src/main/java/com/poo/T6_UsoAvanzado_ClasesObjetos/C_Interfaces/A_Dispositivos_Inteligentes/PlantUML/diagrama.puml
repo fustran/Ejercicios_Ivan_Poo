@@ -1,6 +1,7 @@
 @startuml
-interface ControlRemoto {
-    +sincronizar()
+
+class AppGestionDispositivos {
+    + main(String[] args)
 }
 
 abstract class Dispositivo {
@@ -10,6 +11,10 @@ abstract class Dispositivo {
     # encender()
     + apagar()
     + mostrarEstado()
+}
+
+interface ControlRemoto {
+    +sincronizar()
 }
 
 class Televisor extends Dispositivo implements ControlRemoto {
@@ -26,16 +31,12 @@ class AireAcondicionado extends Dispositivo implements ControlRemoto {
     + sincronizar()
 }
 
-class AppGestionDispositivos {
-    + main(String[] args)
-}
-
-Dispositivo <|-- Televisor
-Dispositivo <|-- ParlanteInteligente
-Dispositivo <|-- AireAcondicionado
-
-ControlRemoto <|.. Televisor
-ControlRemoto <|.. AireAcondicionado
-
 AppGestionDispositivos ..> Dispositivo : "listaDispositivos"
+Dispositivo <|-[hidden]- Televisor
+Dispositivo <|-[hidden]- ParlanteInteligente
+Dispositivo <|-[hidden]- AireAcondicionado
+
+ControlRemoto -[hidden]-> Televisor
+ControlRemoto -[hidden]-> AireAcondicionado
+
 @enduml
