@@ -8,11 +8,10 @@ public class ParlanteInteligente extends Dispositivo {
 
     protected void encender() {
         if(isEstado()) {
-            System.out.println("El parlante ya está encendido");
+            System.out.println("El parlante: " + getNombre()  + ", " + "ya está encendido");
         }else{
-            System.out.println("Activando parlante con comando de voz...");
+            System.out.println("Encendiendo parlante con comando de voz... " + getNombre());
+            setEstado(true);
         }
-
-
     }
 }
