@@ -6,11 +6,15 @@ public class Televisor extends Dispositivo implements ControlRemoto {
         super(nombre);
     }
 
-    public void sincronizar() {
-
+    protected void encender() {
+        if ((isEstado())) {
+            System.out.println("Ya está encendido.");
+        }else{
+            System.out.println("Encendiendo el televisor...");
+        }
     }
 
-    protected void encender() {
-
+    public void sincronizar() {
+        System.out.println("Sincronizando televisor con el control remoto...");
     }
 }

@@ -7,5 +7,12 @@ public class ParlanteInteligente extends Dispositivo {
     }
 
     protected void encender() {
+        if(isEstado()) {
+            System.out.println("El parlante ya está encendido");
+        }else{
+            System.out.println("Activando parlante con comando de voz...");
+        }
+
+
     }
 }

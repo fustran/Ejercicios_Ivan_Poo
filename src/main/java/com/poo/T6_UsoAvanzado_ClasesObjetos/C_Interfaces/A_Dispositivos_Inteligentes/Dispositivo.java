@@ -1,11 +1,12 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.C_Interfaces.A_Dispositivos_Inteligentes;
 
-
 import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public abstract class Dispositivo {
 
-    @Getter
     private String nombre;
     private boolean estado; // Encendido o apagado
 
@@ -16,8 +17,9 @@ public abstract class Dispositivo {
 
     protected abstract void encender();
 
+    // Metodo para apagar un dispositivo, si está apagado, lo muestra en un mensaje.
     public void apagar() {
-        if(estado){
+        if(estado){ // estado es true por defecto
             estado = false;
             System.out.println(nombre + "Apagado");
         }else {
@@ -25,23 +27,12 @@ public abstract class Dispositivo {
         }
     }
 
+    // Metodo para mostrar si un dispositivo está apagado.
     public void mostrarEstado() {
-        if (!estado) {
-            System.out.println(nombre + " está apagado");
-        }else {
+        if (estado) { // estado es true por defecto
             System.out.println(nombre + "está encendido");
+        }else {
+            System.out.println(nombre + " está apagado");
         }
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
     }
 }

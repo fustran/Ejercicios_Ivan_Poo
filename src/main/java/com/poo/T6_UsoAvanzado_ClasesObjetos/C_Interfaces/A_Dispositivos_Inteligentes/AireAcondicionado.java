@@ -6,10 +6,15 @@ public class AireAcondicionado extends Dispositivo implements ControlRemoto {
         super(nombre);
     }
 
-    public void sincronizar() {
-
+    protected void encender() {
+        if(isEstado()) {
+            System.out.println("El aire acondicionado ya está encendido");
+        }else{
+            System.out.println("Encendiendo aire acondicionado...");
+        }
     }
 
-    protected void encender() {
+    public void sincronizar() {
+        System.out.println("Sincronizando aire acondicionado con control remoto...");
     }
 }
