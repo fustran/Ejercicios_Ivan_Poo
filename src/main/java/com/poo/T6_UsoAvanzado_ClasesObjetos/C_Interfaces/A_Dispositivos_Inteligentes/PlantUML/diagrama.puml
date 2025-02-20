@@ -1,39 +1,41 @@
 @startuml
-
-package com.poo.T6_UsoAvanzado_ClasesObjetos.A_Herencia_Polimorfismo.A_FestivalMusica {
-
-    class Persona {
-        - String nombre
-        - int edad
-        + Persona(String nombre, int edad)
-        + void mostrarInfo()
-        + void accederEvento()
-    }
-
-    class Organizador {
-        - String rol
-        + Organizador(String nombre, int edad, String rol)
-        + void mostrarInfo()
-        + void accederEvento()
-    }
-
-    class Asistente {
-        - String entrada
-        + Asistente(String nombre, int edad, String entrada)
-        + void mostrarInfo()
-        + void accederEvento()
-    }
-
-    class Artista {
-        - String generoMusical
-        + Artista(String nombre, int edad, String generoMusical)
-        + void mostrarInfo()
-        + void accederEvento()
-    }
-
-    Persona <|-- Organizador
-    Persona <|-- Asistente
-    Persona <|-- Artista
+interface ControlRemoto {
+    +sincronizar()
 }
 
+abstract class Dispositivo {
+    - String nombre
+    - boolean estado
+    # Dispositivo(String nombre)
+    # encender()
+    + apagar()
+    + mostrarEstado()
+}
+
+class Televisor extends Dispositivo implements ControlRemoto {
+    + encender()
+    + sincronizar()
+}
+
+class ParlanteInteligente extends Dispositivo {
+    + encender()
+}
+
+class AireAcondicionado extends Dispositivo implements ControlRemoto {
+    + encender()
+    + sincronizar()
+}
+
+class AppGestionDispositivos {
+    + main(String[] args)
+}
+
+Dispositivo <|-- Televisor
+Dispositivo <|-- ParlanteInteligente
+Dispositivo <|-- AireAcondicionado
+
+ControlRemoto <|.. Televisor
+ControlRemoto <|.. AireAcondicionado
+
+AppGestionDispositivos ..> Dispositivo : "listaDispositivos"
 @enduml
