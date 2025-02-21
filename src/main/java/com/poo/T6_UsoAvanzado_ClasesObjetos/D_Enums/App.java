@@ -26,5 +26,13 @@ public class App {
         int posicion = Asignaturas.BBDO.ordinal();
         Asignaturas posicion1 = Asignaturas.BBDO ;
         System.out.println(posicion1 + " tiene la posición " + posicion + " en el enum.");
+
+
+        Semaforo actual = Semaforo.VERDE;
+
+        for (int i = 0; i < 10; i++) {
+            actual = actual.siguiente(actual);
+            System.out.println(actual);
+        }
     }
 }
