@@ -1,6 +1,7 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.D_Enums;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class App {
@@ -34,5 +35,20 @@ public class App {
             actual = actual.siguiente(actual);
             System.out.println(actual);
         }
+
+
+        Random random = new Random();
+
+        System.out.println("Introduce la dificultad [FACIL, MEDIO, DIFICIL, EXPERTO]:");
+        String entrada = teclado.nextLine().toUpperCase();
+
+        JuegoDificultad dificultad;
+        dificultad = JuegoDificultad.valueOf(entrada);
+
+        int puntuacionBase = random.nextInt(5000) + 1;
+        int puntuacionFinal = puntuacionBase * dificultad.getMultiplicador();
+
+        System.out.println("Puntuación obtenida: " + puntuacionBase);
+        System.out.println("Puntuación final: " + puntuacionFinal);
     }
 }
