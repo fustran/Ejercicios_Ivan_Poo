@@ -2,11 +2,17 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.A_Herencia_Polimorfismo.A_FestivalM
 
 public class AppConcierto {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws EdadValidaException { //Se puede controlar con try-catch para que no salga el error en rojo.
 
-        Asistente asistente1 = new Asistente("Carlos", 25, "VIP");
+        Asistente asistente1 = new Asistente("Carlos", 15, TipoEntrada.VIP);
         Artista artista1 = new Artista("Dua Lipa", 28, "Pop");
-        Organizador organizador1 = new Organizador("Iván", 40, "Seguridad");
+        Organizador organizador1 = new Organizador("Iván", 40, RolOrganizador.PRODUCCION);
+
+
+        for (TipoEntrada entrada : TipoEntrada.values()) {
+            System.out.println("Entrada: " + entrada + " con precio " + entrada.getPrecio() + "€");
+        }
+
 
         System.out.println();
 
@@ -27,9 +33,9 @@ public class AppConcierto {
 
         System.out.println("Información de Personas:");
         Persona[] personas = {
-                new Asistente("Lucas", 18, "VIP"),
+                new Asistente("Lucas", 18, TipoEntrada.PISTA),
                 new Artista("Sofía", 25, "Rock Alternativo"),
-                new Organizador("Martín", 30, "Producción")
+                new Organizador("Martín", 30, RolOrganizador.PRENSA)
         };
 
         for (Persona persona : personas) {
@@ -41,8 +47,8 @@ public class AppConcierto {
 
         // Creación de los objetos de cada tipo.
         Persona artista2 = new Artista("Sofía", 25, "Rock Alternativo");
-        Persona asistente2 = new Asistente("Lucas", 18, "VIP");
-        Persona organizador2 = new Organizador("Martín", 30, "Producción");
+        Persona asistente2 = new Asistente("Lucas", 18, TipoEntrada.GENERAL);
+        Persona organizador2 = new Organizador("Martín", 30, RolOrganizador.SEGURIDAD);
 
         // Usar el metodo con polimorfismo.
         mostrarAcceso(artista2);      //Accediendo como Artista: Preparando el show.

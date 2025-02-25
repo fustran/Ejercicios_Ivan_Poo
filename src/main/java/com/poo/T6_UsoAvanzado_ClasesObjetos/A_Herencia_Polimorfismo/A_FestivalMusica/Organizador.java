@@ -1,10 +1,10 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.A_Herencia_Polimorfismo.A_FestivalMusica;
 
-public class Organizador extends Persona {
+class Organizador extends Persona implements Organizable, Promocionable{
 
-    private String rol; // Tipo de rol, (ejemplo: Seguridad, Producción etc.)
+    private final RolOrganizador rol; // Ejemplo: “Seguridad”, “Producción”, “Prensa”
 
-    public Organizador(String nombre, int edad, String rol) {
+    public Organizador(String nombre, int edad, RolOrganizador rol) throws EdadValidaException {
         super(nombre, edad);
         this.rol = rol;
     }
@@ -12,11 +12,22 @@ public class Organizador extends Persona {
     @Override
     public void mostrarInfo() {
         super.mostrarInfo();
-        System.out.println("Rol: " + rol);
+        System.out.println("Rol en el festival: " + rol);
+    }
+
+
+    @Override
+    public void accederEvento(){
+        System.out.println("Accediendo como Organizador: Coordinando el evento.");
     }
 
     @Override
-    public void accederEvento() {
-        System.out.println("Accediendo como Organizador: Coordinando el evento.");
+    public void organizarEvento() {
+        System.out.println("Organizando...");
+    }
+
+    @Override
+    public void promocionar() {
+        System.out.println("Promocionando...");
     }
 }

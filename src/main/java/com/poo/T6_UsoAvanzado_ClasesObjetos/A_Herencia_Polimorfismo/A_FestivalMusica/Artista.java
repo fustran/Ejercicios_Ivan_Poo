@@ -5,7 +5,7 @@ public class Artista extends Persona {
 
     String generoMusical;
 
-    public Artista(String nombre, int edad, String generoMusical) {
+    public Artista(String nombre, int edad, String generoMusical) throws EdadValidaException {
         super(nombre, edad);
         this.generoMusical = generoMusical;
     }
