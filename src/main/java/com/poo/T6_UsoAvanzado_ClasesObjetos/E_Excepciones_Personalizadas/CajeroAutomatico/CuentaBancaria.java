@@ -14,29 +14,48 @@ public class CuentaBancaria {
         this.saldo = saldo;
     }
 
-    public void ingresarDinero() {
+    public void ingresarDinero() throws DepositoMaximoException, ImporteMayorCeroException {
         System.out.println("Cuánto dinero deseas ingresar?");
             while (!TECLADO.hasNextDouble()) {
                 System.out.println("ERROR: Debes introducir números. Vuelve a intentarlo.");
                 TECLADO.nextLine();
             }
-        double cantidad = TECLADO.nextDouble();
-        saldo += cantidad;
+            double cantidad = TECLADO.nextDouble();
+
+            if (cantidad > 3000) {
+                throw new DepositoMaximoException();
+            }
+
+            if (cantidad <= 0) {
+                throw new ImporteMayorCeroException();
+            }
+            saldo += cantidad;
+
         System.out.println("Dinero ingresado con éxito. Saldo actual: " + saldo + "€");
         System.out.println();
     }
 
-    public void retirarDinero() throws SaldoInsuficienteException {
+    public void retirarDinero() throws SaldoInsuficienteException, LimiteDiarioException, ImporteMayorCeroException {
         System.out.println("Cuánto dinero desea retirar?");
             while (!TECLADO.hasNextDouble()) {
                 System.out.println("ERROR: Debes introducir números. Vuelve a intentarlo.");
                 TECLADO.nextLine();
             }
+
             if (saldo < TECLADO.nextDouble()) {
                 throw new SaldoInsuficienteException();
             }
-        double reintegro = TECLADO.nextDouble();
-        saldo -= reintegro;
+            double reintegro = TECLADO.nextDouble();
+
+            if (reintegro > 600) {
+                throw new LimiteDiarioException();
+            }
+
+            if (reintegro <= 0) {
+                throw new ImporteMayorCeroException();
+            }
+            saldo -= reintegro;
+
         System.out.println("Dinero retirado con éxito. Saldo actual: " + saldo + "€");
         System.out.println();
     }

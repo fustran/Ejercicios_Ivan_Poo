@@ -3,7 +3,7 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.E_Excepciones_Personalizadas.Cajero
 import java.util.Scanner;
 
 public class AppCajero {
-    public static void main(String[] args) throws SaldoInsuficienteException {
+    public static void main(String[] args) throws SaldoInsuficienteException, LimiteDiarioException, DepositoMaximoException, ImporteMayorCeroException {
 
         Scanner entrada =  new Scanner(System.in);
 
@@ -27,29 +27,23 @@ public class AppCajero {
             while (entradaValidaOpcion) {
                 switch (opcion) {
                     case "1":
-                        try{
-                            cuenta.consularSaldo();
-                        } catch (SaldoInsuficienteException e) {
-                            System.out.println(e.getMessage());
-                            System.out.println();
-                        }
+                        cuenta.consularSaldo();
                         break;
 
                     case "2":
                         try{
                             cuenta.ingresarDinero();
-                        } catch (SaldoInsuficienteException e) {
+                        } catch (DepositoMaximoException | ImporteMayorCeroException e) {
                             System.out.println(e.getMessage());
                             System.out.println();
                         }
                         break;
 
                     case "3":
-                        try{
+                        try {
                             cuenta.retirarDinero();
-                        } catch (SaldoInsuficienteException e) {
+                        } catch (SaldoInsuficienteException | LimiteDiarioException | ImporteMayorCeroException e) {
                             System.out.println(e.getMessage());
-                            System.out.println();
                         }
                         break;
 
