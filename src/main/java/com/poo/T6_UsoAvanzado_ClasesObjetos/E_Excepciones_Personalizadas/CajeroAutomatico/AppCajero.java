@@ -18,10 +18,10 @@ public class AppCajero {
 
             System.out.println();
 
-            System.out.println("   Selecciona una opción: ");
+            System.out.println("==> Selecciona una opción: ");
             String opcion = entrada.nextLine().toUpperCase().trim();
 
-            CuentaBancaria cuenta = new CuentaBancaria(500);
+            CuentaBancaria cuenta = new CuentaBancaria(); // Saldo de 500€ por defecto
 
             boolean entradaValidaOpcion = true;
             while (entradaValidaOpcion) {

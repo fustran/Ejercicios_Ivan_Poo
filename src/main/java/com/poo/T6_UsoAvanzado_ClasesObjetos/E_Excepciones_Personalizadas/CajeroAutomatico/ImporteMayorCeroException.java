@@ -4,6 +4,6 @@ public class ImporteMayorCeroException extends Exception{
 
     public ImporteMayorCeroException() {
 
-        super("ERROR: El importe debe ser mayo a 0€");
+        super("ERROR: El importe debe ser mayor a 0€");
     }
 }

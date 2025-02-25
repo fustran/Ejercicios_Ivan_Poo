@@ -10,8 +10,8 @@ public class CuentaBancaria {
     private static final Scanner TECLADO = new Scanner(System.in);
     private double saldo;
 
-    public CuentaBancaria(double saldo) {
-        this.saldo = saldo;
+    public CuentaBancaria() {
+        this.saldo = 500;
     }
 
     public void ingresarDinero() throws DepositoMaximoException, ImporteMayorCeroException {
@@ -21,6 +21,7 @@ public class CuentaBancaria {
                 TECLADO.nextLine();
             }
             double cantidad = TECLADO.nextDouble();
+            TECLADO.nextLine();
 
             if (cantidad > 3000) {
                 throw new DepositoMaximoException();
@@ -41,11 +42,12 @@ public class CuentaBancaria {
                 System.out.println("ERROR: Debes introducir números. Vuelve a intentarlo.");
                 TECLADO.nextLine();
             }
+            double reintegro = TECLADO.nextDouble();
+            TECLADO.nextLine();
 
-            if (saldo < TECLADO.nextDouble()) {
+            if (saldo < reintegro) {
                 throw new SaldoInsuficienteException();
             }
-            double reintegro = TECLADO.nextDouble();
 
             if (reintegro > 600) {
                 throw new LimiteDiarioException();

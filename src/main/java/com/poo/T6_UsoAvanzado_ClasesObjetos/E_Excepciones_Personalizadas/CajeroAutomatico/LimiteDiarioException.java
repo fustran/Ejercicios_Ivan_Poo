@@ -4,6 +4,6 @@ public class LimiteDiarioException extends Exception{
 
     public LimiteDiarioException() {
 
-        super("ERROR: Ha superado el límite diario de 600€");
+        super("ERROR: No se puede retirar más de 600€ al día");
     }
 }
