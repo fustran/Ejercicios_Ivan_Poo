@@ -7,4 +7,5 @@ public interface FuncionesIntegrantes {
     void viajar(String ciudad);
 
     void celebrarGol();
+
 }
