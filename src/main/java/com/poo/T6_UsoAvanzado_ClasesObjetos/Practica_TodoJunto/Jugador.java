@@ -11,8 +11,12 @@ public class Jugador extends MutxamielFC implements AccionesDeportivas{
     private Posiciones posicion;
 
 
-    public Jugador(String nombre, int edad) {
+    public Jugador(String nombre, int edad, int dorsal, Posiciones posicion) {
         super(nombre, edad);
+        this.categoria = Equipos.SENIOR;
+        this.dorsal = dorsal;
+        this.posicion = posicion;
+
     }
 
     public void calentar() {
@@ -55,4 +59,5 @@ public class Jugador extends MutxamielFC implements AccionesDeportivas{
     public void jugarPartido(String rival) { // Interfaz AccionesDeportivas
 
     }
+
 }
