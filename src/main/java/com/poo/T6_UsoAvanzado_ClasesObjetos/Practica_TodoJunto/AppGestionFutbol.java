@@ -48,8 +48,8 @@ public class AppGestionFutbol {
 
             System.out.println();
 
-            boolean entradaValidaPrincipal = true;
-            while (entradaValidaPrincipal) {
+            boolean entradaValidaPrincipal = false;
+            while (!entradaValidaPrincipal) {
                 switch (opcion){
                     case "1":
                         System.out.println("=== Mantenimiento de jugadores ===");
@@ -66,7 +66,7 @@ public class AppGestionFutbol {
                         System.out.println("Selecciona una opción -->");
                         String opcionCase1 = teclado.nextLine().toUpperCase().trim();
 
-                        boolean entradaValidaCase1 = true;
+                        boolean entradaValidaCase1 = false;
                         menuCase1(opcionCase1, entradaValidaCase1); // Llamada al metodo del caso 1
                         break;
 
@@ -84,7 +84,7 @@ public class AppGestionFutbol {
                         System.out.println("Selecciona una opción -->");
                         String opcionCase2 = teclado.nextLine().toUpperCase().trim();
 
-                        boolean entradaValidaCase2 = true;
+                        boolean entradaValidaCase2 = false;
                         menuCase2(opcionCase2, entradaValidaCase2); // Llamada al metodo del caso 2
                         break;
 
@@ -102,7 +102,7 @@ public class AppGestionFutbol {
                         System.out.println("Selecciona una opción -->");
                         String opcionCase3 = teclado.nextLine().toUpperCase().trim();
 
-                        boolean entradaValidaCase3 = true;
+                        boolean entradaValidaCase3 = false;
                         menuCase3(opcionCase3, entradaValidaCase3); // Llamada al metodo del caso 3
                         break;
 
@@ -111,21 +111,21 @@ public class AppGestionFutbol {
                         break;
 
                     case "X":
+                        System.out.println("Saliendo del programa...");
                         System.exit(0);
                         break;
 
                     default:
                         System.out.println("Opción incorrecta...");
                 }
-                entradaValidaPrincipal = false;
+                entradaValidaPrincipal = true;
             }
         }
     }
 
-
     // Metodo para el menú del caso 1
     public static void menuCase1(String opcionCase1, boolean entradaValidaCase1) {
-        while (entradaValidaCase1){
+        while (!entradaValidaCase1){
             switch (opcionCase1) {
                 case "1":
                     System.out.println("prueba menu");
@@ -140,19 +140,21 @@ public class AppGestionFutbol {
                     break;
 
                 case "X":
-                    System.out.println("....");
+                    System.out.println("Volviendo al menú principal...");
+                    System.out.println();
+                    entradaValidaCase1 = true;
                     break;
 
                 default:
                     System.out.println("Opción incorrecta...");
+                    return;
             }
-            entradaValidaCase1 = false;
         }
     }
 
     // Metodo para el menu del caso 2
     public static void menuCase2(String opcionCase2, boolean entradaValidaCase2) {
-        while (entradaValidaCase2){
+        while (!entradaValidaCase2){
             switch (opcionCase2) {
                 case "1":
                     System.out.println(".");
@@ -163,19 +165,21 @@ public class AppGestionFutbol {
                     break;
 
                 case "X":
-                    System.out.println("....");
+                    System.out.println("Volviendo al menú principal...");
+                    System.out.println();
+                    entradaValidaCase2 = true;
                     break;
 
                 default:
                     System.out.println("Opción incorrecta...");
+                    return;
             }
-            entradaValidaCase2 = false;
         }
     }
 
     // Metodo para el menu del caso 3
     public static void menuCase3(String opcionCase3, boolean entradaValidaCase3) {
-        while (entradaValidaCase3){
+        while (!entradaValidaCase3){
             switch (opcionCase3) {
                 case "1":
                     System.out.println("Prueba 3");
@@ -186,13 +190,15 @@ public class AppGestionFutbol {
                     break;
 
                 case "X":
-                    System.out.println("....");
+                    System.out.println("Volviendo al menú principal...");
+                    System.out.println();
+                    entradaValidaCase3 = true;
                     break;
 
                 default:
                     System.out.println("Opción incorrecta...");
+                    return;
             }
-            entradaValidaCase3 = false;
         }
     }
 }

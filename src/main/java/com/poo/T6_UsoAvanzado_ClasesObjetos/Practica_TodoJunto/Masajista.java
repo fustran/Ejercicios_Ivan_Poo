@@ -11,7 +11,7 @@ public class Masajista extends MutxamielFC{
     }
 
     public void darMasaje(Jugador jugador) {
-
+        System.out.println("Dando un masaje al jugador " + jugador);
     }
 
 

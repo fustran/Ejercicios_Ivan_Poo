@@ -15,11 +15,11 @@ public class Entrenador extends MutxamielFC implements AccionesDeportivas{
     }
 
     public void planificarEntrenamiento() {
-
+        System.out.println("Planificando el entrenamiento...");
     }
 
     public void hacerCambios() {
-
+        System.out.println("Haciendo cambios de jugadores en el partido...");
     }
 
 

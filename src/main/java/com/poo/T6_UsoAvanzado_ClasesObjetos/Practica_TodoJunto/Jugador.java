@@ -16,15 +16,15 @@ public class Jugador extends MutxamielFC implements AccionesDeportivas{
     }
 
     public void calentar() {
-
+        System.out.println("Calentando antes del partido...");
     }
 
     public void descansar() {
-
+        System.out.println("Descansando después del partido");
     }
 
     public void marcarGol() {
-
+        System.out.println("Marcando gol...");
     }
 
 

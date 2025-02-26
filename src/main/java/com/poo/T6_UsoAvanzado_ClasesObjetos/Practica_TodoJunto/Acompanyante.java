@@ -11,7 +11,7 @@ public class Acompanyante extends MutxamielFC{
     }
 
     public void animarEquipo() {
-
+        System.out.println("Vamooooooos EQUIPOOOOOO....");
     }
 
 
