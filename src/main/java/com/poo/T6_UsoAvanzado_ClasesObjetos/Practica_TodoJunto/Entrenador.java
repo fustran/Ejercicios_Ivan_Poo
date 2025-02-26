@@ -26,17 +26,17 @@ public class Entrenador extends MutxamielFC implements AccionesDeportivas{
 
     @Override
     public void concentrarse() { // Interfaz FuncionesIntegrantes
-
+        System.out.println(super.getNombre() +  "concentrándose antes del partido...");
     }
 
     @Override
     public void viajar(String ciudad) { // Interfaz FuncionesIntegrantes
-
+        System.out.println("Viajando a " + ciudad + "...");
     }
 
     @Override
     public void celebrarGol() { // Interfaz FuncionesIntegrantes
-
+        System.out.println("GOOOOOOOOOOOOOOOOOOL");
     }
 
 
