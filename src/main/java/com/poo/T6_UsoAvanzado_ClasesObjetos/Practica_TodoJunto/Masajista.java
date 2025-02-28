@@ -1,5 +1,10 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 
+
+import lombok.*;
+
+@Getter
+@Setter
 public class Masajista extends MutxamielFC{
 
     private String titulacion;

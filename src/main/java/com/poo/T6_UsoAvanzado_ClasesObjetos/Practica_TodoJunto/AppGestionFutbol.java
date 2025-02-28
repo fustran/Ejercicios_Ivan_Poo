@@ -34,8 +34,9 @@ public class AppGestionFutbol {
         System.out.println();
 
         ArrayList<Jugador> listaJugadores = new ArrayList<>();
-        ArrayList<Entrenador> listaEntrenadores = new ArrayList<>();
         ArrayList<Acompanyante> listaAcompanyantes = new ArrayList<>();
+        ArrayList<Entrenador> listaEntrenadores = new ArrayList<>();
+        ArrayList<Masajista> listaMasajistas = new ArrayList<>();
 
 
         while (true) {
@@ -73,10 +74,10 @@ public class AppGestionFutbol {
                         System.out.println();
 
                         System.out.println("Selecciona una opción -->");
-                        String opcionCase2 = teclado.nextLine().toUpperCase().trim();
+                        String opcion2 = teclado.nextLine().toUpperCase().trim();
 
-                        boolean entradaValidaCase2 = false;
-                        menuCase2(opcionCase2, entradaValidaCase2); // Llamada al metodo del caso 2
+                        menuCase2(opcion2, teclado, listaEntrenadores); // Llamada al metodo del caso 2
+
                         break;
 
                     case "3":
@@ -91,10 +92,10 @@ public class AppGestionFutbol {
                         System.out.println();
 
                         System.out.println("Selecciona una opción -->");
-                        String opcionCase3 = teclado.nextLine().toUpperCase().trim();
+                        String opcion3 = teclado.nextLine().toUpperCase().trim();
 
-                        boolean entradaValidaCase3 = false;
-                        menuCase3(opcionCase3, entradaValidaCase3); // Llamada al metodo del caso 3
+                        menuCase3(opcion3, teclado, listaMasajistas); // Llamada al metodo del caso 3
+
                         break;
 
                     case "4":
@@ -114,7 +115,7 @@ public class AppGestionFutbol {
         }
     }
 
-    // Metodo para el menú del caso 1
+    // Metodo para el menú del caso 1 (MANTENIMIENTO DE JUGADORES)
     public static void menuCase1(Scanner teclado, ArrayList<Jugador> listaJugadores) {
         while (true){
             System.out.println("=== Mantenimiento de jugadores ===");
@@ -123,11 +124,11 @@ public class AppGestionFutbol {
             System.out.println("    [2]. Modificar datos del jugador existente");
             System.out.println("    [3]. Crear acompañantes (sólo seniors) ");
             System.out.println("    [X]. Volver al menú principal");
-
             System.out.println();
-            System.out.println("=========================================");
+            System.out.println("   =========================================   ");
             System.out.println();
             System.out.println("Selecciona una opción -->");
+
             String opcion = teclado.nextLine().toUpperCase().trim();
 
             switch (opcion) {
@@ -135,24 +136,44 @@ public class AppGestionFutbol {
                     System.out.println("=== Mantenimiento de jugadores. Añadir nuevo jugador ===");
                     System.out.println();
 
-                    System.out.println("Introduce el nombre: ");
-                    String nombre = teclado.nextLine().trim();
+                    while (true) {
+                        System.out.println("Introduce el nombre: ");
+                        String nombre = teclado.nextLine().trim();
 
-                    System.out.println("Introduce la edad: ");
-                    int edad = teclado.nextInt();
-                    teclado.nextLine();
+                        System.out.println("Introduce la edad: ");
+                        int edad = teclado.nextInt();
+                        teclado.nextLine();
 
-                    System.out.println("Introduce el dorsal: ");
-                    int dorsal = teclado.nextInt();
-                    teclado.nextLine();
+                        System.out.println("Introduce el dorsal: ");
+                        int dorsal = teclado.nextInt();
+                        teclado.nextLine();
 
-                    System.out.println("Introduce la posición: ");
-                    String posicion = teclado.nextLine().trim().toUpperCase();
+                        System.out.println("Introduce la posición: ");
+                        String posicion = teclado.nextLine().trim().toUpperCase();
 
-                    Posiciones posiciones = Posiciones.valueOf(posicion);
-                    Jugador nuevoJugador = new Jugador(nombre, edad, dorsal, posiciones);
+                        try {
+                            Posiciones posiciones = Posiciones.valueOf(posicion);
+                            Jugador nuevoJugador = new Jugador(nombre, edad, dorsal, posiciones);
+                            listaJugadores.add(nuevoJugador);
+                            System.out.println("Jugador añadido...");
+                        }catch (IllegalArgumentException e){
+                            System.out.println("ERROR: La posición no existe");
+                            continue;
+                        }
 
-                    listaJugadores.add(nuevoJugador);
+                        System.out.println("Deseas añadir más jugadores? S/N");
+                        String siNo = teclado.nextLine().trim().toUpperCase();
+
+                        if(siNo.equals("N")){
+                            break;
+                        }
+                    }
+                    break;
+
+                case "2":
+                    System.out.println("=== Mantenimiento de jugadores. Modificar datos del jugador existente ===");
+                    System.out.println();
+                    System.out.println("De qué jugador quieres hacer cambios?");
 
                     for (int i = 0; i < listaJugadores.size(); i++){
                         Jugador jugador = listaJugadores.get(i);
@@ -163,10 +184,14 @@ public class AppGestionFutbol {
                                 ", Posición: " + jugador.getPosicion() + "]");
                     }
 
-                    break;
+                    System.out.println();
+                    System.out.println("=================================================");
+                    System.out.println();
+                    System.out.println("Selecciona una opción -->");
+                    int opcionCambio = teclado.nextInt();
+                    teclado.nextLine();
+                    listaJugadores.get(opcionCambio);
 
-                case "2":
-                    System.out.println("=== Mantenimiento de jugadores. Modificar datos del jugador existente ===");
                     break;
 
                 case "3":
@@ -180,14 +205,15 @@ public class AppGestionFutbol {
 
                 default:
                     System.out.println("Opción incorrecta...");
+                    break;
             }
         }
     }
 
     // Metodo para el menu del caso 2
-    public static void menuCase2(String opcionCase2, boolean entradaValidaCase2) {
-        while (!entradaValidaCase2){
-            switch (opcionCase2) {
+    public static void menuCase2(String opcion, Scanner teclado, ArrayList<Entrenador> listaEntrenadores) {
+        while (true){
+            switch (opcion) {
                 case "1":
                     System.out.println(".");
                     break;
@@ -199,20 +225,18 @@ public class AppGestionFutbol {
                 case "X":
                     System.out.println("Volviendo al menú principal...");
                     System.out.println();
-                    entradaValidaCase2 = true;
-                    break;
+                    return;
 
                 default:
                     System.out.println("Opción incorrecta...");
-                    return;
             }
         }
     }
 
     // Metodo para el menu del caso 3
-    public static void menuCase3(String opcionCase3, boolean entradaValidaCase3) {
-        while (!entradaValidaCase3){
-            switch (opcionCase3) {
+    public static void menuCase3(String opcion, Scanner teclado, ArrayList<Masajista> listaMasajistas) {
+        while (true){
+            switch (opcion) {
                 case "1":
                     System.out.println("Prueba 3");
                     break;
@@ -224,12 +248,10 @@ public class AppGestionFutbol {
                 case "X":
                     System.out.println("Volviendo al menú principal...");
                     System.out.println();
-                    entradaValidaCase3 = true;
-                    break;
+                  return;
 
                 default:
                     System.out.println("Opción incorrecta...");
-                    return;
             }
         }
     }

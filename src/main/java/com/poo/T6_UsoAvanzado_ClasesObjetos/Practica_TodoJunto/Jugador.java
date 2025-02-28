@@ -52,12 +52,12 @@ public class Jugador extends MutxamielFC implements AccionesDeportivas{
 
     @Override
     public void entrenar() { // Interfaz AccionesDeportivas
-
+        System.out.println("Entrenandose con el equipo...");
     }
 
     @Override
     public void jugarPartido(String rival) { // Interfaz AccionesDeportivas
-
+        System.out.println("jugando partido contra " + rival);
     }
 
 }
