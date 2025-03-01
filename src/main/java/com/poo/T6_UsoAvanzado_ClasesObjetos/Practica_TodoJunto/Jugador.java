@@ -60,4 +60,13 @@ public class Jugador extends MutxamielFC implements AccionesDeportivas{
         System.out.println("jugando partido contra " + rival);
     }
 
+    @Override
+    public String toString() {
+        return  "Nombre: " + getNombre() +
+                ", Edad: " + getEdad() +
+                ", Categoría: " + getCategoria() +
+                ", Dorsal: " + getDorsal() +
+                ", Posición: " + getPosicion();
+    }
+
 }

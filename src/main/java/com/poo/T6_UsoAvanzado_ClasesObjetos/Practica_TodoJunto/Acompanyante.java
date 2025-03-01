@@ -6,13 +6,12 @@ import lombok.*;
 @Setter
 public class Acompanyante extends MutxamielFC{
 
-    private Jugador integrante;
+    private Jugador integrante; //Lo dejo sin inicializar para añadirlo yo
     private String parentesco;
 
 
-    public Acompanyante(String nombre, int edad, Jugador integrante, String parentesco) {
+    public Acompanyante(String nombre, int edad, String parentesco) {
         super(nombre, edad);
-        this.integrante = integrante;
         this.parentesco = parentesco;
     }
 
