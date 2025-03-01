@@ -44,12 +44,20 @@ public class Menus {
 
                         try {
                             Posiciones posiciones = Posiciones.valueOf(posicion);
+                            for (Jugador jugadorDorsal : listaJugadores) {
+                                if (jugadorDorsal.getDorsal() == dorsal) {
+                                    throw new ComprobarDorsalException();
+                                }
+                            }
                             Jugador jugador = new Jugador(nombre, edad, dorsal, posiciones);
                             listaJugadores.add(jugador);
                             System.out.println("Jugador añadido...");
-                        } catch (
-                                IllegalArgumentException e) {
+
+                        } catch (IllegalArgumentException e) { // Doble try-catch para la excepción genérica y la personalizada.
                             System.out.println("ERROR: La posición no existe");
+                            continue;
+                        } catch (ComprobarDorsalException e) {
+                            System.out.println(e.getMessage());
                             continue;
                         }
 
@@ -134,7 +142,7 @@ public class Menus {
 
                             try {
                                 for (Jugador jugadorDorsal : listaJugadores) {
-                                    if (jugadorDorsal.getCategoria().equals(jugador.getCategoria()) && jugadorDorsal.getDorsal() == dorsal) {
+                                    if (jugadorDorsal.getCategoria().equals(jugador.getCategoria()) && jugadorDorsal.getDorsal() == dorsal) { // Añadido la comprobación de la categoria con el dorsal.
                                         throw new ComprobarDorsalException();
                                     }
                                 }
