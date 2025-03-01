@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AppGestionFutbol {
-    public static void main(String[] args) throws ComprobarDorsalException{
+    public static void main(String[] args) throws ComprobarDorsalException, ComprobarFormacionException{
 
         final Scanner teclado = new Scanner(System.in);
 
