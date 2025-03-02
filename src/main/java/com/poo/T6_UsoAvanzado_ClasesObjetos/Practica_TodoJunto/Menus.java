@@ -267,6 +267,10 @@ public class Menus {
                         String nombre = teclado.nextLine().trim().toLowerCase();
 
                         System.out.println("Introduce la edad: ");
+                        while (!teclado.hasNextInt()){
+                            System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
+                            teclado.nextLine();
+                        }
                         int edad = teclado.nextInt();
                         teclado.nextLine();
 
@@ -430,6 +434,10 @@ public class Menus {
                         String nombre = teclado.nextLine().trim().toLowerCase();
 
                         System.out.println("Introduce la edad: ");
+                        while (!teclado.hasNextInt()){
+                            System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
+                            teclado.nextLine();
+                        }
                         int edad = teclado.nextInt();
                         teclado.nextLine();
 
@@ -437,6 +445,10 @@ public class Menus {
                         String titulacion = teclado.nextLine();
 
                         System.out.println("Introduce los años de experiencia: ");
+                        while (!teclado.hasNextInt()){
+                            System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
+                            teclado.nextLine();
+                        }
                         int anyosExperiencia = teclado.nextInt();
                         teclado.nextLine();
 
