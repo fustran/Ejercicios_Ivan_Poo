@@ -1,7 +1,7 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 
 /**
- * Enum de las posiciones de los jugadores
+ * Enum con las Posiciones de los jugadores
  */
 public enum Posiciones {
 

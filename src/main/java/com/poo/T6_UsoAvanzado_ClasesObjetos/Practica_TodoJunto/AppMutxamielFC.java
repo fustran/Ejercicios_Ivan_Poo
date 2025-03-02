@@ -3,7 +3,7 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 import java.util.ArrayList;
 
 /**
- * Clase principal del programa donde se llama al metodo que ejecuta los menús y los metodos para comprobar cada llamada
+ * Clase principal del programa donde se llama al metodo que ejecuta los menús y a los metodos comunes de las clases: Jugador, Entrenador, Acompañante y Masajista. Comprobar su ejecución.
  * @autor Iván Fuster Simarro
  * @version 1.0 (02/03/2025)
  */

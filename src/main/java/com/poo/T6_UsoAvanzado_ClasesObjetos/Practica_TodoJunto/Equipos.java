@@ -1,7 +1,7 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 
 /**
- * Enum de las categorías de los equipos
+ * Enum con las categorías de los Equipos
  */
 public enum Equipos {
 

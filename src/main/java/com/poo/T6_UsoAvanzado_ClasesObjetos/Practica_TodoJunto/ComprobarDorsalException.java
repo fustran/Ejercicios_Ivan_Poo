@@ -1,7 +1,7 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 
 /**
- * Excepción personalizada para controlar repeticiones de dorsales
+ * Excepción personalizada para controlar las repeticiones de los dorsales
  */
 public class ComprobarDorsalException extends Exception{
 

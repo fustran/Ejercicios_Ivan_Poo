@@ -2,7 +2,9 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Clase que agrupa toda la logica de las listas y los menús interactivos
+ */
 public class AppMantenimiento {
 
     private static final Scanner TECLADO = new Scanner(System.in);

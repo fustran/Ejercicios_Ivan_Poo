@@ -2,7 +2,7 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 
 import lombok.*;
 /**
- * Clase que maneja las acciones del Acomañante
+ * Clase que maneja las acciones del Acompañante
  */
 @Getter
 @Setter
