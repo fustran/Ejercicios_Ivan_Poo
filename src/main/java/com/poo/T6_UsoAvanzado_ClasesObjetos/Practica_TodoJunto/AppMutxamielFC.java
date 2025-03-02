@@ -3,7 +3,9 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 import java.util.ArrayList;
 
 /**
- * Clase principal donde ejecutar cada metodo de la APP de mantenimiento
+ * Clase principal del programa donde se llama al metodo que ejecuta los menús y la lógica de cada metodo.
+ * @autor Iván Fuster Simarro
+ * @version 1.0 (02/03/2025)
  */
 public class AppMutxamielFC {
     public static void main(String[] args) {

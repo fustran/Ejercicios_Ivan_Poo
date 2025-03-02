@@ -1,7 +1,6 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 
 import lombok.*;
-
 /**
  * Clase que maneja las acciones del Entrenador
  */
