@@ -31,7 +31,7 @@ public class AppMantenimiento {
 
     public static void iniciarMenus() {
 
-        System.out.println("=== App de mantenimiento del VILLAJOYOSA FC === :D");
+        System.out.println("=== App de mantenimiento del MUTXAMIEL FC === ");
         System.out.println();
 
         while (true) {
@@ -264,43 +264,66 @@ public class AppMantenimiento {
                 // CREAR ACOMPAÑANTE Y AÑADIR
                 case "3":
                     System.out.println("=== Mantenimiento de jugadores. Crear acompañante ===");
-                    Acompanyante acompanyante = new Acompanyante("David", 18, "Sobrino");
-                    listaAcompanyantes.add(acompanyante);
-
                     System.out.println();
 
-                    System.out.println("De qué jugador eres acompañante?");
+                    while (true) {
+                        System.out.println("Introduce el nombre: ");
+                        String nombre = TECLADO.nextLine().trim().toLowerCase();
 
-                    for (int i = 0; i < listaJugadores.size(); i++) {
-                        Jugador jugadorAcompanyante = listaJugadores.get(i);
-                        System.out.println("[" + i + ", Nombre: " + jugadorAcompanyante.getNombre() + "]");
-                    }
+                        System.out.println("Introduce la edad: ");
+                        while (!TECLADO.hasNextInt()){
+                            System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
+                            TECLADO.nextLine();
+                        }
+                        int edad = TECLADO.nextInt();
+                        TECLADO.nextLine();
 
-                    String acompanyanteJugador = TECLADO.nextLine();
+                        System.out.println("Introduce el parentesco: ");
+                        String parentesco = TECLADO.nextLine();
 
-                    boolean jugadorEncontrado = false;
-                    for (Jugador jugadorAcompanyante : listaJugadores) {
-                        if (jugadorAcompanyante.getNombre().equals(acompanyanteJugador)) {
-                            acompanyante.setIntegrante(jugadorAcompanyante);
-                            System.out.println("Acompañante añadido...");
-                            jugadorEncontrado = true;
+                        Acompanyante acompanyante = new Acompanyante(nombre, edad, parentesco);
+                        listaAcompanyantes.add(acompanyante);
+
+                        System.out.println();
+                        System.out.println("De qué jugador eres acompañante?");
+
+                        for (int i = 0; i < listaJugadores.size(); i++) {
+                            Jugador jugadorAcompanyante = listaJugadores.get(i);
+                            System.out.println("[" + i + ", Nombre: " + jugadorAcompanyante.getNombre() + "]");
+                        }
+
+                        String acompanyanteJugador = TECLADO.nextLine();
+
+                        boolean jugadorEncontrado = false;
+                        for (Jugador jugadorAcompanyante : listaJugadores) {
+                            if (jugadorAcompanyante.getNombre().equals(acompanyanteJugador)) {
+                                acompanyante.setIntegrante(jugadorAcompanyante);
+                                System.out.println("Acompañante añadido...");
+                                jugadorEncontrado = true;
+                                break;
+                            }
+                        }
+
+                        if (!jugadorEncontrado) {
+                            System.out.println("ERROR: El jugador no existe en la lista...");
+                        }
+
+                        System.out.println();
+
+                        for (int i = 0; i < listaAcompanyantes.size(); i++) {
+                            Acompanyante acompanyantes = listaAcompanyantes.get(i);
+                            System.out.println("[" + i + ", Nombre: " + acompanyantes.getNombre() +
+                                    ", Edad: " + acompanyantes.getEdad() +
+                                    ", Integrante " + acompanyantes.getIntegrante().getNombre() +
+                                    ", Parentesco: " + acompanyantes.getParentesco() +
+                                    "]");
+                        }
+                        System.out.println("Deseas añadir más acompañantes? S/N");
+                        String siNo = TECLADO.nextLine().trim().toUpperCase();
+
+                        if (siNo.equals("N")) {
                             break;
                         }
-                    }
-
-                    if (!jugadorEncontrado) {
-                        System.out.println("ERROR: El jugador no existe en la lista...");
-                    }
-
-                    System.out.println();
-
-                    for (int i = 0; i < listaAcompanyantes.size(); i++) {
-                        Acompanyante acompanyantes = listaAcompanyantes.get(i);
-                        System.out.println("[" + i + ", Nombre: " + acompanyantes.getNombre() +
-                                ", Edad: " + acompanyantes.getEdad() +
-                                ", Integrante " + acompanyantes.getIntegrante().getNombre() +
-                                ", Parentesco: " + acompanyantes.getParentesco() +
-                                "]");
                     }
                     break;
 

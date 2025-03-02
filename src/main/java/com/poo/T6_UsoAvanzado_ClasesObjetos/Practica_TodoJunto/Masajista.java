@@ -10,7 +10,6 @@ public class Masajista extends MutxamielFC{
     private String titulacion;
     private int anyosExperiencia;
 
-
     public Masajista(String nombre, int edad, String titulacion, int anyosExperiencia) {
         super(nombre, edad);
         this.titulacion = titulacion;
@@ -18,24 +17,22 @@ public class Masajista extends MutxamielFC{
     }
 
     public void darMasaje(Jugador jugador) {
-        System.out.println("El masajista " + super.getNombre() + ": esa dando un masaje al jugador--> " + jugador);
+        System.out.println("EL MASAJISTA: " + super.getNombre() + ", está dando un masaje al Jugador --> " + jugador.getNombre() + ".");
     }
-
-
 
     @Override
     public void concentrarse() { // Interfaz FuncionesIntegrantes
-        System.out.println("El masajista " + super.getNombre() + ": se está concentrándo antes del partido...");
+        System.out.println("EL MASAJISTA: " + super.getNombre() + ", se está concentrando antes del partido...");
     }
 
     @Override
     public void viajar(String ciudad) { // Interfaz FuncionesIntegrantes
-        System.out.println("El masajista " + super.getNombre() + ": está viajando a " + ciudad + "...");
+        System.out.println("EL MASAJISTA: " + super.getNombre() + ", está viajando a " + ciudad + ".");
     }
 
     @Override
     public void celebrarGol() { // Interfaz FuncionesIntegrantes
-        System.out.println("El masajista " + super.getNombre() + ": canta: " + "GOOOOOOOOOOOOOOOOOOL...");
+        System.out.println("EL MASAJISTA: " + super.getNombre() + ", CANTA: " + "GOOOOOOOOOOOOOOOOOOL...");
     }
 
     @Override

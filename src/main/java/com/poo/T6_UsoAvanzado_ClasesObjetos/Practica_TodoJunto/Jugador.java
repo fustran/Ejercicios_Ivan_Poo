@@ -10,7 +10,6 @@ public class Jugador extends MutxamielFC implements AccionesDeportivas{
     private int dorsal;
     private Posiciones posicion;
 
-
     public Jugador(String nombre, int edad, int dorsal, Posiciones posicion) {
         super(nombre, edad);
         this.categoria = Equipos.SENIOR;
@@ -20,44 +19,40 @@ public class Jugador extends MutxamielFC implements AccionesDeportivas{
     }
 
     public void calentar() {
-        System.out.println("El jugador " + super.getNombre() + ": está calentando antes del partido...");
+        System.out.println("EL JUGADOR: " + super.getNombre() + ", está calentando antes del partido...");
     }
 
     public void descansar() {
-        System.out.println("El jugador " + super.getNombre() + ": está descansando después del partido...");
+        System.out.println("EL JUGADOR: " + super.getNombre() + ", está descansando después del partido...");
     }
 
     public void marcarGol() {
-        System.out.println("El jugador " + super.getNombre() + ": ha marcando gol...");
+        System.out.println("EL JUGADOR: " + super.getNombre() + ", ha marcando GOL...");
     }
-
-
 
     @Override
     public void concentrarse() { // Interfaz FuncionesIntegrantes
-        System.out.println("El jugador " + super.getNombre() + ": está concentrándose antes del partido...");
+        System.out.println("EL JUGADOR: " + super.getNombre() + ", está concentrándose antes del partido...");
     }
 
     @Override
     public void viajar(String ciudad) { // Interfaz FuncionesIntegrantes
-        System.out.println("El jugador " + super.getNombre() + ": está viajando a " + ciudad + "...");
+        System.out.println("EL JUGADOR: " + super.getNombre() + ", está viajando a " + ciudad + ".");
     }
 
     @Override
     public void celebrarGol() { // Interfaz FuncionesIntegrantes
-        System.out.println("El jugador " + super.getNombre() + ": canta: " + "GOOOOOOOOOOOOOOOOOOL...");
+        System.out.println("EL JUGADOR: " + super.getNombre() + ", CANTA: " + "GOOOOOOOOOOOOOOOOOOL...");
     }
-
-
 
     @Override
     public void entrenar() { // Interfaz AccionesDeportivas
-        System.out.println("El jugador " + super.getNombre() + " se está entrenando " + "con el equipo " + Equipos.SENIOR.name() + "...");
+        System.out.println("EL JUGADOR: " + super.getNombre() + ", se está entrenando" + " con el equipo " + Equipos.SENIOR.name() + "...");
     }
 
     @Override
     public void jugarPartido(String rival) { // Interfaz AccionesDeportivas
-        System.out.println("jugando partido contra " + rival + "...");
+        System.out.println("EL JUGADOR: " + super.getNombre() + ", está jugando un partido contra el " + rival + ".");
     }
 
     @Override
@@ -68,5 +63,4 @@ public class Jugador extends MutxamielFC implements AccionesDeportivas{
                 ", Dorsal: " + getDorsal() +
                 ", Posición: " + getPosicion();
     }
-
 }
