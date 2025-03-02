@@ -2,6 +2,9 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 
 import lombok.*;
 
+/**
+ * Clase que maneja las acciones del Entrenador
+ */
 @Getter
 @Setter
 public class Entrenador extends MutxamielFC implements AccionesDeportivas{
@@ -23,28 +26,33 @@ public class Entrenador extends MutxamielFC implements AccionesDeportivas{
         System.out.println("EL ENTRENADOR: " + super.getNombre() + ", está haciendo cambios de jugadores en el partido...");
     }
 
+    // INTERFAZ FUNCIONES INTEGRANTES
     @Override
-    public void concentrarse() { // Interfaz FuncionesIntegrantes
+    public void concentrarse() {
         System.out.println("EL ENTRENADOR: " + super.getNombre() + ", está concentrándose antes del partido...");
     }
 
+    // INTERFAZ FUNCIONES INTEGRANTES
     @Override
-    public void viajar(String ciudad) { // Interfaz FuncionesIntegrantes
+    public void viajar(String ciudad) {
         System.out.println("EL ENTRENADOR: " + super.getNombre() + ", está viajando a " + ciudad + ".");
     }
 
+    // INTERFAZ FUNCIONES INTEGRANTES
     @Override
-    public void celebrarGol() { // Interfaz FuncionesIntegrantes
+    public void celebrarGol() {
         System.out.println("EL ENTRENADOR: " + super.getNombre() + ", CANTA: " + "GOOOOOOOOOOOOOOOOOOL...");
     }
 
+    // INTERFAZ ACCIONES DEPORTIVAS
     @Override
-    public void entrenar() { // Interfaz AccionesDeportivas
+    public void entrenar() {
         System.out.println("EL ENTRENADOR: " + super.getNombre() + ", está entrenando" + " al equipo " + Equipos.SENIOR.name() + "...");
     }
 
+    // INTERFAZ ACCIONES DEPORTIVAS
     @Override
-    public void jugarPartido(String rival) { // Interfaz AccionesDeportivas
+    public void jugarPartido(String rival) {
         System.out.println("EL ENTRENADOR: " + super.getNombre() + ", está jugando un partido contra el " + rival + ".");
     }
 

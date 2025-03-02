@@ -2,6 +2,9 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 
 import lombok.*;
 
+/**
+ * Clase que maneja las acciones del Acomañante
+ */
 @Getter
 @Setter
 public class Acompanyante extends MutxamielFC{
@@ -18,18 +21,21 @@ public class Acompanyante extends MutxamielFC{
         System.out.println("EL ACOMPAÑANTE: " + super.getNombre() + ", del JUGADOR: " + getIntegrante().getNombre() + ", GRITA:" + " Vamooooooos EQUIPOOOOOO....");
     }
 
+    // INTERFAZ FUNCIONES INTEGRANTES
     @Override
-    public void concentrarse() { // Interfaz FuncionesIntegrantes
+    public void concentrarse() {
         System.out.println("EL ACOMPAÑANTE: " + super.getNombre() + ", del JUGADOR: "+ getIntegrante().getNombre() + ", está concentrándose antes del partido...");
     }
 
+    // INTERFAZ FUNCIONES INTEGRANTES
     @Override
-    public void viajar(String ciudad) { // Interfaz FuncionesIntegrantes
+    public void viajar(String ciudad) {
         System.out.println("EL ACOMPAÑANTE: " + super.getNombre() + ", del JUGADOR: " + getIntegrante().getNombre() + ", está viajando a " + ciudad + ".");
     }
 
+    // INTERFAZ FUNCIONES INTEGRANTES
     @Override
-    public void celebrarGol() { // Interfaz FuncionesIntegrantes
+    public void celebrarGol() {
         System.out.println("EL ACOMPAÑANTE: " + super.getNombre() + ", del JUGADOR: " + getIntegrante().getNombre() + ", CANTA: " + "GOOOOOOOOOOOOOOOOOOL...");
     }
 }

@@ -7,6 +7,7 @@ public class AppMantenimiento {
 
     private static final Scanner TECLADO = new Scanner(System.in);
 
+    // LISTAS ESTÁTICAS PARA PODER LLAMARLAS DEL MAIN
     private static final ArrayList<Jugador> LISTA_JUGADORES = new ArrayList<>();
     private static final ArrayList<Acompanyante> LISTA_ACOMPANYANTES = new ArrayList<>();
     private static final ArrayList<Entrenador> LISTA_ENTRENADORES = new ArrayList<>();
@@ -29,6 +30,9 @@ public class AppMantenimiento {
         return LISTA_MASAJISTAS;
     }
 
+    /**
+     * Metodo del menú principal para pasarle las listas a los metodos de los submenús
+     */
     public static void iniciarMenus() {
 
         System.out.println("=== App de mantenimiento del MUTXAMIEL FC === ");
@@ -53,22 +57,27 @@ public class AppMantenimiento {
             boolean entradaValidaPrincipal = false;
             while (!entradaValidaPrincipal) {
                 switch (opcion){
+                    // LLAMADA AL SUBMENÚ 1
                     case "1":
-                        menuCase1(LISTA_JUGADORES, LISTA_ACOMPANYANTES); // Llamada al metodo del caso 1
+                        menuCase1(LISTA_JUGADORES, LISTA_ACOMPANYANTES);
                         break;
 
+                    // LLAMADA AL SUBMENÚ 2
                     case "2":
-                        menuCase2(LISTA_ENTRENADORES); // Llamada al metodo del caso 2
+                        menuCase2(LISTA_ENTRENADORES);
                         break;
 
+                    // LLAMADA AL SUBMENÚ 3
                     case "3":
-                        menuCase3(LISTA_MASAJISTAS); // Llamada al metodo del caso 3
+                        menuCase3(LISTA_MASAJISTAS);
                         break;
 
+                    // LLAMADA AL SUBMENÚ 4
                     case "4":
-                        menuCase4(Equipos.values()); // Llamada al metodo del caso 4
+                        menuCase4(Equipos.values());
                         break;
 
+                    // CASO PARA PODER SALIR DE LOS MENÚS Y EJECUTAR LAS INSTRUCCIONES DEL MAIN
                     case "X":
                         System.out.println("Ejecutando la aplicación...");
                         return;
@@ -81,7 +90,11 @@ public class AppMantenimiento {
         }
     }
 
-    // Metodo para el menú del caso 1 (MANTENIMIENTO DE JUGADORES)
+    /**
+     * Metodo para el menú del caso 1 (MANTENIMIENTO DE JUGADORES)
+     * @param listaJugadores La lista de jugadores que recibe del menú principal
+     * @param listaAcompanyantes La lista de acompañantes que recibe del menú principal
+     */
     public static void menuCase1(ArrayList<Jugador> listaJugadores, ArrayList<Acompanyante> listaAcompanyantes) {
         while (true) {
             System.out.println("=== Mantenimiento de jugadores ===");
@@ -103,6 +116,7 @@ public class AppMantenimiento {
                     System.out.println("=== Mantenimiento de jugadores. Añadir nuevo jugador ===");
                     System.out.println();
 
+                    // BUCLE PARA SEGUIR PIDIENDO EL NOMBRE MIENTRAS NO SE INTRODUZCAN DATOS CORRECTOS
                     while (true) {
                         System.out.println("Introduce el nombre: ");
                         String nombre = TECLADO.nextLine().trim().toLowerCase();
@@ -126,6 +140,7 @@ public class AppMantenimiento {
                         System.out.println("Introduce la posición: ");
                         String posicion = TECLADO.nextLine().trim().toUpperCase();
 
+                        // COMPROBACIÓN DE LA POSICIÓN EN EL ENUM Y QUE EL DORSAL NO SE REPITA EN EN ALGÚN JUGADOR DE LA LISTA
                         try {
                             Posiciones posiciones = Posiciones.valueOf(posicion);
                             for (Jugador jugadorDorsal : listaJugadores) {
@@ -137,7 +152,8 @@ public class AppMantenimiento {
                             listaJugadores.add(jugador);
                             System.out.println("Jugador añadido...");
 
-                        } catch (IllegalArgumentException e) { // Doble catch para la excepción genérica y la personalizada.
+                        // DOBLE CATCH PARA LAS 2 COMPROBACIONES, LA GENÉRICA Y LA PERSONALIZADA
+                        } catch (IllegalArgumentException e) {
                             System.out.println("ERROR: La posición no existe");
                             continue;
                         } catch (ComprobarDorsalException e) {
@@ -161,6 +177,7 @@ public class AppMantenimiento {
                     System.out.println("De qué jugador quieres hacer cambios?");
                     System.out.println();
 
+                    // MUESTRA LA LISTA DE JUGADORES CON SU ÍNDICE
                     for (int i = 0; i < listaJugadores.size(); i++) {
                         System.out.println("[" + i + ", " + listaJugadores.get(i) + "]");
                     }
@@ -177,6 +194,7 @@ public class AppMantenimiento {
                     System.out.println("=== Mantenimiento de jugadores. Modificar datos del jugador existente ===");
                     System.out.println();
 
+                    //COMPROBACION DE QUE EXISTE EL ÍNDICE QUE SE INTRODUCE
                     try {
                         System.out.println("Modificando jugador: [" + listaJugadores.get(opcionCambio) + "]");
                         System.out.println();
@@ -184,6 +202,7 @@ public class AppMantenimiento {
                         System.out.println("ERROR: El índice que has elegido no existe");
                     }
 
+                    // Coger el jugador con el índice que se ha introducido
                     Jugador jugador = listaJugadores.get(opcionCambio);
 
                     System.out.println("Qué quieres modificar? [Nombre, Edad, Categoria, Dorsal, Posicion]:");
@@ -193,6 +212,7 @@ public class AppMantenimiento {
                     System.out.println("Selecciona una opción -->");
                     String opcionCambioJugador = TECLADO.nextLine().toLowerCase();
 
+                    // SWITCH PARA LA ELECCÓN QUE SE HAYA ESCOGIDO Y PODER CAMBIAR SUS DATOS
                     switch (opcionCambioJugador) {
                         case "nombre":
                             System.out.println("Nuevo nombre -->");
@@ -225,27 +245,27 @@ public class AppMantenimiento {
                             int dorsal = TECLADO.nextInt();
                             TECLADO.nextLine();
 
+                            // COMPROBACIÓN PARA NO REPETIR UN DORSAL RECORRIENDO LA LISTA DE JUGADORES
                             try {
                                 for (Jugador jugadorDorsal : listaJugadores) {
-                                    if (jugadorDorsal.getCategoria().equals(jugador.getCategoria()) && jugadorDorsal.getDorsal() == dorsal) { // Añadido la comprobación de la categoria con el dorsal.
+                                    if (jugadorDorsal.getCategoria().equals(jugador.getCategoria()) && jugadorDorsal.getDorsal() == dorsal) {
                                         throw new ComprobarDorsalException();
                                     }
                                 }
                                 jugador.setDorsal(dorsal);
                                 System.out.println("Dorsal modificado...");
 
-                            } catch (
-                                    ComprobarDorsalException e) {
+                            } catch (ComprobarDorsalException e) {
                                 System.out.println(e.getMessage());
                                 break;
                             }
-
                             break;
 
                         case "posicion":
                             System.out.println("Nueva posición -->");
                             String posicion = TECLADO.nextLine().toUpperCase();
 
+                            // COMPROBACIÓN PARA COMPRAR QUE EXISTE LA POSICIÓN EN EL ENUM
                             try {
                                 Posiciones posicionElegida = Posiciones.valueOf(posicion);
                                 jugador.setPosicion(posicionElegida);
@@ -261,11 +281,13 @@ public class AppMantenimiento {
                     }
                     break;
 
-                // CREAR ACOMPAÑANTE Y AÑADIR
+                // CREAR ACOMPAÑANTE Y VINCULARLO A UN JUGADOR
                 case "3":
+                    // AÑADIR NUEVO ACOMPAÑANTE
                     System.out.println("=== Mantenimiento de jugadores. Crear acompañante ===");
                     System.out.println();
 
+                    // BUCLE PARA SEGUIR PIDIENDO EL NOMBRE MIENTRAS NO SE INTRODUZCAN DATOS CORRECTOS
                     while (true) {
                         System.out.println("Introduce el nombre: ");
                         String nombre = TECLADO.nextLine().trim().toLowerCase();
@@ -287,6 +309,7 @@ public class AppMantenimiento {
                         System.out.println();
                         System.out.println("De qué jugador eres acompañante?");
 
+                        // FOR PARA RECORRER LOS JUGADORES DE LA LISTA
                         for (int i = 0; i < listaJugadores.size(); i++) {
                             Jugador jugadorAcompanyante = listaJugadores.get(i);
                             System.out.println("[" + i + ", Nombre: " + jugadorAcompanyante.getNombre() + "]");
@@ -294,6 +317,7 @@ public class AppMantenimiento {
 
                         String acompanyanteJugador = TECLADO.nextLine();
 
+                        //FOR PARA RECORRER COMPROBAR QUE EL NOMBRE ELEGIDO EXISTE DENTRO DE LOS NOMBRES DE LA LISTA
                         boolean jugadorEncontrado = false;
                         for (Jugador jugadorAcompanyante : listaJugadores) {
                             if (jugadorAcompanyante.getNombre().equals(acompanyanteJugador)) {
@@ -310,6 +334,7 @@ public class AppMantenimiento {
 
                         System.out.println();
 
+                        //FOR PARA MOSTRAR EN FORMA DE STRING LOS DATOS DE LA LISTA DE ACOMPAÑANTES Y SU INTEGRANTE
                         for (int i = 0; i < listaAcompanyantes.size(); i++) {
                             Acompanyante acompanyantes = listaAcompanyantes.get(i);
                             System.out.println("[" + i + ", Nombre: " + acompanyantes.getNombre() +
@@ -341,8 +366,10 @@ public class AppMantenimiento {
         }
     }
 
-
-    // Metodo para el menu del caso 2 (MANTENIMIENTO DE ENTRENADORES)
+    /**
+     * Metodo para el menu del caso 2 (MANTENIMIENTO DE ENTRENADORES)
+     * @param listaEntrenadores La lista de entrenadores que es recibida del menú principal
+     */
     public static void menuCase2(ArrayList<Entrenador> listaEntrenadores) {
         while (true) {
             System.out.println("=== Mantenimiento de entrenadores ===");
@@ -363,6 +390,7 @@ public class AppMantenimiento {
                     System.out.println("=== Mantenimiento de entrenadores. Añadir nuevo entrenador ===");
                     System.out.println();
 
+                    // BUCLE PARA SEGUIR PIDIENDO EL NOMBRE MIENTRAS NO SE INTRODUZCAN DATOS CORRECTOS
                     while (true) {
                         System.out.println("Introduce el nombre: ");
                         String nombre = TECLADO.nextLine().trim().toLowerCase();
@@ -378,6 +406,7 @@ public class AppMantenimiento {
                         System.out.println("Introduce formación preferida: ");
                         String formacion = TECLADO.nextLine();
 
+                        // COMPROBACION DEL FORMATO DE LA ALINEACIÓN
                         try {
                             if (!formacion.matches("^\\d-\\d-\\d$")) {
                                 throw new ComprobarFormacionException();
@@ -401,13 +430,14 @@ public class AppMantenimiento {
                     }
                     break;
 
-                // MODIFICAR ENTRENADOR
+                // MODIFICAR ENTRENADOR EXISTENTE
                 case "2":
                     System.out.println("=== Mantenimiento de Entrenadores. Modificar datos del entrenador existente ===");
                     System.out.println();
                     System.out.println("De qué entrenador quieres hacer cambios?");
                     System.out.println();
 
+                    // MUESTRA LA LISTA DE ENTRENADORES CON SU ÍNDICE
                     for (int i = 0; i < listaEntrenadores.size(); i++) {
                         System.out.println("[" + i + ", " + listaEntrenadores.get(i) + "]");
                     }
@@ -424,6 +454,7 @@ public class AppMantenimiento {
                     System.out.println("=== Mantenimiento de entrenadores. Modificar datos del entrenador existente ===");
                     System.out.println();
 
+                    //COMPROBACION DE QUE EXISTE EL ÍNDICE QUE SE INTRODUCE
                     try {
                         System.out.println("Modificando entrenador: [" + listaEntrenadores.get(opcionCambio) + "]");
                         System.out.println();
@@ -432,7 +463,8 @@ public class AppMantenimiento {
                         System.out.println("ERROR: El índice que has elegido no existe");
                     }
 
-                    Entrenador entrenador = listaEntrenadores.get(opcionCambio); //Mostrar el entrenador en ese indice
+                    // Coger el entrenador con el índice que se ha introducido
+                    Entrenador entrenador = listaEntrenadores.get(opcionCambio);
 
                     System.out.println("Qué quieres modificar? [Nombre, Edad, Equipo, Formacion]:");
                     System.out.println();
@@ -441,6 +473,7 @@ public class AppMantenimiento {
                     System.out.println("Selecciona una opción -->");
                     String opcionCambioEntrenador = TECLADO.nextLine().toLowerCase();
 
+                    // SWITCH PARA LA ELECCÓN QUE SE HAYA ESCOGIDO Y PODER CAMBIAR SUS DATOS
                     switch (opcionCambioEntrenador) {
                         case "nombre":
                             System.out.println("Nuevo nombre -->");
@@ -449,21 +482,26 @@ public class AppMantenimiento {
                             break;
 
                         case "edad":
-                            System.out.println("Nueva edad -->");
+                            System.out.println("Introduce la edad: ");
+                            while (!TECLADO.hasNextInt()){
+                                System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
+                                TECLADO.nextLine();
+                            }
                             entrenador.setEdad(TECLADO.nextInt());
                             System.out.println("Edad modificada...");
+                            TECLADO.nextLine();
                             break;
 
                         case "equipo":
                             System.out.println("Nuevo equipo -->");
                             String equipo = TECLADO.nextLine().toUpperCase();
 
+                            // COMPROBACIÓN DE LOS EQUIPOS EN EL ENUM
                             try {
                                 Equipos equipos = Equipos.valueOf(equipo);
                                 entrenador.setEquipo(equipos);
                                 System.out.println("Equipo modificado...");
-                            } catch (
-                                    IllegalArgumentException e) {
+                            } catch (IllegalArgumentException e) {
                                 System.out.println("ERROR: El equipo elegido no existe");
                             }
                             break;
@@ -472,6 +510,7 @@ public class AppMantenimiento {
                             System.out.println("Nueva formación -->");
                             String formacion = TECLADO.nextLine().toLowerCase();
 
+                            // COMPROBACION DEL FORMATO DE LA ALINEACIÓN
                             try {
                                 if (!formacion.matches("^\\d-\\d-\\d$")) {
                                     throw new ComprobarFormacionException();
@@ -480,8 +519,7 @@ public class AppMantenimiento {
                                 entrenador.setFormacionPreferida(formacion);
                                 System.out.println("Formación modificada...");
 
-                            } catch (
-                                    ComprobarFormacionException e) {
+                            } catch (ComprobarFormacionException e) {
                                 System.out.println(e.getMessage());
                                 break;
                             }
@@ -508,8 +546,10 @@ public class AppMantenimiento {
         }
     }
 
-
-    // Metodo para el menu del caso 3 (MANTENIMIENTO DE MASAJISTAS)
+    /**
+     * Metodo para el menu del caso 3 (MANTENIMIENTO DE MASAJISTAS)
+     * @param listaMasajistas La lista de masajistas recibidas del menú principal
+     */
     public static void menuCase3 (ArrayList < Masajista > listaMasajistas){
         while (true) {
             System.out.println("=== Mantenimiento de masajistas ===");
@@ -530,6 +570,7 @@ public class AppMantenimiento {
                     System.out.println("=== Mantenimiento de masajistas. Añadir nuevo masajista ===");
                     System.out.println();
 
+                    // BUCLE PARA SEGUIR PIDIENDO EL NOMBRE MIENTRAS NO SE INTRODUZCAN DATOS CORRECTOS
                     while (true) {
                         System.out.println("Introduce el nombre: ");
                         String nombre = TECLADO.nextLine().trim().toLowerCase();
@@ -572,6 +613,7 @@ public class AppMantenimiento {
                     System.out.println("De qué masajista quieres hacer cambios?");
                     System.out.println();
 
+                    // MUESTRA LA LISTA DE MASAJISTAS CON SU ÍNDICE
                     for (int i = 0; i < listaMasajistas.size(); i++) {
                         System.out.println("[" + i + ", " + listaMasajistas.get(i) + "]");
                     }
@@ -588,6 +630,7 @@ public class AppMantenimiento {
                     System.out.println("=== Mantenimiento de masajistas. Modificar datos del masajista existente ===");
                     System.out.println();
 
+                    //COMPROBACION DE QUE EXISTE EL ÍNDICE QUE SE INTRODUCE
                     try {
                         System.out.println("Modificando masajista: [" + listaMasajistas.get(opcionCambio) + "]");
                         System.out.println();
@@ -595,7 +638,8 @@ public class AppMantenimiento {
                         System.out.println("ERROR: El índice que has elegido no existe");
                     }
 
-                    Masajista masajista = listaMasajistas.get(opcionCambio); //Mostrar el entrenador en ese indice
+                    // Coger el masajista con el índice que se ha introducido
+                    Masajista masajista = listaMasajistas.get(opcionCambio);
 
                     System.out.println("Qué quieres modificar? [Nombre, Edad, Titulacion, anyosExp]");
                     System.out.println();
@@ -604,6 +648,7 @@ public class AppMantenimiento {
                     System.out.println("Selecciona una opción -->");
                     String opcionCambioMasajista = TECLADO.nextLine().toLowerCase();
 
+                    // SWITCH PARA LA ELECCÓN QUE SE HAYA ESCOGIDO Y PODER CAMBIAR SUS DATOS
                     switch (opcionCambioMasajista) {
                         case "nombre":
                             System.out.println("Nuevo nombre -->");
@@ -612,9 +657,14 @@ public class AppMantenimiento {
                             break;
 
                         case "edad":
-                            System.out.println("Nueva edad -->");
+                            System.out.println("Introduce la edad: ");
+                            while (!TECLADO.hasNextInt()){
+                                System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
+                                TECLADO.nextLine();
+                            }
                             masajista.setEdad(TECLADO.nextInt());
                             System.out.println("Edad modificada...");
+                            TECLADO.nextLine();
                             break;
 
                         case "titulacion":
@@ -624,9 +674,14 @@ public class AppMantenimiento {
                             break;
 
                         case "anyosexp":
-                            System.out.println("Nueva formación -->");
+                            System.out.println("Nuevos años de experiencia -->");
+                            while (!TECLADO.hasNextInt()){
+                                System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
+                                TECLADO.nextLine();
+                            }
                             masajista.setAnyosExperiencia(TECLADO.nextInt());
                             System.out.println("Años de experiencia modificados...");
+                            TECLADO.nextLine();
                             break;
 
                         default:
@@ -649,11 +704,13 @@ public class AppMantenimiento {
         }
     }
 
-
-    // LISTADO DE EQUIPOS
+    /**
+     * LISTADO DE EQUIPOS
+     * @param listaEquipos La lista de equipos que existen dentro del enum
+     */
     public static void menuCase4 (Equipos[] listaEquipos){
 
-        System.out.println("====== Listado de equipos del VILLAJOYOSA C.F ======");
+        System.out.println("====== Listado de equipos del MUTXAMIEL C.F ======");
         System.out.println();
 
         for (Equipos equipos : listaEquipos) {

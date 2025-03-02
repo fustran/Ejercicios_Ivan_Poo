@@ -2,6 +2,9 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 
 import java.util.ArrayList;
 
+/**
+ * Clase principal donde ejecutar cada metodo de la APP de mantenimiento
+ */
 public class AppMutxamielFC {
     public static void main(String[] args) {
 
