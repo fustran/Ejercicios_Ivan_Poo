@@ -18,23 +18,23 @@ public class Acompanyante extends MutxamielFC{
 
 
     public void animarEquipo() {
-        System.out.println("Vamooooooos EQUIPOOOOOO....");
+        System.out.println("El acompañante " + super.getNombre() + " de: " + getIntegrante() + ", GRITA:" + " Vamooooooos EQUIPOOOOOO....");
     }
 
 
 
     @Override
     public void concentrarse() { // Interfaz FuncionesIntegrantes
-        System.out.println(super.getNombre() +  "Concentrándose antes del partido...");
+        System.out.println("El acompañante " + super.getNombre() + ": está concentrándose antes del partido...");
     }
 
     @Override
     public void viajar(String ciudad) { // Interfaz FuncionesIntegrantes
-        System.out.println("Viajando a " + ciudad + "...");
+        System.out.println("El acompañante " + super.getNombre() + ": está viajando a " + ciudad + "...");
     }
 
     @Override
     public void celebrarGol() { // Interfaz FuncionesIntegrantes
-        System.out.println("GOOOOOOOOOOOOOOOOOOL");
+        System.out.println("El acompañante " + super.getNombre() + ": canta: " + "GOOOOOOOOOOOOOOOOOOL...");
     }
 }

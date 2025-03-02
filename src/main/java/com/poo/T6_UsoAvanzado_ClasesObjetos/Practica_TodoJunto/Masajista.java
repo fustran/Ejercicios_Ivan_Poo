@@ -18,24 +18,24 @@ public class Masajista extends MutxamielFC{
     }
 
     public void darMasaje(Jugador jugador) {
-        System.out.println("Dando un masaje al jugador " + jugador);
+        System.out.println("El masajista " + super.getNombre() + ": esa dando un masaje al jugador--> " + jugador);
     }
 
 
 
     @Override
     public void concentrarse() { // Interfaz FuncionesIntegrantes
-        System.out.println(super.getNombre() +  "concentrándose antes del partido...");
+        System.out.println("El masajista " + super.getNombre() + ": se está concentrándo antes del partido...");
     }
 
     @Override
     public void viajar(String ciudad) { // Interfaz FuncionesIntegrantes
-        System.out.println("Viajando a " + ciudad + "...");
+        System.out.println("El masajista " + super.getNombre() + ": está viajando a " + ciudad + "...");
     }
 
     @Override
     public void celebrarGol() { // Interfaz FuncionesIntegrantes
-        System.out.println("GOOOOOOOOOOOOOOOOOOL");
+        System.out.println("El masajista " + super.getNombre() + ": canta: " + "GOOOOOOOOOOOOOOOOOOL...");
     }
 
     @Override

@@ -78,10 +78,19 @@ public class AppVillajoyosaFC {
 
 
         // PLANIFICAR ENTRENAMIENTO
+        for (Entrenador entrenador : entrenadores){
+            entrenador.planificarEntrenamiento();
+        }
 
 
         // ENTRENAR
+        for (Jugador jugador : jugadores){
+            jugador.entrenar();
+        }
 
+        for (Entrenador entrenador : entrenadores){
+            entrenador.entrenar();
+        }
 
         // DESCANSAR
 
@@ -111,5 +120,9 @@ public class AppVillajoyosaFC {
 
 
         // DESCANSAR
+
+
+
+        System.out.println("SALIENDO DEL PROGRAMA...");
     }
 }

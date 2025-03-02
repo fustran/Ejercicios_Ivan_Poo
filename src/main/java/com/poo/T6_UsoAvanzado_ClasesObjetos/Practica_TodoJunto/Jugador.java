@@ -20,44 +20,44 @@ public class Jugador extends MutxamielFC implements AccionesDeportivas{
     }
 
     public void calentar() {
-        System.out.println("Calentando antes del partido...");
+        System.out.println("El jugador " + super.getNombre() + ": está calentando antes del partido...");
     }
 
     public void descansar() {
-        System.out.println("Descansando después del partido");
+        System.out.println("El jugador " + super.getNombre() + ": está descansando después del partido...");
     }
 
     public void marcarGol() {
-        System.out.println("Marcando gol...");
+        System.out.println("El jugador " + super.getNombre() + ": ha marcando gol...");
     }
 
 
 
     @Override
     public void concentrarse() { // Interfaz FuncionesIntegrantes
-        System.out.println(super.getNombre() +  "concentrándose antes del partido...");
+        System.out.println("El jugador " + super.getNombre() + ": está concentrándose antes del partido...");
     }
 
     @Override
     public void viajar(String ciudad) { // Interfaz FuncionesIntegrantes
-        System.out.println("Viajando a " + ciudad + "...");
+        System.out.println("El jugador " + super.getNombre() + ": está viajando a " + ciudad + "...");
     }
 
     @Override
     public void celebrarGol() { // Interfaz FuncionesIntegrantes
-        System.out.println("GOOOOOOOOOOOOOOOOOOL");
+        System.out.println("El jugador " + super.getNombre() + ": canta: " + "GOOOOOOOOOOOOOOOOOOL...");
     }
 
 
 
     @Override
     public void entrenar() { // Interfaz AccionesDeportivas
-        System.out.println("Entrenandose con el equipo...");
+        System.out.println("El jugador " + super.getNombre() + " se está entrenando " + "con el equipo " + Equipos.SENIOR.name() + "...");
     }
 
     @Override
     public void jugarPartido(String rival) { // Interfaz AccionesDeportivas
-        System.out.println("jugando partido contra " + rival);
+        System.out.println("jugando partido contra " + rival + "...");
     }
 
     @Override

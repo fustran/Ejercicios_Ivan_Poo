@@ -39,7 +39,7 @@ public class AppMantenimiento {
             System.out.println("    [2]. Mantenimiento de entrenadores"); // Añadir entrenadores y modificar sus datos.
             System.out.println("    [3]. Mantenimiento de masajistas"); // Añadir masajistas y modificar sus datos.
             System.out.println("    [4]. Consultar equipos"); // Se deben listar los quipos del club y elegir uno.
-            System.out.println("    [X]. Salir");
+            System.out.println("    [X]. Ejecutar la APP y Salir");
 
             System.out.println();
             System.out.println("=========================================");
@@ -70,9 +70,8 @@ public class AppMantenimiento {
                         break;
 
                     case "X":
-                        System.out.println("Saliendo del programa...");
-                        System.exit(0);
-                        break;
+                        System.out.println("Ejecutando la aplicación...");
+                        return;
 
                     default:
                         System.out.println("Opción incorrecta...");
@@ -137,7 +136,6 @@ public class AppMantenimiento {
                             Jugador jugador = new Jugador(nombre, edad, dorsal, posiciones);
                             listaJugadores.add(jugador);
                             System.out.println("Jugador añadido...");
-                            jugador.concentrarse();
 
                         } catch (IllegalArgumentException e) { // Doble catch para la excepción genérica y la personalizada.
                             System.out.println("ERROR: La posición no existe");
