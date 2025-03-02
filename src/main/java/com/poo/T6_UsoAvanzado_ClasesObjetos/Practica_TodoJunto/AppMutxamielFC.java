@@ -3,7 +3,7 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 import java.util.ArrayList;
 
 /**
- * Clase principal del programa donde se llama al metodo que ejecuta los menús y la lógica de cada metodo.
+ * Clase principal del programa donde se llama al metodo que ejecuta los menús y los metodos para comprobar cada llamada
  * @autor Iván Fuster Simarro
  * @version 1.0 (02/03/2025)
  */
