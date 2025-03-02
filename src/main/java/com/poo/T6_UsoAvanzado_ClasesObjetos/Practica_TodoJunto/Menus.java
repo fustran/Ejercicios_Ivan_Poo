@@ -32,10 +32,18 @@ public class Menus {
                         String nombre = teclado.nextLine().trim().toLowerCase();
 
                         System.out.println("Introduce la edad: ");
+                        while (!teclado.hasNextInt()){
+                            System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
+                            teclado.nextLine();
+                        }
                         int edad = teclado.nextInt();
                         teclado.nextLine();
 
                         System.out.println("Introduce el dorsal: ");
+                        while (!teclado.hasNextInt()){
+                            System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
+                            teclado.nextLine();
+                        }
                         int dorsal = teclado.nextInt();
                         teclado.nextLine();
 
@@ -53,7 +61,7 @@ public class Menus {
                             listaJugadores.add(jugador);
                             System.out.println("Jugador añadido...");
 
-                        } catch (IllegalArgumentException e) { // Doble try-catch para la excepción genérica y la personalizada.
+                        } catch (IllegalArgumentException e) { // Doble catch para la excepción genérica y la personalizada.
                             System.out.println("ERROR: La posición no existe");
                             continue;
                         } catch (ComprobarDorsalException e) {
@@ -75,6 +83,7 @@ public class Menus {
                     System.out.println("=== Mantenimiento de jugadores. Modificar datos del jugador existente ===");
                     System.out.println();
                     System.out.println("De qué jugador quieres hacer cambios?");
+                    System.out.println();
 
                     for (int i = 0; i < listaJugadores.size(); i++) {
                         System.out.println("[" + i + ", " + listaJugadores.get(i) + "]");
@@ -94,8 +103,8 @@ public class Menus {
 
                     try {
                         System.out.println("Modificando jugador: [" + listaJugadores.get(opcionCambio) + "]");
-                    } catch (
-                            IndexOutOfBoundsException e) {
+                        System.out.println();
+                    } catch (IndexOutOfBoundsException e) {
                         System.out.println("ERROR: El índice que has elegido no existe");
                     }
 
@@ -232,7 +241,6 @@ public class Menus {
     }
 
 
-
     // Metodo para el menu del caso 2 (MANTENIMIENTO DE ENTRENADORES)
     public static void menuCase2(Scanner teclado, ArrayList<Entrenador> listaEntrenadores) {
         while (true) {
@@ -249,7 +257,11 @@ public class Menus {
             System.out.println("Selecciona una opción -->");
             String opcion = teclado.nextLine().toUpperCase().trim();
             switch (opcion) {
+                // AÑADIR ENTRENADOR
                 case "1":
+                    System.out.println("=== Mantenimiento de entrenadores. Añadir nuevo entrenador ===");
+                    System.out.println();
+
                     while (true) {
                         System.out.println("Introduce el nombre: ");
                         String nombre = teclado.nextLine().trim().toLowerCase();
@@ -270,18 +282,26 @@ public class Menus {
                             listaEntrenadores.add(entrenador);
                             System.out.println("Entrenador añadido...");
 
-                        } catch (
-                                ComprobarFormacionException e) {
+                        } catch (ComprobarFormacionException e) {
                             System.out.println(e.getMessage());
+                            break;
+                        }
+
+                        System.out.println("Deseas añadir más entrenadores? S/N");
+                        String siNo = teclado.nextLine().trim().toUpperCase();
+
+                        if (siNo.equals("N")) {
                             break;
                         }
                     }
                     break;
 
+                // MODIFICAR ENTRENADOR
                 case "2":
                     System.out.println("=== Mantenimiento de Entrenadores. Modificar datos del entrenador existente ===");
                     System.out.println();
                     System.out.println("De qué entrenador quieres hacer cambios?");
+                    System.out.println();
 
                     for (int i = 0; i < listaEntrenadores.size(); i++) {
                         System.out.println("[" + i + ", " + listaEntrenadores.get(i) + "]");
@@ -301,6 +321,7 @@ public class Menus {
 
                     try {
                         System.out.println("Modificando entrenador: [" + listaEntrenadores.get(opcionCambio) + "]");
+                        System.out.println();
                     } catch (
                             IndexOutOfBoundsException e) {
                         System.out.println("ERROR: El índice que has elegido no existe");
@@ -318,7 +339,7 @@ public class Menus {
                     switch (opcionCambioEntrenador) {
                         case "nombre":
                             System.out.println("Nuevo nombre -->");
-                            entrenador.setNombre(teclado.nextLine().trim());
+                            entrenador.setNombre(teclado.nextLine().trim().toLowerCase());
                             System.out.println("Nombre modificado...");
                             break;
 
@@ -344,7 +365,7 @@ public class Menus {
 
                         case "formacion":
                             System.out.println("Nueva formación -->");
-                            String formacion = teclado.nextLine();
+                            String formacion = teclado.nextLine().toLowerCase();
 
                             try {
                                 if (!formacion.matches("^\\d-\\d-\\d$")) {
@@ -359,23 +380,31 @@ public class Menus {
                                 System.out.println(e.getMessage());
                                 break;
                             }
-
                             break;
-
-                        case "X":
-                            System.out.println("Volviendo al menú principal...");
-                            System.out.println();
-                            return;
 
                         default:
                             System.out.println("Opción incorrecta...");
+
                     }
+                    break;
+
+                // SALIR AL MENU PRINCIPAL
+                case "X":
+                    System.out.println("Volviendo al menú principal...");
+                    System.out.println();
+                    return;
+
+                default:
+                    System.out.println("Opción incorrecta...");
+                    break;
+
             }
+            System.out.println();
         }
     }
 
 
-    // Metodo para el menu del caso 3 (MANTENIMIENTO DE MASAJUSTAS)
+    // Metodo para el menu del caso 3 (MANTENIMIENTO DE MASAJISTAS)
     public static void menuCase3 (Scanner teclado, ArrayList < Masajista > listaMasajistas){
         while (true) {
             System.out.println("=== Mantenimiento de masajistas ===");
@@ -391,14 +420,108 @@ public class Menus {
             System.out.println("Selecciona una opción -->");
             String opcion = teclado.nextLine().toUpperCase().trim();
             switch (opcion) {
+                // AÑADIR MASAJISTA
                 case "1":
-                    System.out.println("Prueba 3");
+                    System.out.println("=== Mantenimiento de masajistas. Añadir nuevo masajista ===");
+                    System.out.println();
+
+                    while (true) {
+                        System.out.println("Introduce el nombre: ");
+                        String nombre = teclado.nextLine().trim().toLowerCase();
+
+                        System.out.println("Introduce la edad: ");
+                        int edad = teclado.nextInt();
+                        teclado.nextLine();
+
+                        System.out.println("Introduce titulación: ");
+                        String titulacion = teclado.nextLine();
+
+                        System.out.println("Introduce los años de experiencia: ");
+                        int anyosExperiencia = teclado.nextInt();
+                        teclado.nextLine();
+
+                        Masajista masajista = new Masajista(nombre, edad, titulacion, anyosExperiencia);
+                        listaMasajistas.add(masajista);
+
+                        System.out.println("Deseas añadir más masajistas? S/N");
+                        String siNo = teclado.nextLine().trim().toUpperCase();
+
+                        if (siNo.equals("N")) {
+                            break;
+                        }
+                    }
                     break;
 
+                // MODIFICAR MASAJISTA
                 case "2":
-                    System.out.println("..");
+                    System.out.println("=== Mantenimiento de masajistas. Modificar datos del masajista existente ===");
+                    System.out.println();
+                    System.out.println("De qué masajista quieres hacer cambios?");
+                    System.out.println();
+
+                    for (int i = 0; i < listaMasajistas.size(); i++) {
+                        System.out.println("[" + i + ", " + listaMasajistas.get(i) + "]");
+                    }
+
+                    System.out.println();
+                    System.out.println("=================================================");
+                    System.out.println();
+                    System.out.println("Selecciona una opción -->");
+                    int opcionCambio = teclado.nextInt();
+                    teclado.nextLine();
+
+                    System.out.println();
+
+                    System.out.println("=== Mantenimiento de masajistas. Modificar datos del masajista existente ===");
+                    System.out.println();
+
+                    try {
+                        System.out.println("Modificando masajista: [" + listaMasajistas.get(opcionCambio) + "]");
+                        System.out.println();
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("ERROR: El índice que has elegido no existe");
+                    }
+
+                    Masajista masajista = listaMasajistas.get(opcionCambio); //Mostrar el entrenador en ese indice
+
+                    System.out.println("Qué quieres modificar? [Nombre, Edad, Titulacion, anyosExp]");
+                    System.out.println();
+                    System.out.println("=================================================");
+                    System.out.println();
+                    System.out.println("Selecciona una opción -->");
+                    String opcionCambioMasajista = teclado.nextLine().toLowerCase();
+
+                    switch (opcionCambioMasajista) {
+                        case "nombre":
+                            System.out.println("Nuevo nombre -->");
+                            masajista.setNombre(teclado.nextLine().trim().toLowerCase());
+                            System.out.println("Nombre modificado...");
+                            break;
+
+                        case "edad":
+                            System.out.println("Nueva edad -->");
+                            masajista.setEdad(teclado.nextInt());
+                            System.out.println("Edad modificada...");
+                            break;
+
+                        case "titulacion":
+                            System.out.println("Nueva titulación -->");
+                            masajista.setTitulacion(teclado.nextLine());
+                            System.out.println("Titulación modificada...");
+                            break;
+
+                        case "anyosexp":
+                            System.out.println("Nueva formación -->");
+                            masajista.setAnyosExperiencia(teclado.nextInt());
+                            System.out.println("Años de experiencia modificados...");
+                            break;
+
+                        default:
+                            System.out.println("Opción incorrecta...");
+                    }
                     break;
 
+                // SALIR AL MENU PRINCIPAL
                 case "X":
                     System.out.println("Volviendo al menú principal...");
                     System.out.println();
@@ -406,13 +529,16 @@ public class Menus {
 
                 default:
                     System.out.println("Opción incorrecta...");
+                    break;
+
             }
+            System.out.println();
         }
     }
 
 
     // LISTADO DE EQUIPOS
-    public static void menuCase4 (Equipos[] listaEquipos){
+    public static void menuCase4 (Scanner teclado, Equipos[] listaEquipos){
 
         System.out.println("====== Listado de equipos del VILLAJOYOSA C.F ======");
         System.out.println();
@@ -421,6 +547,17 @@ public class Menus {
             System.out.println(equipos.name());
         }
         System.out.println();
+
+        System.out.println("Qué equipo quieres?");
+        String equipo = teclado.nextLine().toUpperCase().trim();
+        System.out.println();
+        
+        try {
+            Equipos equipoElegido = Equipos.valueOf(equipo);
+            System.out.println("Has elegido el equipo " + equipoElegido.name() + "!");
+        }catch (IllegalArgumentException e) {
+            System.out.println("ERROR: El equipo elegido no existe...");
+        }
+        System.out.println();
     }
 }
-

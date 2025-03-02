@@ -22,7 +22,7 @@ public class AppGestionFutbol {
             System.out.println("    [2]. Mantenimiento de entrenadores"); // Añadir entrenadores y modificar sus datos.
             System.out.println("    [3]. Mantenimiento de masajistas"); // Añadir masajistas y modificar sus datos.
             System.out.println("    [4]. Consultar equipos"); // Se deben listar los quipos del club y elegir uno.
-            System.out.println("    [x]. Salir");
+            System.out.println("    [X]. Salir");
 
             System.out.println();
             System.out.println("=========================================");
@@ -49,7 +49,7 @@ public class AppGestionFutbol {
                         break;
 
                     case "4":
-                        Menus.menuCase4(Equipos.values()); // Llamada al metodo del caso 4
+                        Menus.menuCase4(teclado, Equipos.values()); // Llamada al metodo del caso 4
                         break;
 
                     case "X":
