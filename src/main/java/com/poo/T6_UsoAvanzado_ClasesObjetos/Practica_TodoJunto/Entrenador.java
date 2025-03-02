@@ -45,7 +45,7 @@ public class Entrenador extends MutxamielFC implements AccionesDeportivas{
 
     @Override
     public void entrenar() { // Interfaz AccionesDeportivas
-
+        System.out.println("Entrenandose con el equipo...");
     }
 
     @Override

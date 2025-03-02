@@ -3,10 +3,87 @@ package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Menus {
+public class AppMantenimiento {
+
+    private static final Scanner TECLADO = new Scanner(System.in);
+
+    private static final ArrayList<Jugador> LISTA_JUGADORES = new ArrayList<>();
+    private static final ArrayList<Acompanyante> LISTA_ACOMPANYANTES = new ArrayList<>();
+    private static final ArrayList<Entrenador> LISTA_ENTRENADORES = new ArrayList<>();
+    private static final ArrayList<Masajista> LISTA_MASAJISTAS = new ArrayList<>();
+
+
+    public static ArrayList<Jugador> getListaJugadores() {
+        return LISTA_JUGADORES;
+    }
+
+    public static ArrayList<Acompanyante> getListaAcompanyantes() {
+        return LISTA_ACOMPANYANTES;
+    }
+
+    public static ArrayList<Entrenador> getListaEntrenadores() {
+        return LISTA_ENTRENADORES;
+    }
+
+    public static ArrayList<Masajista> getListaMasajistas() {
+        return LISTA_MASAJISTAS;
+    }
+
+    public static void iniciarMenus() {
+
+        System.out.println("=== App de mantenimiento del VILLAJOYOSA FC === :D");
+        System.out.println();
+
+        while (true) {
+            System.out.println("    [1]. Mantenimiento de jugadores"); // Añadir jugadores, modificar datos y añadir acompañantes (sólo seniors).
+            System.out.println("    [2]. Mantenimiento de entrenadores"); // Añadir entrenadores y modificar sus datos.
+            System.out.println("    [3]. Mantenimiento de masajistas"); // Añadir masajistas y modificar sus datos.
+            System.out.println("    [4]. Consultar equipos"); // Se deben listar los quipos del club y elegir uno.
+            System.out.println("    [X]. Salir");
+
+            System.out.println();
+            System.out.println("=========================================");
+            System.out.println();
+
+            System.out.println("Selecciona una opción -->");
+            String opcion = TECLADO.nextLine().toUpperCase().trim();
+
+            System.out.println();
+
+            boolean entradaValidaPrincipal = false;
+            while (!entradaValidaPrincipal) {
+                switch (opcion){
+                    case "1":
+                        menuCase1(LISTA_JUGADORES, LISTA_ACOMPANYANTES); // Llamada al metodo del caso 1
+                        break;
+
+                    case "2":
+                        menuCase2(LISTA_ENTRENADORES); // Llamada al metodo del caso 2
+                        break;
+
+                    case "3":
+                        menuCase3(LISTA_MASAJISTAS); // Llamada al metodo del caso 3
+                        break;
+
+                    case "4":
+                        menuCase4(Equipos.values()); // Llamada al metodo del caso 4
+                        break;
+
+                    case "X":
+                        System.out.println("Saliendo del programa...");
+                        System.exit(0);
+                        break;
+
+                    default:
+                        System.out.println("Opción incorrecta...");
+                }
+                entradaValidaPrincipal = true;
+            }
+        }
+    }
 
     // Metodo para el menú del caso 1 (MANTENIMIENTO DE JUGADORES)
-    public static void menuCase1(Scanner teclado, ArrayList<Jugador> listaJugadores, ArrayList<Acompanyante> listaAcompanyantes) {
+    public static void menuCase1(ArrayList<Jugador> listaJugadores, ArrayList<Acompanyante> listaAcompanyantes) {
         while (true) {
             System.out.println("=== Mantenimiento de jugadores ===");
             System.out.println();
@@ -19,7 +96,7 @@ public class Menus {
             System.out.println();
             System.out.println("Selecciona una opción -->");
 
-            String opcion = teclado.nextLine().toUpperCase().trim();
+            String opcion = TECLADO.nextLine().toUpperCase().trim();
 
             switch (opcion) {
                 // AÑADIR NUEVO JUGADOR
@@ -29,26 +106,26 @@ public class Menus {
 
                     while (true) {
                         System.out.println("Introduce el nombre: ");
-                        String nombre = teclado.nextLine().trim().toLowerCase();
+                        String nombre = TECLADO.nextLine().trim().toLowerCase();
 
                         System.out.println("Introduce la edad: ");
-                        while (!teclado.hasNextInt()){
+                        while (!TECLADO.hasNextInt()){
                             System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
-                            teclado.nextLine();
+                            TECLADO.nextLine();
                         }
-                        int edad = teclado.nextInt();
-                        teclado.nextLine();
+                        int edad = TECLADO.nextInt();
+                        TECLADO.nextLine();
 
                         System.out.println("Introduce el dorsal: ");
-                        while (!teclado.hasNextInt()){
+                        while (!TECLADO.hasNextInt()){
                             System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
-                            teclado.nextLine();
+                            TECLADO.nextLine();
                         }
-                        int dorsal = teclado.nextInt();
-                        teclado.nextLine();
+                        int dorsal = TECLADO.nextInt();
+                        TECLADO.nextLine();
 
                         System.out.println("Introduce la posición: ");
-                        String posicion = teclado.nextLine().trim().toUpperCase();
+                        String posicion = TECLADO.nextLine().trim().toUpperCase();
 
                         try {
                             Posiciones posiciones = Posiciones.valueOf(posicion);
@@ -60,6 +137,7 @@ public class Menus {
                             Jugador jugador = new Jugador(nombre, edad, dorsal, posiciones);
                             listaJugadores.add(jugador);
                             System.out.println("Jugador añadido...");
+                            jugador.concentrarse();
 
                         } catch (IllegalArgumentException e) { // Doble catch para la excepción genérica y la personalizada.
                             System.out.println("ERROR: La posición no existe");
@@ -70,7 +148,7 @@ public class Menus {
                         }
 
                         System.out.println("Deseas añadir más jugadores? S/N");
-                        String siNo = teclado.nextLine().trim().toUpperCase();
+                        String siNo = TECLADO.nextLine().trim().toUpperCase();
 
                         if (siNo.equals("N")) {
                             break;
@@ -93,8 +171,8 @@ public class Menus {
                     System.out.println("=================================================");
                     System.out.println();
                     System.out.println("Selecciona una opción -->");
-                    int opcionCambio = teclado.nextInt();
-                    teclado.nextLine();
+                    int opcionCambio = TECLADO.nextInt();
+                    TECLADO.nextLine();
 
                     System.out.println();
 
@@ -115,24 +193,24 @@ public class Menus {
                     System.out.println("=================================================");
                     System.out.println();
                     System.out.println("Selecciona una opción -->");
-                    String opcionCambioJugador = teclado.nextLine().toLowerCase();
+                    String opcionCambioJugador = TECLADO.nextLine().toLowerCase();
 
                     switch (opcionCambioJugador) {
                         case "nombre":
                             System.out.println("Nuevo nombre -->");
-                            jugador.setNombre(teclado.nextLine().trim());
+                            jugador.setNombre(TECLADO.nextLine().trim());
                             System.out.println("Nombre modificado...");
                             break;
 
                         case "edad":
                             System.out.println("Nueva edad -->");
-                            jugador.setEdad(teclado.nextInt());
+                            jugador.setEdad(TECLADO.nextInt());
                             System.out.println("Edad modificada...");
                             break;
 
                         case "categoria":
                             System.out.println("Nueva categoría -->");
-                            String categoria = teclado.nextLine().toUpperCase();
+                            String categoria = TECLADO.nextLine().toUpperCase();
 
                             try {
                                 Equipos categoriaElegida = Equipos.valueOf(categoria);
@@ -146,8 +224,8 @@ public class Menus {
 
                         case "dorsal":
                             System.out.println("Nuevo dorsal -->");
-                            int dorsal = teclado.nextInt();
-                            teclado.nextLine();
+                            int dorsal = TECLADO.nextInt();
+                            TECLADO.nextLine();
 
                             try {
                                 for (Jugador jugadorDorsal : listaJugadores) {
@@ -168,11 +246,12 @@ public class Menus {
 
                         case "posicion":
                             System.out.println("Nueva posición -->");
-                            String posicion = teclado.nextLine().toUpperCase();
+                            String posicion = TECLADO.nextLine().toUpperCase();
 
                             try {
                                 Posiciones posicionElegida = Posiciones.valueOf(posicion);
                                 jugador.setPosicion(posicionElegida);
+                                System.out.println("Posición modificada....");
                             } catch (
                                     IllegalArgumentException e) {
                                 System.out.println("ERROR: La posicion elegida no existe");
@@ -199,12 +278,13 @@ public class Menus {
                         System.out.println("[" + i + ", Nombre: " + jugadorAcompanyante.getNombre() + "]");
                     }
 
-                    String acompanyanteJugador = teclado.nextLine();
+                    String acompanyanteJugador = TECLADO.nextLine();
 
                     boolean jugadorEncontrado = false;
                     for (Jugador jugadorAcompanyante : listaJugadores) {
                         if (jugadorAcompanyante.getNombre().equals(acompanyanteJugador)) {
                             acompanyante.setIntegrante(jugadorAcompanyante);
+                            System.out.println("Acompañante añadido...");
                             jugadorEncontrado = true;
                             break;
                         }
@@ -242,7 +322,7 @@ public class Menus {
 
 
     // Metodo para el menu del caso 2 (MANTENIMIENTO DE ENTRENADORES)
-    public static void menuCase2(Scanner teclado, ArrayList<Entrenador> listaEntrenadores) {
+    public static void menuCase2(ArrayList<Entrenador> listaEntrenadores) {
         while (true) {
             System.out.println("=== Mantenimiento de entrenadores ===");
             System.out.println();
@@ -255,7 +335,7 @@ public class Menus {
             System.out.println();
 
             System.out.println("Selecciona una opción -->");
-            String opcion = teclado.nextLine().toUpperCase().trim();
+            String opcion = TECLADO.nextLine().toUpperCase().trim();
             switch (opcion) {
                 // AÑADIR ENTRENADOR
                 case "1":
@@ -264,18 +344,18 @@ public class Menus {
 
                     while (true) {
                         System.out.println("Introduce el nombre: ");
-                        String nombre = teclado.nextLine().trim().toLowerCase();
+                        String nombre = TECLADO.nextLine().trim().toLowerCase();
 
                         System.out.println("Introduce la edad: ");
-                        while (!teclado.hasNextInt()){
+                        while (!TECLADO.hasNextInt()){
                             System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
-                            teclado.nextLine();
+                            TECLADO.nextLine();
                         }
-                        int edad = teclado.nextInt();
-                        teclado.nextLine();
+                        int edad = TECLADO.nextInt();
+                        TECLADO.nextLine();
 
                         System.out.println("Introduce formación preferida: ");
-                        String formacion = teclado.nextLine();
+                        String formacion = TECLADO.nextLine();
 
                         try {
                             if (!formacion.matches("^\\d-\\d-\\d$")) {
@@ -292,7 +372,7 @@ public class Menus {
                         }
 
                         System.out.println("Deseas añadir más entrenadores? S/N");
-                        String siNo = teclado.nextLine().trim().toUpperCase();
+                        String siNo = TECLADO.nextLine().trim().toUpperCase();
 
                         if (siNo.equals("N")) {
                             break;
@@ -315,8 +395,8 @@ public class Menus {
                     System.out.println("=================================================");
                     System.out.println();
                     System.out.println("Selecciona una opción -->");
-                    int opcionCambio = teclado.nextInt();
-                    teclado.nextLine();
+                    int opcionCambio = TECLADO.nextInt();
+                    TECLADO.nextLine();
 
                     System.out.println();
 
@@ -338,24 +418,24 @@ public class Menus {
                     System.out.println("=================================================");
                     System.out.println();
                     System.out.println("Selecciona una opción -->");
-                    String opcionCambioEntrenador = teclado.nextLine().toLowerCase();
+                    String opcionCambioEntrenador = TECLADO.nextLine().toLowerCase();
 
                     switch (opcionCambioEntrenador) {
                         case "nombre":
                             System.out.println("Nuevo nombre -->");
-                            entrenador.setNombre(teclado.nextLine().trim().toLowerCase());
+                            entrenador.setNombre(TECLADO.nextLine().trim().toLowerCase());
                             System.out.println("Nombre modificado...");
                             break;
 
                         case "edad":
                             System.out.println("Nueva edad -->");
-                            entrenador.setEdad(teclado.nextInt());
+                            entrenador.setEdad(TECLADO.nextInt());
                             System.out.println("Edad modificada...");
                             break;
 
                         case "equipo":
                             System.out.println("Nuevo equipo -->");
-                            String equipo = teclado.nextLine().toUpperCase();
+                            String equipo = TECLADO.nextLine().toUpperCase();
 
                             try {
                                 Equipos equipos = Equipos.valueOf(equipo);
@@ -369,7 +449,7 @@ public class Menus {
 
                         case "formacion":
                             System.out.println("Nueva formación -->");
-                            String formacion = teclado.nextLine().toLowerCase();
+                            String formacion = TECLADO.nextLine().toLowerCase();
 
                             try {
                                 if (!formacion.matches("^\\d-\\d-\\d$")) {
@@ -409,7 +489,7 @@ public class Menus {
 
 
     // Metodo para el menu del caso 3 (MANTENIMIENTO DE MASAJISTAS)
-    public static void menuCase3 (Scanner teclado, ArrayList < Masajista > listaMasajistas){
+    public static void menuCase3 (ArrayList < Masajista > listaMasajistas){
         while (true) {
             System.out.println("=== Mantenimiento de masajistas ===");
             System.out.println();
@@ -422,7 +502,7 @@ public class Menus {
             System.out.println();
 
             System.out.println("Selecciona una opción -->");
-            String opcion = teclado.nextLine().toUpperCase().trim();
+            String opcion = TECLADO.nextLine().toUpperCase().trim();
             switch (opcion) {
                 // AÑADIR MASAJISTA
                 case "1":
@@ -431,32 +511,32 @@ public class Menus {
 
                     while (true) {
                         System.out.println("Introduce el nombre: ");
-                        String nombre = teclado.nextLine().trim().toLowerCase();
+                        String nombre = TECLADO.nextLine().trim().toLowerCase();
 
                         System.out.println("Introduce la edad: ");
-                        while (!teclado.hasNextInt()){
+                        while (!TECLADO.hasNextInt()){
                             System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
-                            teclado.nextLine();
+                            TECLADO.nextLine();
                         }
-                        int edad = teclado.nextInt();
-                        teclado.nextLine();
+                        int edad = TECLADO.nextInt();
+                        TECLADO.nextLine();
 
                         System.out.println("Introduce titulación: ");
-                        String titulacion = teclado.nextLine();
+                        String titulacion = TECLADO.nextLine();
 
                         System.out.println("Introduce los años de experiencia: ");
-                        while (!teclado.hasNextInt()){
+                        while (!TECLADO.hasNextInt()){
                             System.out.println("ERROR: Solo puedes introducir números. Vuelve a intentarlo...");
-                            teclado.nextLine();
+                            TECLADO.nextLine();
                         }
-                        int anyosExperiencia = teclado.nextInt();
-                        teclado.nextLine();
+                        int anyosExperiencia = TECLADO.nextInt();
+                        TECLADO.nextLine();
 
                         Masajista masajista = new Masajista(nombre, edad, titulacion, anyosExperiencia);
                         listaMasajistas.add(masajista);
 
                         System.out.println("Deseas añadir más masajistas? S/N");
-                        String siNo = teclado.nextLine().trim().toUpperCase();
+                        String siNo = TECLADO.nextLine().trim().toUpperCase();
 
                         if (siNo.equals("N")) {
                             break;
@@ -479,8 +559,8 @@ public class Menus {
                     System.out.println("=================================================");
                     System.out.println();
                     System.out.println("Selecciona una opción -->");
-                    int opcionCambio = teclado.nextInt();
-                    teclado.nextLine();
+                    int opcionCambio = TECLADO.nextInt();
+                    TECLADO.nextLine();
 
                     System.out.println();
 
@@ -501,30 +581,30 @@ public class Menus {
                     System.out.println("=================================================");
                     System.out.println();
                     System.out.println("Selecciona una opción -->");
-                    String opcionCambioMasajista = teclado.nextLine().toLowerCase();
+                    String opcionCambioMasajista = TECLADO.nextLine().toLowerCase();
 
                     switch (opcionCambioMasajista) {
                         case "nombre":
                             System.out.println("Nuevo nombre -->");
-                            masajista.setNombre(teclado.nextLine().trim().toLowerCase());
+                            masajista.setNombre(TECLADO.nextLine().trim().toLowerCase());
                             System.out.println("Nombre modificado...");
                             break;
 
                         case "edad":
                             System.out.println("Nueva edad -->");
-                            masajista.setEdad(teclado.nextInt());
+                            masajista.setEdad(TECLADO.nextInt());
                             System.out.println("Edad modificada...");
                             break;
 
                         case "titulacion":
                             System.out.println("Nueva titulación -->");
-                            masajista.setTitulacion(teclado.nextLine());
+                            masajista.setTitulacion(TECLADO.nextLine());
                             System.out.println("Titulación modificada...");
                             break;
 
                         case "anyosexp":
                             System.out.println("Nueva formación -->");
-                            masajista.setAnyosExperiencia(teclado.nextInt());
+                            masajista.setAnyosExperiencia(TECLADO.nextInt());
                             System.out.println("Años de experiencia modificados...");
                             break;
 
@@ -550,7 +630,7 @@ public class Menus {
 
 
     // LISTADO DE EQUIPOS
-    public static void menuCase4 (Scanner teclado, Equipos[] listaEquipos){
+    public static void menuCase4 (Equipos[] listaEquipos){
 
         System.out.println("====== Listado de equipos del VILLAJOYOSA C.F ======");
         System.out.println();
@@ -561,7 +641,7 @@ public class Menus {
         System.out.println();
 
         System.out.println("Qué equipo quieres?");
-        String equipo = teclado.nextLine().toUpperCase().trim();
+        String equipo = TECLADO.nextLine().toUpperCase().trim();
         System.out.println();
         
         try {
