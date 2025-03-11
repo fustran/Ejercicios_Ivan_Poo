@@ -23,15 +23,15 @@ public class AppProgramaMelo {
         triunfitos.insertarMiembros("Juan","Patri","Alexia");
         System.out.println(triunfitos);
 
-        // Me he quedado por aqui, seguir luego...
-
         maquinitas.setProblemasResueltos(2);
         maquinitas.calcularPuntuacion();
+        System.out.println(maquinitas);
 
         triunfitos.setProblemasResueltos(3);
         triunfitos.calcularPuntuacion();
+        System.out.println(triunfitos);
 
-        // a)
+        // a) hecho
         iesmutxamel.imprimirDatosEquipos();
 
         // b)

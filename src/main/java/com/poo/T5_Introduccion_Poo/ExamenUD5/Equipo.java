@@ -52,9 +52,8 @@ public class Equipo {
     }
 
     public void calcularPuntuacion() {
-
+        puntuacion = problemasResueltos * 10;
     }
-
 
 
     // Insertar miembros mediante una lista de tipo string comprobando que no se exceda la lista de 4 miembros por equipo

@@ -78,11 +78,26 @@ public class Concurso {
     }
 
     public void imprimirDatosEquipos(){
-
+        System.out.println();
+        System.out.println("Equipos inscritos: " + listaEquipos.size());
+        for (Equipo equipos : listaEquipos){
+            System.out.println("- " + equipos.getNombreEquipo() + ". " + equipos.getListaMiembros());
+        }
     }
 
     public void equipoGanador(){
+        Equipo equipoGanador = listaEquipos.getFirst();
 
+        for (int i = 1; i < listaEquipos.size(); i++) {
+            Equipo equipoActual = listaEquipos.get(i);
+            if (equipoActual.getPuntuacion() > equipoGanador.getPuntuacion()) {
+                equipoGanador = equipoActual;
+            }
+        }
+
+        System.out.println("El equipo ganador es "
+                + equipoGanador.getNombreEquipo()
+                + " con " + equipoGanador.getPuntuacion() + " puntos.");
     }
 
     @Override
