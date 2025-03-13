@@ -1,10 +1,8 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.ExamenUD6;
 
-import java.util.Scanner;
 
-public class Cliente extends PizzaExpress implements AccionesPedido{
+public class Cliente extends PizzaExpress implements AccionesPedido {
 
-    final Scanner teclado = new Scanner(System.in);
 
     private String nombre;
     private int descuento;
@@ -16,13 +14,13 @@ public class Cliente extends PizzaExpress implements AccionesPedido{
     }
 
 
-    protected void pedir(){
+    protected void pedir() {
         System.out.println();
-        System.out.println("¿Qué te apete comer hoy, " + nombre + "?");
+        System.out.println("¿Qué te apete comer hoy, " + getNombre() + "?");
         System.out.println();
         System.out.println("========== CARTA ==========");
 
-        for(CartaPizzas pizzas : CartaPizzas.values()){
+        for (CartaPizzas pizzas : CartaPizzas.values()) {
             System.out.println(pizzas + ": " + pizzas.precioEuro()); // Metodo añadido para mostrar el € desde el enum
         }
         System.out.println("===========================");
@@ -30,14 +28,13 @@ public class Cliente extends PizzaExpress implements AccionesPedido{
     }
 
 
-
-    protected void pagar(){
-
+    protected void pagar() {
+        System.out.println(getNombre() + " está realizando el pago en caja...");
     }
 
 
-    protected void recoger(){
-
+    protected void recoger() {
+        System.out.println("pedido recogido por " + getNombre());
     }
 
 
@@ -63,11 +60,12 @@ public class Cliente extends PizzaExpress implements AccionesPedido{
 
     @Override
     protected void obtenerDetalles() { // De Abstract class PizzaExpress
-
+        System.out.println("Cliente " + getNombre() + ": " + " esta haciendo un pedido...." );
     }
 
     @Override
     public void cancelar(Pedido pedido) { // De Interfaz accionesPedido
-
+        pedido.setEstadoPedido(Estado.CANCELADO);
+        System.out.println("Pedido de " + getNombre() + " ha sido " + Estado.CANCELADO.name());
     }
 }

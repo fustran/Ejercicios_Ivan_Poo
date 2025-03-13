@@ -48,7 +48,7 @@ public class Empleado extends PizzaExpress implements AccionesPedido{
 
 
     protected void entregarPedido(Pedido pedido) {
-
+        System.out.println("El pedido" + pedido.getListaPizza() + " está siendo entregado por " + getNombre());
     }
 
 
@@ -60,6 +60,6 @@ public class Empleado extends PizzaExpress implements AccionesPedido{
 
     @Override
     public void cancelar(Pedido pedido) { // De Interfaz accionesPedido
-        System.out.println("Pedido de " + getNombre() + " ha sido " + Estado.CANCELADO.name());
+        System.out.println("el pedido de " + pedido.getListaPizza() + " a nombre de " + getNombre() + " ha sido " + Estado.CANCELADO.name());
     }
 }

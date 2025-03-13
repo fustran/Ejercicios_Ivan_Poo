@@ -48,12 +48,14 @@ public class Pedido extends PizzaExpress{
     }
     
 
-    protected void aplicarDescuento(){
-
+    protected double aplicarDescuento(){
+        return cliente.getDescuento() * 0.01;
     }
+
 
     public void insertarPizza(CartaPizzas pizza){
         listaPizzas.add(pizza);
+        System.out.println("Pizza " + pizza.name() + " añadida a tu cuenta");
     }
 
 
