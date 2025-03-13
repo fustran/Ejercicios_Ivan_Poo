@@ -1,7 +1,10 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.ExamenUD6;
 
+import java.util.Scanner;
+
 public class Cliente extends PizzaExpress implements AccionesPedido{
 
+    final Scanner teclado = new Scanner(System.in);
 
     private String nombre;
     private int descuento;
@@ -14,8 +17,18 @@ public class Cliente extends PizzaExpress implements AccionesPedido{
 
 
     protected void pedir(){
+        System.out.println();
+        System.out.println("¿Qué te apete comer hoy, " + nombre + "?");
+        System.out.println();
+        System.out.println("========== CARTA ==========");
+
+        for(CartaPizzas pizzas : CartaPizzas.values()){
+            System.out.println(pizzas + ": " + pizzas.precioEuro()); // Metodo añadido para mostrar el € desde el enum
+        }
+        System.out.println("===========================");
 
     }
+
 
 
     protected void pagar(){

@@ -19,4 +19,8 @@ public enum CartaPizzas {
         return precio;
     }
 
+    public String precioEuro(){
+       return getPrecio() + "€";
+    }
+
 }

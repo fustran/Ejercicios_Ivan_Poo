@@ -11,6 +11,7 @@ public class Empleado extends PizzaExpress implements AccionesPedido{
 
     public Empleado(String nombre) {
         this.nombre = nombre;
+        contadorEmpleados++;
         this.idEmpleado = generarIdEmpleado();
 
     }
@@ -53,12 +54,12 @@ public class Empleado extends PizzaExpress implements AccionesPedido{
 
     @Override
     protected void obtenerDetalles() { // De Abstract class PizzaExpress
-
+        System.out.println("Empleado " + getIdEmpleado() + ": " + getNombre());
     }
 
 
     @Override
     public void cancelar(Pedido pedido) { // De Interfaz accionesPedido
-
+        System.out.println("Pedido de " + getNombre() + " ha sido " + Estado.CANCELADO.name());
     }
 }

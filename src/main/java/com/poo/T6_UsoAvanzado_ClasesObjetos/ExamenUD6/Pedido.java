@@ -1,18 +1,20 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.ExamenUD6;
 
-import com.poo.T7_Colecciones_Dinamicas_Datos.ArrayList;
+
+import java.util.ArrayList;
 
 public class Pedido extends PizzaExpress{
 
     private Cliente cliente;
-    private ArrayList<CartaPizzas> listaPizza;
+    private ArrayList<CartaPizzas> listaPizzas;
     private Estado estadoPedido;
 
 
-    public Pedido(Cliente cliente, ArrayList<CartaPizzas> listaPizza, Estado estadoPedido) {
+    public Pedido(Cliente cliente) {
         this.cliente = cliente;
-        this.listaPizza = listaPizza;
-        this.estadoPedido = estadoPedido;
+        estadoPedido = Estado.CREANDO;
+        listaPizzas = new ArrayList<>();
+
     }
 
 
@@ -27,12 +29,12 @@ public class Pedido extends PizzaExpress{
 
 
     public ArrayList<CartaPizzas> getListaPizza() {
-        return listaPizza;
+        return listaPizzas;
     }
 
 
     public void setListaPizza(ArrayList<CartaPizzas> listaPizza) {
-        this.listaPizza = listaPizza;
+        this.listaPizzas = listaPizza;
     }
 
 
@@ -48,6 +50,10 @@ public class Pedido extends PizzaExpress{
 
     protected void aplicarDescuento(){
 
+    }
+
+    public void insertarPizza(CartaPizzas pizza){
+        listaPizzas.add(pizza);
     }
 
 
