@@ -1,5 +1,9 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.ExamenUD6;
 
+import lombok.*;
+
+@Getter
+@Setter
 public class Empleado extends PizzaExpress implements AccionesPedido{
 
     private static final String ID_EMPLEADO = "EMP";
@@ -7,7 +11,6 @@ public class Empleado extends PizzaExpress implements AccionesPedido{
 
     private String idEmpleado;
     private String nombre;
-
 
     public Empleado(String nombre) {
         this.nombre = nombre;
@@ -20,61 +23,52 @@ public class Empleado extends PizzaExpress implements AccionesPedido{
         return ID_EMPLEADO + String.format("%03d", contadorEmpleados);
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getIdEmpleado() {
-        return idEmpleado;
-    }
-
-    public void setIdEmpleado(String idEmpleado) {
-        this.idEmpleado = idEmpleado;
-    }
-
-
     protected void siguienteEstado(Pedido pedido) {
         switch (pedido.getEstadoPedido()){
             case RECIBIDO:
                 pedido.setEstadoPedido(Estado.MONTANDO_PIZZA);
-                System.out.println("Montando la pizza para... " + pedido.getCliente().getNombre() + ".");
+                System.out.println(Estado.MONTANDO_PIZZA.name() + " la pizza para: " + pedido.getCliente().getNombre() + "!");
                 break;
 
             case MONTANDO_PIZZA:
                 pedido.setEstadoPedido(Estado.HORNEANDO);
-                System.out.println("Horneando la pizza para... " + pedido.getCliente().getNombre() + ".");
+                System.out.println(Estado.HORNEANDO.name() +" la pizza para: " + pedido.getCliente().getNombre() + "!");
                 break;
 
             case HORNEANDO:
                 pedido.setEstadoPedido(Estado.PREPARANDO_PEDIDO);
-                System.out.println("Preparando el pedido para... " + pedido.getCliente().getNombre() + ".");
+                System.out.println(Estado.PREPARANDO_PEDIDO.name() + " para: " + pedido.getCliente().getNombre() + "!");
                 break;
 
             case PREPARANDO_PEDIDO:
                 pedido.setEstadoPedido(Estado.LISTO);
-                System.out.println("El pedido está Listo para... " + pedido.getCliente().getNombre() + ".");
+                System.out.println("El pedido de: " + pedido.getCliente().getNombre() + ", " + "está " + Estado.LISTO.name() + ".");
                 break;
 
-            case CANCELADO:
-                pedido.setEstadoPedido(Estado.CANCELADO);
-                System.out.println("El cliente: " + pedido.getCliente().getNombre() + ", " + " ha cancelado el pedido");
-
             default:
-                pedido.setEstadoPedido(Estado.CREANDO);
-                System.out.println("Creando el pedido para... " + pedido.getCliente().getNombre() + ".");
+                pedido.setEstadoPedido(Estado.CANCELADO);
+                System.out.println("El cliente: " + pedido.getCliente().getNombre() + ", " + " ha " + Estado.CANCELADO.name() + " el pedido.");
         }
     }
 
+    protected void mostrarCarta(Cliente cliente) {
+        System.out.println();
+        System.out.println("¿Qué otra pizza quieres añadir, " + cliente.getNombre() + "?");
+
+        System.out.println();
+        System.out.println("========== CARTA ==========");
+        for (CartaPizzas pizzas : CartaPizzas.values()) {
+            System.out.println(pizzas + ": " + pizzas.precioEuro()); // Metodo añadido para mostrar el € desde el enum
+        }
+
+        System.out.println("===========================");
+    }
+
     protected void entregarPedido(Pedido pedido, Cliente cliente) {
-        try{
-            pedido.getEstadoPedido().name().equals("LISTO");
-            System.out.println("El pedido: " + pedido.getListaPizza() + " está siendo entregado por " + getNombre() + " al cliente " + cliente.getNombre() + ".");
-        }catch (IntentoEntregaPedidoException e){
-            System.out.println(e.getMessage());
+        if(!pedido.getEstadoPedido().name().equals(Estado.LISTO.name())){
+            throw new IntentoEntregaPedidoException();
+        }else {
+            System.out.println("El pedido: " + pedido.getListaPizzas() + " está siendo entregado por " + getNombre() + " al cliente " + cliente.getNombre() + ".");
         }
     }
 
@@ -86,6 +80,6 @@ public class Empleado extends PizzaExpress implements AccionesPedido{
     @Override
     public void cancelar(Pedido pedido) { // De Interfaz accionesPedido
         pedido.setEstadoPedido(Estado.CANCELADO);
-        System.out.println("el pedido de " + pedido.getListaPizza() + " a nombre de " + getNombre() + " ha sido " + Estado.CANCELADO.name());
+        System.out.println("el pedido de " + pedido.getListaPizzas() + " a nombre de " + getNombre() + " ha sido " + Estado.CANCELADO.name());
     }
 }

@@ -1,16 +1,16 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.ExamenUD6;
 
-import lombok.Getter;
+import lombok.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
+@Getter
+@Setter
 public class Pedido extends PizzaExpress{
 
-    @Getter
     private Cliente cliente;
     private ArrayList<CartaPizzas> listaPizzas;
-    @Getter
     private Estado estadoPedido;
-
 
     public Pedido(Cliente cliente) {
         this.cliente = cliente;
@@ -19,29 +19,14 @@ public class Pedido extends PizzaExpress{
 
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public ArrayList<CartaPizzas> getListaPizza() {
-        return listaPizzas;
-    }
-
-    public void setListaPizza(ArrayList<CartaPizzas> listaPizza) {
-        this.listaPizzas = listaPizza;
-    }
-
-    public void setEstadoPedido(Estado estadoPedido) {
-        this.estadoPedido = estadoPedido;
-    }
-
     protected double aplicarDescuento(){
         return cliente.getDescuento() * 0.01;
     }
 
-    public void insertarPizza(CartaPizzas pizza){
+    protected void insertarPizza(CartaPizzas pizza){
         listaPizzas.add(pizza);
-        System.out.println("Pizza " + pizza.name() + " añadida a tu cuenta.");
+        System.out.println();
+        System.out.println("Pizza " + "'" + pizza.name() + "'" + " añadida a tu cuenta.");
     }
 
     @Override
@@ -49,9 +34,9 @@ public class Pedido extends PizzaExpress{
         if (listaPizzas.isEmpty()){
             System.out.println(cliente.getNombre() + " no tiene ningún pedido.");
         }else if (listaPizzas.size() == 1){
-            System.out.println(cliente.getNombre() + ", tiene un pedido de " + listaPizzas.size() + " pizza: " + getListaPizza() + " y el estado del pedido es: " + getEstadoPedido() + ".");
+            System.out.println(cliente.getNombre() + ", tiene un pedido de " + listaPizzas.size() + " pizza: " + getListaPizzas() + " y el estado del pedido es: " + getEstadoPedido() + ".");
         }else {
-            System.out.println(cliente.getNombre() + ", tiene un pedido de " + listaPizzas.size() + " pizzas: " + getListaPizza() + " y el estado del pedido es: " + getEstadoPedido() + ".");
+            System.out.println(cliente.getNombre() + ", tiene un pedido de " + listaPizzas.size() + " pizzas: " + getListaPizzas() + " y el estado del pedido es: " + getEstadoPedido() + ".");
         }
     }
 }

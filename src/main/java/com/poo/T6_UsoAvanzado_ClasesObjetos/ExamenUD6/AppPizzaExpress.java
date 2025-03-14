@@ -9,7 +9,7 @@ public class AppPizzaExpress {
 
         //crear 2 empleados e imprimir info obtenerDetalles()
         System.out.println();
-        System.out.println("====== Bienvenido a Pizza Express=======");
+        System.out.println("====== BIENVENIDO/A A PIZZA EXPRESS =======");
 
         Empleado emp1 = new Empleado("Iván");
         emp1.obtenerDetalles();
@@ -26,7 +26,7 @@ public class AppPizzaExpress {
 
         //responder un nombre
         System.out.println();
-        System.out.println("Hola, " + nombre + ".");
+        System.out.println("Hola, " + nombre + "!");
 
 
         //crear new Cliente con dicho nombre
@@ -50,14 +50,13 @@ public class AppPizzaExpress {
                 pedido1.insertarPizza(pizzas);
                 opcionCorrecta = true;
                 //preguntar si se quieren añadir más pizzas al pedido (S/N)
-                System.out.println("El precio actual de la cuenta es: " + pizzas.getPrecio() + "€, "  + "¿Quieres añadir otra pizza al pedido? [S/N]");
+                System.out.println("El precio actual de la cuenta es: " + pizzas.getPrecio() + "€, "  + "¿Quieres añadir otra pizza al pedido? [S/N].");
                 total = pizzas.getPrecio();
 
             }catch (IllegalArgumentException e){
-                System.out.println("ERROR: La pizza elegida no existe");
+                System.out.println("ERROR: La pizza elegida no existe.");
             }
         }
-
 
         boolean pedir = false;
 
@@ -67,19 +66,19 @@ public class AppPizzaExpress {
                 //S
                 case "S":
                     total = 0.0;
-                    cliente1.pedir();
+                    emp1.mostrarCarta(cliente1);
                     String otraPizza = teclado.nextLine().trim().toUpperCase();
                     try {
                         CartaPizzas nuevaPizza = CartaPizzas.valueOf(otraPizza);
                         pedido1.insertarPizza(nuevaPizza);
 
-                        for(CartaPizzas pizzasElegidas : pedido1.getListaPizza()){
+                        for(CartaPizzas pizzasElegidas : pedido1.getListaPizzas()){
                             total += pizzasElegidas.getPrecio();
                         }
-                        System.out.println("El precio actual de la cuenta es " + total + "€, " + "¿Quieres añadir otra pizza al pedido? [S/N]");
+                        System.out.println("El precio actual de la cuenta es " + total + "€, " + "¿Quieres añadir otra pizza al pedido? [S/N].");
 
                     } catch (IllegalArgumentException e) {
-                        System.out.println("ERROR: La pizza elegida no existe");
+                        System.out.println("ERROR: La pizza elegida no existe.");
 
                     }
                     break;
@@ -90,14 +89,10 @@ public class AppPizzaExpress {
                     continue;
 
                 default:
-                    System.out.println("opcion incorrecta!");
-                    System.out.println("¿Quieres añadir otra pizza al pedido? [S/N]");
+                    System.out.println("Opcion incorrecta!");
+                    System.out.println("¿Quieres añadir otra pizza al pedido? [S/N].");
             }
         }
-
-
-        //cancelar() Pedido
-        cliente1.cancelar(pedido1);
 
         //modificar estado del Pedido a RECIBIDO
         pedido1.setEstadoPedido(Estado.RECIBIDO);
@@ -106,13 +101,13 @@ public class AppPizzaExpress {
         pedido1.obtenerDetalles();
 
         //decir precio acumulado del pedido.
-        System.out.println("Pedido " + Estado.RECIBIDO.name() + "." + "total del pedido " + total + "€");
+        System.out.println("Pedido " + Estado.RECIBIDO.name() + "." + " El total del pedido es: " + total + "€");
 
         //Mostrar “Pedido RECIBIDO" (Estado). Total pedido: importe. Descuento a aplicar: 20%. Total a pagar: importe-descuento
-        System.out.println("Descuento a aplicar " + cliente1.getDescuento() + "%." + " Total importe a pagar: " + (total - (total * pedido1.aplicarDescuento()) + "€."));
+        System.out.println("Descuento a aplicar: " + cliente1.getDescuento() + "%." + " Total importe a pagar: " + (total - (total * pedido1.aplicarDescuento()) + "€."));
 
         //Mostrar “Pasa por caja para pagar y recoger tu pedido cuando esté LISTO. Muchas gracias nombre"
-        System.out.println("Pasa por caja para pagar y recoger tu pedido cuando esté " + Estado.LISTO.name() + ", muchas gracias " + cliente1.getNombre() + ".");
+        System.out.println("Pasa por caja para pagar y recoger tu pedido cuando esté " + Estado.LISTO.name() + ", muchas gracias " + cliente1.getNombre() + "!");
 
         //avanzar estado a MONTANDO_PIZZA e imprimir
         emp1.siguienteEstado(pedido1);
@@ -121,7 +116,11 @@ public class AppPizzaExpress {
         emp1.siguienteEstado(pedido1);
 
         //intento de entregar() pedido por alguno de los empleados
-        emp2.entregarPedido(pedido1, cliente1);
+        try {
+            emp2.entregarPedido(pedido1, cliente1);
+        }catch (IntentoEntregaPedidoException e){
+            System.out.println(e.getMessage());
+        }
 
         //avanzar estado a PREPARANDO_PEDIDO e imprimir
         emp1.siguienteEstado(pedido1);
@@ -138,6 +137,7 @@ public class AppPizzaExpress {
         //recoger()
         cliente1.recoger(pedido1);
 
-
+        //cancelar() Pedido
+        cliente1.cancelar(pedido1);
     }
 }

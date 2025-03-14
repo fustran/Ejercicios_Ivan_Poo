@@ -8,6 +8,6 @@ public enum Estado {
     MONTANDO_PIZZA,
     HORNEANDO,
     PREPARANDO_PEDIDO,
-    LISTO;
-
+    LISTO
+    ;
 }

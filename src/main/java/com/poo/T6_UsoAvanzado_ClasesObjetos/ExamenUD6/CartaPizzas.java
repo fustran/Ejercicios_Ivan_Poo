@@ -1,5 +1,8 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.ExamenUD6;
 
+import lombok.*;
+
+@Getter
 public enum CartaPizzas {
 
     BBQ(9),
@@ -7,7 +10,8 @@ public enum CartaPizzas {
     JAMON_YORK(6),
     ATUN(7.5),
     HAWAIANA(7),
-    VEGGIE(10);
+    VEGGIE(10)
+    ;
 
     private final double precio;
 
@@ -15,12 +19,7 @@ public enum CartaPizzas {
         this.precio = precio;
     }
 
-    public double getPrecio() {
-        return precio;
-    }
-
     public String precioEuro(){
        return getPrecio() + "€";
     }
-
 }
