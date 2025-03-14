@@ -1,6 +1,9 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.ExamenUD6;
 
 
+import lombok.Getter;
+
+@Getter
 public class Cliente extends PizzaExpress implements AccionesPedido {
 
 
@@ -12,7 +15,6 @@ public class Cliente extends PizzaExpress implements AccionesPedido {
         this.nombre = nombre;
         this.descuento = 20;
     }
-
 
     protected void pedir() {
         System.out.println();
@@ -27,36 +29,21 @@ public class Cliente extends PizzaExpress implements AccionesPedido {
 
     }
 
-
-    protected void pagar() {
-        System.out.println(getNombre() + " está realizando el pago en caja...");
+    protected void pagar(Pedido pedido) {
+        System.out.println(getNombre() + " está realizando el pago en caja del pedido " + pedido.getListaPizza());
     }
 
-
-    protected void recoger() {
-        System.out.println("pedido recogido por " + getNombre());
+    protected void recoger(Pedido pedido) {
+        System.out.println(getNombre() + " está recogiendo su pedido de " + pedido.getListaPizza().size() + " pizza/s: " + pedido.getListaPizza());
     }
-
-
-    public String getNombre() {
-        return nombre;
-    }
-
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-
-    public int getDescuento() {
-        return descuento;
-    }
-
-
     public void setDescuento(int descuento) {
         this.descuento = descuento;
     }
-
 
     @Override
     protected void obtenerDetalles() { // De Abstract class PizzaExpress
@@ -66,6 +53,6 @@ public class Cliente extends PizzaExpress implements AccionesPedido {
     @Override
     public void cancelar(Pedido pedido) { // De Interfaz accionesPedido
         pedido.setEstadoPedido(Estado.CANCELADO);
-        System.out.println("Pedido de " + getNombre() + " ha sido " + Estado.CANCELADO.name());
+        System.out.println("El pedido de " + getNombre() + " ha sido " + Estado.CANCELADO.name());
     }
 }

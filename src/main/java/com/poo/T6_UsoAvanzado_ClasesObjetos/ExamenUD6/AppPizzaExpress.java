@@ -44,7 +44,7 @@ public class AppPizzaExpress {
             cliente1.pedir();
             String pizza = teclado.nextLine().trim().toUpperCase();
 
-            //elegir pizza – si existe en la carta, añadir al ArrayList del pedido. Si no, saltará como inválido por no estar incluida enum
+            //Elegir pizza – si existe en la carta, añadir al ArrayList del pedido. Si no, saltará como inválido por no estar incluida enum
             try{
                 CartaPizzas pizzas = CartaPizzas.valueOf(pizza);
                 pedido1.insertarPizza(pizzas);
@@ -96,31 +96,48 @@ public class AppPizzaExpress {
         }
 
 
+        //cancelar() Pedido
+        cliente1.cancelar(pedido1);
+
         //modificar estado del Pedido a RECIBIDO
         pedido1.setEstadoPedido(Estado.RECIBIDO);
+
+        //obetenerDetaller() Pedido
+        pedido1.obtenerDetalles();
+
         //decir precio acumulado del pedido.
         System.out.println("Pedido " + Estado.RECIBIDO.name() + "." + "total del pedido " + total + "€");
 
-        //mostrar “Pedido RECIBIDO" (Estado). Total pedido: importe. Descuento a aplicar: 20%. Total a pagar: importe-descuento
+        //Mostrar “Pedido RECIBIDO" (Estado). Total pedido: importe. Descuento a aplicar: 20%. Total a pagar: importe-descuento
         System.out.println("Descuento a aplicar " + cliente1.getDescuento() + "%." + " Total importe a pagar: " + (total - (total * pedido1.aplicarDescuento()) + "€."));
 
-        //mostrar “Pasa por caja para pagar y recoger tu pedido cuando esté LISTO. Muchas gracias nombre"
+        //Mostrar “Pasa por caja para pagar y recoger tu pedido cuando esté LISTO. Muchas gracias nombre"
+        System.out.println("Pasa por caja para pagar y recoger tu pedido cuando esté " + Estado.LISTO.name() + ", muchas gracias " + cliente1.getNombre() + ".");
 
         //avanzar estado a MONTANDO_PIZZA e imprimir
+        emp1.siguienteEstado(pedido1);
 
         //avanzar estado a HORNEANDO e imprimir
+        emp1.siguienteEstado(pedido1);
 
         //intento de entregar() pedido por alguno de los empleados
+        emp2.entregarPedido(pedido1, cliente1);
 
         //avanzar estado a PREPARANDO_PEDIDO e imprimir
+        emp1.siguienteEstado(pedido1);
 
         //avanzar estado a LISTO e imprimir
+        emp1.siguienteEstado(pedido1);
 
         //pagar() Pedido
+        cliente1.pagar(pedido1);
 
         //entregar() Pedido
+        emp1.entregarPedido(pedido1, cliente1);
 
         //recoger()
+        cliente1.recoger(pedido1);
+
 
     }
 }
