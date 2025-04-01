@@ -3,10 +3,10 @@
 1. [Resumen](#Resumen)
 2. [Estructura de clases](#Estructura-de-Clases)
    - [Diagrama UML](#Diagrama-UML)
-   - Código de PlantumUML
-   - Clase Cliente
-   - Clase Pedido
-   - Clase Producto
+   - [Código de PlantumUML]()
+   - [Clase Cliente]()
+   - [Clase Pedido]()
+   - [Clase Producto]()
 
 4. Programa principal **AppZonaClientes**
 
