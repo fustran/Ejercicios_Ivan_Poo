@@ -1,7 +1,7 @@
 # Servicio de compra online en MERCADAW
 
 1. [Resumen](#Resumen)
-2. [Estructura de clases](#Estructura de Clases)
+2. [Estructura de clases](#Estructura-de-Clases)
    - Diagrama UML
    - Código de PlantumUML
    - Clase Cliente
