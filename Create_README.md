@@ -2,8 +2,8 @@
 
 1. [Resumen](#Resumen)
 2. [Estructura de clases](#Estructura de Clases)
-   -Diagrama UML
-   -Código de PlantumUML
+   - Diagrama UML
+   - Código de PlantumUML
    - Clase Cliente
    - Clase Pedido
    - Clase Producto
