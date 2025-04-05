@@ -35,6 +35,7 @@ public class Ejercicio3 {
 
     public static boolean esBalanceado(String expresion){
         Stack<Character> parentesis = new Stack<>();
+        Stack<Character> parentesiss = new Stack<>();
 
 
 
