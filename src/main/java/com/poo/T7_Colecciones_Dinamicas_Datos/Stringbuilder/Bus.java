@@ -1,4 +1,4 @@
-package com.poo.Stringbuilder;
+package com.poo.T7_Colecciones_Dinamicas_Datos.Stringbuilder;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package com.poo.Expresiones_Lambda;
+package com.poo.T7_Colecciones_Dinamicas_Datos.Expresiones_Lambda;
 
 //Expresiones Lambda
 
