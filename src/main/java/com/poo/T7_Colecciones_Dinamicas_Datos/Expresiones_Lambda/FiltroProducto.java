@@ -5,5 +5,4 @@ public interface FiltroProducto {
 
     boolean filtrar (Producto producto);
 
-
 }
