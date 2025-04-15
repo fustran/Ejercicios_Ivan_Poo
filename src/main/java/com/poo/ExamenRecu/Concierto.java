@@ -10,8 +10,19 @@ public class Concierto extends Evento{
 
     private String artista;
 
-    public Concierto(String nombre, LocalDate fecha, double precio) {
-        super(nombre, fecha, precio);
+    public Concierto(String nombre, LocalDate fecha, double precio, String tipo) {
+        super(nombre, fecha, precio, tipo);
 
+    }
+
+    @Override
+    public String toString() {
+        return "Evento{" +
+                "Tipo=" + getTipo() +
+                ", nombre='" + super.getNombre() + '\'' +
+                ", fecha=" + super. getFecha() +
+                ", precio=" + super.getPrecio() +
+                ", Artistas=" + getArtista() +
+                '}';
     }
 }
