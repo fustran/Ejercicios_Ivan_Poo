@@ -1,0 +1,31 @@
+@startuml
+
+class Excursion {
+    - String nombre_actividad
+    - String localidad
+    - double precio
+    - Coleccion <String> profesores
+    - Coleccion <Estudiante> listaAsistentes
+    + insertarProfesor()
+    + inscribirAsistente()
+    + double calcularImporteIngreso()
+    + void verAsistentes()
+    + void eliminarAsistentesPorEdad(int edad) (!)solución provisional
+}
+
+class Estudiante {
+    - String apellidos
+    - String nombre
+    - String curso
+    - int edad
+}
+
+Excursion "1" --* "*" Estudiante : asisten
+
+class AppExcursiones {
+    + static void main()
+}
+
+AppExcursiones --* "*" Excursion : gestiona
+
+@enduml
