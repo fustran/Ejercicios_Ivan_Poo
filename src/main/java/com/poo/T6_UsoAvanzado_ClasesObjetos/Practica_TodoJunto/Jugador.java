@@ -1,15 +1,18 @@
 package com.poo.T6_UsoAvanzado_ClasesObjetos.Practica_TodoJunto;
 
 import lombok.*;
+
+import java.util.Objects;
+
 /**
  * Clase que maneja las acciones del Jugador
  */
 @Getter
 @Setter
-public class Jugador extends MutxamielFC implements AccionesDeportivas{
+public class Jugador extends MutxamielFC implements AccionesDeportivas, Comparable<Jugador>{
 
     private Equipos categoria;
-    private int dorsal;
+    private Integer dorsal;
     private Posiciones posicion;
 
     public Jugador(String nombre, int edad, int dorsal, Posiciones posicion) {
@@ -17,7 +20,6 @@ public class Jugador extends MutxamielFC implements AccionesDeportivas{
         this.categoria = Equipos.SENIOR;
         this.dorsal = dorsal;
         this.posicion = posicion;
-
     }
 
     public void calentar() {
@@ -69,5 +71,28 @@ public class Jugador extends MutxamielFC implements AccionesDeportivas{
                 ", Categoría: " + getCategoria() +
                 ", Dorsal: " + getDorsal() +
                 ", Posición: " + getPosicion();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Jugador jugador = (Jugador) o;
+        return dorsal == jugador.dorsal && categoria == jugador.categoria;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(categoria, dorsal);
+    }
+
+    @Override
+    public int compareTo(Jugador o) {
+        int compararPorDorsal = this.dorsal.compareTo(o.getDorsal());
+        if (compararPorDorsal!=0){
+            return compararPorDorsal;
+        }
+        return this.getCategoria().compareTo(o.getCategoria());
     }
 }
