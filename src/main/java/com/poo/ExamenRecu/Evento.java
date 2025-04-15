@@ -15,7 +15,7 @@ public abstract class Evento {
     private double precio;
     private String tipo;
 
-    public Evento(String nombre, LocalDate fecha, double precio, String tipo) {
+    protected Evento(String nombre, LocalDate fecha, double precio, String tipo) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.precio = precio;

@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.Objects;
+import java.util.Random;
 import java.util.Set;
 
 @Getter
@@ -31,8 +31,34 @@ public class TicketMutxa {
         }
     }
 
-    public static void generarUsuarios(int cantidad) {
 
+    static Random aleatorios = new Random();
+    static final String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    public static void generarUsuarios(int cantidad) {
+        for (int i = 0; i < cantidad; i++) {
+            String nombre_usuario = "";
+
+            while (nombre_usuario.length() < 8) {
+                int indice = aleatorios.nextInt(CARACTERES.length());
+                char caracter = CARACTERES.charAt(indice);
+
+                if (nombre_usuario.indexOf(caracter) == -1) {
+                    nombre_usuario += caracter;
+                }
+            }
+
+            String contraseya = "";
+            while (contraseya.length() < 8) {
+                int indice = aleatorios.nextInt(CARACTERES.length());
+                char caracter = CARACTERES.charAt(indice);
+
+                if (contraseya.indexOf(caracter) == -1) {
+                    contraseya += caracter;
+                }
+            }
+            System.out.println("Chivato de Usuarios generados -- " + nombre_usuario + " " + contraseya);
+        }
     }
 
     public static void verEventos(){
@@ -43,7 +69,7 @@ public class TicketMutxa {
 
     }
 
-    public static void getEvento(int posicion){
+    public static void getEvento(int posicion) {
 
     }
 
