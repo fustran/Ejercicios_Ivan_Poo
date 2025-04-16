@@ -1,20 +1,18 @@
 package com.poo.ExamenRecu;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Random;
 import java.util.Set;
+import lombok.*;
 
-@Getter
-@Setter
 public class TicketMutxa {
 
-    static private Set<Usuario> usuariosRegistrados = new LinkedHashSet<>();
-    static private Set<Evento> listaEventos = new HashSet<>();
+    @Getter
+    private static Set<Usuario> usuariosRegistrados = new LinkedHashSet<>();
+    @Getter
+    private static Set<Evento> listaEventos = new HashSet<>();
 
     public static void insertarEvento(String nombre, LocalDate fecha, double precio, String tipo){
 
@@ -58,6 +56,7 @@ public class TicketMutxa {
                 }
             }
             System.out.println("Chivato de Usuarios generados -- " + nombre_usuario + " " + contraseya);
+            usuariosRegistrados.add(new Usuario(nombre_usuario, contraseya));
         }
     }
 
@@ -66,18 +65,10 @@ public class TicketMutxa {
             System.out.println(eventos);
             System.out.println();
         }
-
     }
 
     public static void getEvento(int posicion) {
 
     }
 
-    public static void setListaEventos(Set<Evento> listaEventos) {
-        TicketMutxa.listaEventos = listaEventos;
-    }
-
-    public static void setUsuariosRegistrados(Set<Usuario> usuariosRegistrados) {
-        TicketMutxa.usuariosRegistrados = usuariosRegistrados;
-    }
 }

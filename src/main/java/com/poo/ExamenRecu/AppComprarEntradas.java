@@ -14,8 +14,20 @@ public class AppComprarEntradas {
 
         TicketMutxa.verEventos();
 
-        // crear usuarios
+        // crear usuarios y mostrar el chivato
         TicketMutxa.generarUsuarios(4);
+        System.out.println();
+
+        System.out.println("**** BIENVENIDO A TICKET MUTXA ****");
+        System.out.println();
+
+
+        System.out.println("Inicia Sesión");
+        System.out.println("  Usuario:");
+        System.out.println("  Contraseña:");
+
+
+
 
     }
 }
