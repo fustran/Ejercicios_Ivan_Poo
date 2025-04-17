@@ -2,7 +2,6 @@ package com.poo.ExamenRecu;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -28,7 +27,7 @@ public abstract class Evento {
         if (o == null || getClass() != o.getClass())
             return false;
         Evento evento = (Evento) o;
-        return nombre == evento.nombre && fecha == evento.fecha;
+        return Objects.equals(nombre, evento.nombre) && Objects.equals(fecha, evento.fecha);
     }
 
     @Override

@@ -6,6 +6,7 @@ import java.util.LinkedHashSet;
 import java.util.Random;
 import java.util.Set;
 import lombok.*;
+import static java.lang.System.*;
 
 public class TicketMutxa {
 
@@ -25,7 +26,7 @@ public class TicketMutxa {
             listaEventos.add(festival);
 
         }else{
-            System.out.println("No existe el tipo de evento");
+            out.println("No existe el tipo de evento");
         }
     }
 
@@ -35,35 +36,35 @@ public class TicketMutxa {
 
     public static void generarUsuarios(int cantidad) {
         for (int i = 0; i < cantidad; i++) {
-            String nombre_usuario = "";
+            StringBuilder nombreUsuario = new StringBuilder();
 
-            while (nombre_usuario.length() < 8) {
+            while (nombreUsuario.length() < 8) {
                 int indice = aleatorios.nextInt(CARACTERES.length());
                 char caracter = CARACTERES.charAt(indice);
 
-                if (nombre_usuario.indexOf(caracter) == -1) {
-                    nombre_usuario += caracter;
+                if (nombreUsuario.toString().indexOf(caracter) == -1) {
+                    nombreUsuario.append(caracter);
                 }
             }
 
-            String contraseya = "";
+            StringBuilder contraseya = new StringBuilder();
             while (contraseya.length() < 8) {
                 int indice = aleatorios.nextInt(CARACTERES.length());
                 char caracter = CARACTERES.charAt(indice);
 
-                if (contraseya.indexOf(caracter) == -1) {
-                    contraseya += caracter;
+                if (contraseya.toString().indexOf(caracter) == -1) {
+                    contraseya.append(caracter);
                 }
             }
-            System.out.println("Chivato de Usuarios generados -- " + nombre_usuario + " " + contraseya);
-            usuariosRegistrados.add(new Usuario(nombre_usuario, contraseya));
+            out.println("Chivato de Usuarios generados -- " + nombreUsuario + " " + contraseya);
+            usuariosRegistrados.add(new Usuario(nombreUsuario.toString(), contraseya.toString()));
         }
     }
 
     public static void verEventos(){
         for(Evento eventos : listaEventos) {
-            System.out.println(eventos);
-            System.out.println();
+            out.println(eventos);
+            out.println();
         }
     }
 

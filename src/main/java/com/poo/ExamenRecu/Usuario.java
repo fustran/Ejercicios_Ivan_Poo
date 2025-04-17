@@ -24,7 +24,7 @@ public class Usuario implements Acciones{
 
     }
 
-    public void setCarritoCompra(Evento evento, int Cantidad){
+    public void setCarritoCompra(Evento evento, int cantidad){
 
     }
 

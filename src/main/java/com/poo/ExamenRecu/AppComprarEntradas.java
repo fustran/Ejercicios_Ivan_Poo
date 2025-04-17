@@ -1,6 +1,7 @@
 package com.poo.ExamenRecu;
 
 import java.time.LocalDate;
+import static java.lang.System.*;
 
 public class AppComprarEntradas {
 
@@ -10,21 +11,21 @@ public class AppComprarEntradas {
         TicketMutxa.insertarEvento("Paellas", LocalDate.of(2025, 4, 16),20,"festival");
         TicketMutxa.insertarEvento("Concierto Estopa", LocalDate.of(2025, 4, 21),40,"concierto");
 
-        System.out.println();
+        out.println();
 
         TicketMutxa.verEventos();
 
         // crear usuarios y mostrar el chivato
         TicketMutxa.generarUsuarios(4);
-        System.out.println();
+        out.println();
 
-        System.out.println("**** BIENVENIDO A TICKET MUTXA ****");
-        System.out.println();
+        out.println("**** BIENVENIDO A TICKET MUTXA ****");
+        out.println();
 
 
-        System.out.println("Inicia Sesión");
-        System.out.println("  Usuario:");
-        System.out.println("  Contraseña:");
+        out.println("Inicia Sesión");
+        out.println("  Usuario:");
+        out.println("  Contraseña:");
 
 
 
