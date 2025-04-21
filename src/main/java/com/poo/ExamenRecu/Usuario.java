@@ -37,8 +37,14 @@ public class Usuario implements Acciones{
 
     }
 
+    // Metodo para comprobar si un usuario existe en la lista
     @Override
     public boolean autenticarse(Set<Usuario> usuariosRegistrados) {
+        for (Usuario usuario : usuariosRegistrados) {
+            if (usuario.getNombreUsuario().equals(this.nombreUsuario) && usuario.getContrasenya().equals(this.contrasenya)) {
+                return true;
+            }
+        }
         return false;
     }
 

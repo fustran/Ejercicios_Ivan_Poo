@@ -56,7 +56,6 @@ public class TicketMutxa {
                     contraseya.append(caracter);
                 }
             }
-            out.println("Chivato de Usuarios generados -- " + nombreUsuario + " " + contraseya);
             usuariosRegistrados.add(new Usuario(nombreUsuario.toString(), contraseya.toString()));
         }
     }
@@ -70,6 +69,12 @@ public class TicketMutxa {
 
     public static void getEvento(int posicion) {
 
+    }
+
+    public static void mostrarUsuariosRegistrados(){
+        for (Usuario usuariosRegistrados : usuariosRegistrados){
+            out.println(usuariosRegistrados);
+        }
     }
 
 }
