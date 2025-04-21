@@ -1,13 +1,12 @@
 package com.poo.ExamenRecu;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Getter
 @Setter
-public abstract class Evento {
+public abstract class Evento implements Comparable<Evento> {
 
     private String nombre;
     private LocalDate fecha;
@@ -23,16 +22,23 @@ public abstract class Evento {
 
     // Para comprobar que 2 Eventos son iguales con nombre y fecha
     @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass())
+    public boolean equals(Object objeto) {
+        if (this == objeto)
+            return true;
+        if (!(objeto instanceof Evento evento))
             return false;
-        Evento evento = (Evento) o;
-        return Objects.equals(nombre, evento.nombre) && Objects.equals(fecha, evento.fecha);
+        return Objects.equals(this.nombre, evento.nombre) && Objects.equals(this.fecha,  evento.fecha);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(nombre, fecha);
+    }
+
+    // Para ordenar por fecha
+    @Override
+    public int compareTo(Evento o) {
+        return this.fecha.compareTo(o.fecha);
     }
 
 }

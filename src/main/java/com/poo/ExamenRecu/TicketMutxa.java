@@ -1,10 +1,7 @@
 package com.poo.ExamenRecu;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import lombok.*;
 import static java.lang.System.*;
 
@@ -14,6 +11,7 @@ public class TicketMutxa {
     private static Set<Usuario> usuariosRegistrados = new LinkedHashSet<>();
     @Getter
     private static Set<Evento> listaEventos = new HashSet<>();
+
 
     public static void insertarEvento(String nombre, LocalDate fecha, double precio, String tipo){
 
@@ -61,14 +59,21 @@ public class TicketMutxa {
     }
 
     public static void verEventos(){
-        for(Evento eventos : listaEventos) {
-            out.println(eventos);
-            out.println();
+        List<Evento> lista = new ArrayList<>(listaEventos);
+        Collections.sort(lista);
+
+        for (int i = 0; i < lista.size(); i++) {
+            Evento evento = lista.get(i);
+            out.println("[" + (i + 1) + "]. " + evento.getNombre() + " " + evento.getFecha());
         }
     }
 
     public static void getEvento(int posicion) {
+        List<Evento> lista = new ArrayList<>(listaEventos);
+        Collections.sort(lista);
 
+        Evento evento = lista.get(posicion - 1);
+        out.println("Estas comprando entradas para el evento: " + evento.getNombre());
     }
 
     public static void mostrarUsuariosRegistrados(){
@@ -76,5 +81,6 @@ public class TicketMutxa {
             out.println(usuariosRegistrados);
         }
     }
+
 
 }

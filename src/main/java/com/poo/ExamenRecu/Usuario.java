@@ -12,6 +12,7 @@ public class Usuario implements Acciones{
 
     private String nombreUsuario;
     private String contrasenya;
+    private Usuario usuarioReal;
     private Map<Evento, Integer> carritoCompra = new HashMap<>();
 
     public Usuario(String nombreUsuario, String contrasenya) {
@@ -42,6 +43,7 @@ public class Usuario implements Acciones{
     public boolean autenticarse(Set<Usuario> usuariosRegistrados) {
         for (Usuario usuario : usuariosRegistrados) {
             if (usuario.getNombreUsuario().equals(this.nombreUsuario) && usuario.getContrasenya().equals(this.contrasenya)) {
+                this.usuarioReal = usuario;
                 return true;
             }
         }

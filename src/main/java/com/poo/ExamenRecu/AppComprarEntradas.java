@@ -16,8 +16,6 @@ public class AppComprarEntradas {
 
         out.println();
 
-        TicketMutxa.verEventos();
-
         // crear usuarios y mostrar el chivato
         TicketMutxa.generarUsuarios(4);
         TicketMutxa.mostrarUsuariosRegistrados();
@@ -27,6 +25,7 @@ public class AppComprarEntradas {
         out.println();
 
         boolean correcto;
+        Usuario usuario; // Variable donde se guarda el usuario para usarlo luego
         do {
             out.println("Inicia Sesión");
 
@@ -36,7 +35,7 @@ public class AppComprarEntradas {
             out.println("  Contraseña:");
             String contrasenya = TECLADO.nextLine();
 
-            Usuario usuario = new Usuario(nombre,contrasenya);
+            usuario = new Usuario(nombre,contrasenya);
             correcto = usuario.autenticarse(TicketMutxa.getUsuariosRegistrados());
 
             if(correcto){
@@ -51,8 +50,24 @@ public class AppComprarEntradas {
 
         }while (!correcto);
 
+        // Menu de Bienvenida con los eventos
+        Usuario usuarioReal = usuario.getUsuarioReal();
+        out.println("Hola " + usuarioReal.getNombreUsuario() + ". Elige un evento para inciar la compra:");
+        out.println();
+        TicketMutxa.verEventos();
 
-
+        int opcion;
+        int cantidadEventos;
+        do {
+            opcion = TECLADO.nextInt();
+            cantidadEventos = TicketMutxa.getListaEventos().size();
+            if (opcion > 0 && opcion <= cantidadEventos){
+                TicketMutxa.getEvento(opcion);
+            }else {
+                out.println("ERROR, Elige una opción correcta.");
+                out.println("Vuelve a introducir una opción:");
+            }
+        }while (opcion <= 0 || opcion > cantidadEventos);
 
     }
 }

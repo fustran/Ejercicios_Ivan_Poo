@@ -27,4 +27,5 @@ public class Festival extends Evento {
                 ", Artistas=" + getListaArtistas() +
                 '}';
     }
+
 }
