@@ -50,7 +50,7 @@ public class AppComprarEntradas {
 
         }while (!correcto);
 
-        // Menu de Bienvenida con los eventos
+        // Menú de Bienvenida con los eventos
         Usuario usuarioReal = usuario.getUsuarioReal();
         out.println("Hola " + usuarioReal.getNombreUsuario() + ". Elige un evento para inciar la compra:");
         out.println();
@@ -58,15 +58,19 @@ public class AppComprarEntradas {
 
         int opcion;
         int cantidadEventos;
+        Evento eventoElegido;
         do {
             opcion = TECLADO.nextInt();
             cantidadEventos = TicketMutxa.getListaEventos().size();
+
             if (opcion > 0 && opcion <= cantidadEventos){
-                TicketMutxa.getEvento(opcion);
+                eventoElegido = TicketMutxa.getEvento(opcion);
+                out.println("Has elegido el evento: " + eventoElegido);
             }else {
                 out.println("ERROR, Elige una opción correcta.");
                 out.println("Vuelve a introducir una opción:");
             }
+
         }while (opcion <= 0 || opcion > cantidadEventos);
 
     }

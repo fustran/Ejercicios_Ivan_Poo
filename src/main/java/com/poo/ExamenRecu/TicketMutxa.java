@@ -68,12 +68,14 @@ public class TicketMutxa {
         }
     }
 
-    public static void getEvento(int posicion) {
+    public static Evento getEvento(int posicion) {
         List<Evento> lista = new ArrayList<>(listaEventos);
         Collections.sort(lista);
 
         Evento evento = lista.get(posicion - 1);
         out.println("Estas comprando entradas para el evento: " + evento.getNombre());
+
+        return evento;
     }
 
     public static void mostrarUsuariosRegistrados(){
