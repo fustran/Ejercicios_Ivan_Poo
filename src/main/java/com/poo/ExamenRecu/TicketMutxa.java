@@ -12,7 +12,6 @@ public class TicketMutxa {
     @Getter
     private static Set<Evento> listaEventos = new HashSet<>();
 
-
     public static void insertarEvento(String nombre, LocalDate fecha, double precio, String tipo){
 
         if (tipo.equalsIgnoreCase("Concierto")){
@@ -27,7 +26,6 @@ public class TicketMutxa {
             out.println("No existe el tipo de evento");
         }
     }
-
 
     static Random aleatorios = new Random();
     static final String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -83,6 +81,4 @@ public class TicketMutxa {
             out.println(usuariosRegistrados);
         }
     }
-
-
 }

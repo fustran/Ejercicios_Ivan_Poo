@@ -21,5 +21,4 @@ public enum Producto {
     Producto(double productos) {
         this.productos = productos;
     }
-
 }

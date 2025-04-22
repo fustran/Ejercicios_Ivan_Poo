@@ -6,22 +6,22 @@ import lombok.*;
 @Setter
 public class Cliente {
 
+    private static final String DIRECCION  = "Calle Falsa, 123";
+
     private String usuario;
     private String password;
-    private String direccion;
     private Pedido pedido;
     boolean promociones; // siempre tienen 3x2 y 10% e indica si ya han sido aplicadas o no.
 
-    public Cliente(String usuario, String password, String direccion, Pedido pedido, boolean promociones) {
+    public Cliente(String usuario, String password) {
         this.usuario = usuario;
         this.password = password;
-        this.direccion = direccion;
-        this.pedido = pedido;
-        this.promociones = promociones;
+
     }
 
     public void crearPedido() {
-
+        this.pedido = new Pedido(0.0);
+        this.promociones = false;
     }
 
     public void insertarProducto() {
@@ -37,7 +37,7 @@ public class Cliente {
         return "Cliente{" +
                 "usuario='" + usuario + '\'' +
                 ", password='" + password + '\'' +
-                ", direccion='" + direccion + '\'' +
+                ", direccion='" + DIRECCION + '\'' +
                 ", pedido=" + pedido +
                 ", promociones=" + promociones +
                 '}';

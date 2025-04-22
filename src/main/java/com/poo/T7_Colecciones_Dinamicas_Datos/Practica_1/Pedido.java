@@ -7,12 +7,12 @@ import lombok.*;
 @Setter
 public class Pedido {
 
-    private HashMap<Producto, Integer> pedido;
+    private HashMap<Producto, Integer> pedido = new HashMap<>();
     private double importeTotal;
 
-    public Pedido(double importeTotal, HashMap<Producto, Integer> pedido) {
+    public Pedido(double importeTotal) {
         this.importeTotal = importeTotal;
-        this.pedido = pedido;
+
     }
 
     public void aplicarPromo3x2() {
