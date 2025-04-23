@@ -1,0 +1,65 @@
+@startuml
+
+top to bottom direction
+
+  class AppZonaClientes {
+    - teclado: Scanner
+    - static cliente: Cliente
+    + autenticacion(List<Cliente>): void
+    + iniciarCompra(): void
+    + imprimirProductos(): void
+    + imprimirDespedida(): void
+    + imprimirListaClientes(): void
+    + main(args: String[]): void
+  }
+
+  class MercaDaw {
+    - static ALEATORIOS: Random
+    - static CARACTERES: String
+    - static listaClientes: List<Cliente>
+    + MercaDaw()
+    + static generarClientes(): void
+    + static getListaClientes(): List<Cliente>
+}
+
+  class Cliente {
+    - static DIRECCION: String
+    - nombre: String
+    - password: String
+    - pedido: Pedido
+    - promociones: boolean
+    + Cliente(String, String)
+    + crearPedido(): void
+    + insertarProducto(): void
+    + importePedido(): double
+    + toString(): String
+  }
+
+  class Pedido {
+    - pedido: HashMap<Producto,Integer>
+    - importeTotal: double
+    + Pedido(double)
+    + aplicarPromo3x2(): void
+    + aplicarPromo10(): void
+    + toString(): String
+  }
+
+enum Producto {
+  MANZANAS(2.30)
+  PAN(1.00)
+  ARROZ(3.50)
+  POLLO(4.30)
+  LECHE(1.30)
+  ACEITE(8.30)
+  HUEVOS(3.30)
+  TOMATES(4.00)
+  PASTA(0.89)
+}
+
+AppZonaClientes -down-> MercaDaw       : se invoca
+MercaDaw       *--down Cliente         : Se crea
+Cliente        *--right Pedido          : Realiza
+Pedido         -right-> Producto       : 0..* Utiliza
+AppZonaClientes o--right Cliente      : Se asignan
+
+@enduml

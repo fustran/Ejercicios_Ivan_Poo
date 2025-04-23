@@ -1,4 +1,4 @@
-package com.poo.T7_Colecciones_Dinamicas_Datos.Practica_1;
+package com.poo.T7_Colecciones_Dinamicas_Datos.MercaDaw;
 
 import lombok.*;
 
@@ -8,13 +8,13 @@ public class Cliente {
 
     private static final String DIRECCION  = "Calle Falsa, 123";
 
-    private String usuario;
+    private String nombre;
     private String password;
     private Pedido pedido;
     boolean promociones; // siempre tienen 3x2 y 10% e indica si ya han sido aplicadas o no.
 
-    public Cliente(String usuario, String password) {
-        this.usuario = usuario;
+    public Cliente(String nombre, String password) {
+        this.nombre = nombre;
         this.password = password;
 
     }
@@ -35,7 +35,7 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente{" +
-                "usuario='" + usuario + '\'' +
+                "usuario='" + nombre + '\'' +
                 ", password='" + password + '\'' +
                 ", direccion='" + DIRECCION + '\'' +
                 ", pedido=" + pedido +

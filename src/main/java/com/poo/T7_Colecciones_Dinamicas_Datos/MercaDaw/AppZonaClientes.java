@@ -1,4 +1,4 @@
-package com.poo.T7_Colecciones_Dinamicas_Datos.Practica_1;
+package com.poo.T7_Colecciones_Dinamicas_Datos.MercaDaw;
 
 import java.util.List;
 import java.util.Scanner;
@@ -23,7 +23,7 @@ public class AppZonaClientes {
             String password = teclado.nextLine();
 
             for (Cliente clientes : listaClientes){
-                if (clientes.getUsuario().equals(usuario) && clientes.getPassword().equals(password)) {
+                if (clientes.getNombre().equals(usuario) && clientes.getPassword().equals(password)) {
                     AppZonaClientes.cliente = clientes;
                     out.println();
                     out.println("Bienvenid@, " + usuario);
@@ -65,13 +65,13 @@ public class AppZonaClientes {
     }
 
     public void imprimirDespedida() {
-        out.println("Hasta Pronto, " + cliente.getUsuario() + "!");
+        out.println("Hasta Pronto, " + cliente.getNombre() + "!");
     }
 
     public void imprimirListaClientes() {
         for (Cliente clientes : MercaDaw.getListaClientes()){
             out.println();
-            out.println(" Usurario: " + clientes.getUsuario());
+            out.println(" Usurario: " + clientes.getNombre());
             out.println(" Contraeña: " + clientes.getPassword());
         }
     }
