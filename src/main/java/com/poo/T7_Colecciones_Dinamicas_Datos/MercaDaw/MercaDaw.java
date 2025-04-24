@@ -4,12 +4,11 @@ import lombok.*;
 import java.util.*;
 
 @Getter
-@Setter
 public class MercaDaw {
 
     private static final Random ALEATORIOS = new Random();
     private static final String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    private static List<Cliente> listaClientes = new LinkedList<>();
+    private static final List<Cliente> listaClientes = new LinkedList<>();
 
     // Constructor
     public MercaDaw() {
@@ -41,11 +40,9 @@ public class MercaDaw {
         }
 
         listaClientes.add(new Cliente(nombreUsuario.toString(), password.toString()));
-
     }
 
     public static List<Cliente> getListaClientes() {
         return Collections.unmodifiableList(listaClientes);
     }
-
 }

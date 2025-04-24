@@ -6,7 +6,7 @@ import static java.lang.System.*;
 
 public class AppZonaClientes {
 
-    final Scanner teclado = new Scanner(System.in);
+    final Scanner teclado = new Scanner(in);
     private static Cliente cliente;
 
     public void autenticacion(List<Cliente> listaClientes) {
@@ -26,7 +26,7 @@ public class AppZonaClientes {
                 if (clientes.getNombre().equals(usuario) && clientes.getPassword().equals(password)) {
                     AppZonaClientes.cliente = clientes;
                     out.println();
-                    out.println("Bienvenid@, " + usuario);
+                    out.println("Bienvenid@, " + usuario + "!");
                     iniciarCompra();
                     return;
                 }
@@ -40,17 +40,64 @@ public class AppZonaClientes {
             }else {
                 out.println("Credenciales incorrectas, has agotado todos tus intentos.");
                 out.println("ERROR DE AUTENTICACIÓN.");
-                System.exit(1);  // status 1 es para un código de salida de error
+                exit(1);
             }
         }
     }
 
     public void iniciarCompra() {
         cliente.crearPedido();
-        imprimirProductos();
+        boolean seguirComprando = true;
+
+        while (seguirComprando) {
+            String productoElegido;
+            boolean productoValido = false;
+
+            while (!productoValido) {
+                imprimirProductos();
+                productoElegido = teclado.nextLine().trim().toUpperCase();
+
+                try {
+                    Producto producto = Producto.valueOf(productoElegido);
+                    cliente.insertarProducto(productoElegido);
+                    productoValido = true;
+
+                    double precio = producto.getProductos();
+                    double total = cliente.importePedido();
+                    out.printf("Has añadido %s con un precio de %.2f€. Importe total del carrito: %.2f€. ", productoElegido, precio, total);
+
+                    boolean salir = true;
+
+                    do {
+                        mensajeSeguirComprando();
+                        String respuesta = teclado.nextLine().trim();
+
+                        if (respuesta.equalsIgnoreCase("S")) {
+                            out.println("Buena elección, sigamos con la compra...");
+                            salir = true;
+                        } else if (respuesta.equalsIgnoreCase("N")) {
+                            seguirComprando = false;
+                        } else {
+                            out.println("ERROR: Opción incorrecta...");
+                            salir = false;
+                        }
+                    }while (!salir);
+
+                } catch (IllegalArgumentException e) {
+                    out.println();
+                    out.println("ERROR: El producto elegido no existe.");
+                }
+            }
+        }
+    }
+
+    public void mensajeSeguirComprando(){
+        out.println("¿Quieres añadir más productos a tu carrito de la compra? [S/N]:");
     }
 
     public void imprimirProductos() {
+        out.println();
+        out.println("===========================================");
         out.println();
         out.println("Añade productos a tu lista de la compra...");
         out.println();
@@ -59,9 +106,9 @@ public class AppZonaClientes {
             out.println();
         }
 
-        out.println("========================================");
+        out.println("=========================================");
         out.println();
-        out.println("   Elige un producto:");
+        out.print("Elige un producto: ");
     }
 
     public void imprimirDespedida() {

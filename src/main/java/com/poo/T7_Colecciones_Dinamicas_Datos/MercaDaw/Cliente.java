@@ -1,6 +1,7 @@
 package com.poo.T7_Colecciones_Dinamicas_Datos.MercaDaw;
 
 import lombok.*;
+import java.util.HashMap;
 
 @Getter
 @Setter
@@ -24,12 +25,18 @@ public class Cliente {
         this.promociones = false;
     }
 
-    public void insertarProducto() {
+    public void insertarProducto(String producto) {
+        Producto productoEnum = Producto.valueOf(producto);
+        HashMap<Producto, Integer> pedidoMapa = pedido.getPedido();
 
+        pedidoMapa.put(productoEnum, pedidoMapa.getOrDefault(productoEnum, 0) + 1);
+
+        double nuevoImporte = pedido.getImporteTotal() + productoEnum.getProductos();
+        pedido.setImporteTotal(nuevoImporte);
     }
 
     public double importePedido() {
-        return 0.0;
+        return pedido.getImporteTotal();
     }
 
     @Override
