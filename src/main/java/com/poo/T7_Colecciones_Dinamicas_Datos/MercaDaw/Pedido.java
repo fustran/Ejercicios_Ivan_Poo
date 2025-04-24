@@ -7,6 +7,7 @@ import lombok.*;
 @Setter
 public class Pedido {
 
+    @Getter
     private HashMap<Producto, Integer> pedido = new HashMap<>();
     private double importeTotal;
 

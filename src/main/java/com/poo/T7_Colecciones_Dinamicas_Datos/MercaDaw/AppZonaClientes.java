@@ -1,6 +1,7 @@
 package com.poo.T7_Colecciones_Dinamicas_Datos.MercaDaw;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import static java.lang.System.*;
 
@@ -73,9 +74,9 @@ public class AppZonaClientes {
                         String respuesta = teclado.nextLine().trim();
 
                         if (respuesta.equalsIgnoreCase("S")) {
-                            out.println("Buena elección, sigamos con la compra...");
                             salir = true;
                         } else if (respuesta.equalsIgnoreCase("N")) {
+                            cliente.mostrarResumenCompra();
                             seguirComprando = false;
                         } else {
                             out.println("ERROR: Opción incorrecta...");
@@ -85,14 +86,56 @@ public class AppZonaClientes {
 
                 } catch (IllegalArgumentException e) {
                     out.println();
-                    out.println("ERROR: El producto elegido no existe.");
+                    out.println("ERROR: El producto elegido no existe! Elige otro.");
                 }
             }
         }
+
+        out.println();
+        out.println("=================================");
+        out.println();
+        out.println("¿QUÉ DESEA HACER?");
+        out.println();
+
+        out.println("    [1]. Aplicar promo.");
+        out.println("    [2]. Mostrar resumen ordenados por uds.");
+        out.println("    [3]. Terminar pedido.");
+
+        out.println();
+        out.println("==================================");
+        out.println();
+
+        boolean opcionCorrecta;
+        do {
+            out.print("    Elige una opción: ");
+            out.println();
+            String opcion = teclado.nextLine();
+
+            opcionCorrecta = true;
+
+            switch (opcion) {
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                default:
+                    out.println("ERROR: Opción incorrecta");
+                    out.println();
+                    opcionCorrecta = false;
+            }
+
+        } while (!opcionCorrecta);
+
+        out.println();
+        out.println("==================================");
+        out.println();
+
     }
 
     public void mensajeSeguirComprando(){
-        out.println("¿Quieres añadir más productos a tu carrito de la compra? [S/N]:");
+        out.println("¿Quieres añadir más productos a tu carrito de la compra? [S/N]: ");
     }
 
     public void imprimirProductos() {
