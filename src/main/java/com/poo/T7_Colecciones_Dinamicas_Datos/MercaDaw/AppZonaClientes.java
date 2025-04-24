@@ -1,7 +1,6 @@
 package com.poo.T7_Colecciones_Dinamicas_Datos.MercaDaw;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import static java.lang.System.*;
 
@@ -92,14 +91,15 @@ public class AppZonaClientes {
         }
 
         out.println();
-        out.println("=================================");
+        out.println("================================");
         out.println();
         out.println("¿QUÉ DESEA HACER?");
         out.println();
 
         out.println("    [1]. Aplicar promo.");
         out.println("    [2]. Mostrar resumen ordenados por uds.");
-        out.println("    [3]. Terminar pedido.");
+        out.println("    [3]. Eliminar productos.");
+        out.println("    [X]. Terminar pedido.");
 
         out.println();
         out.println("==================================");
@@ -115,10 +115,23 @@ public class AppZonaClientes {
 
             switch (opcion) {
                 case "1":
+                        cliente.getPedido().aplicarPromo3x2();
+                        cliente.getPedido().aplicarPromo10();
+                        cliente.setPromociones(true);
+                        out.println();
+                        out.println("=================================");
+                        out.println();
+                        out.println("PROMO 2X3 APLICADA + 10% DESCUENTO.");
+                        cliente.mostrarResumenCompra();
                     break;
                 case "2":
+                        cliente.productosOrdenadosUds();
                     break;
                 case "3":
+                        out.println("Eliminando productos...");
+                    break;
+                case "X":
+                        out.println("GRACIAS POR SU PEDIDO. Se lo enviaremos a la dirección " + Cliente.getDIRECCION());
                     break;
                 default:
                     out.println("ERROR: Opción incorrecta");

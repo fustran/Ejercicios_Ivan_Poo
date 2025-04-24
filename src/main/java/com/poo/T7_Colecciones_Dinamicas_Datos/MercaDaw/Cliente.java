@@ -10,7 +10,8 @@ import static java.lang.System.*;
 @Setter
 public class Cliente {
 
-    private static final String DIRECCION  = "Calle Falsa, 123";
+    @Getter
+    private static final String DIRECCION  = "Calle +FalsaQueUnBilleteDe3000Pts, 123.";
 
     private String nombre;
     private String password;
@@ -47,9 +48,9 @@ public class Cliente {
         out.println();
         out.println("=======================================");
         out.println();
-        out.println("RESUMEN DE TU CARRITO DE LA COMPRA:");
+        out.println("RESUMEN DE TU CARRITO DE LA COMPRA: ");
         out.println();
-        out.println("Productos:");
+        out.println("Productos: ");
         out.println();
 
         Map<Producto, Integer> carrito = this.pedido.getPedido();
@@ -66,6 +67,16 @@ public class Cliente {
         double totalPedido = this.importePedido();
         out.println();
         out.printf("IMPORTE TOTAL: %.2f€\n", totalPedido);
+    }
+
+    public void productosOrdenadosUds(){
+        out.println();
+        out.println("=======================================");
+        out.println();
+        out.println("RESUMEN DE TU CARRITO DE LA COMPRA:");
+        out.println();
+        out.println("Productos ordenador por unidades: ");
+        out.println();
     }
 
     @Override
