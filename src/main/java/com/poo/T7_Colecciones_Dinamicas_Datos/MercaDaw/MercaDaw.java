@@ -10,10 +10,11 @@ public class MercaDaw {
     private static final String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     private static final List<Cliente> listaClientes = new LinkedList<>();
 
-    // Constructor
+
     public MercaDaw() {
         generarClientes();
     }
+
 
     // Metodo para generar clientes
     public static void generarClientes(){
@@ -41,6 +42,7 @@ public class MercaDaw {
 
         listaClientes.add(new Cliente(nombreUsuario.toString(), password.toString()));
     }
+
 
     public static List<Cliente> getListaClientes() {
         return Collections.unmodifiableList(listaClientes);

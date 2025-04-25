@@ -45,6 +45,7 @@ public class AppZonaClientes {
         }
     }
 
+
     public void iniciarCompra() {
         cliente.crearPedido();
         boolean seguirComprando = true;
@@ -90,66 +91,70 @@ public class AppZonaClientes {
             }
         }
 
-        out.println();
-        out.println("================================");
-        out.println();
-        out.println("¿QUÉ DESEA HACER?");
-        out.println();
-
-        out.println("    [1]. Aplicar promo.");
-        out.println("    [2]. Mostrar resumen ordenados por uds.");
-        out.println("    [3]. Eliminar productos.");
-        out.println("    [X]. Terminar pedido.");
-
-        out.println();
-        out.println("==================================");
-        out.println();
-
-        boolean opcionCorrecta;
-        do {
-            out.print("    Elige una opción: ");
+        while (true) {
             out.println();
-            String opcion = teclado.nextLine();
+            out.println("================================");
+            out.println();
+            out.println("¿QUÉ DESEA HACER?");
+            out.println();
 
-            opcionCorrecta = true;
+            out.println("    [1]. Aplicar promo.");
+            out.println("    [2]. Mostrar resumen ordenados por uds.");
+            out.println("    [3]. Eliminar productos.");
+            out.println("    [X]. Terminar pedido.");
+            out.println();
+            out.println("==================================");
+            out.println();
+            out.print("    Elige una opción: ");
+
+            String opcion = teclado.nextLine().trim().toUpperCase();
 
             switch (opcion) {
                 case "1":
+                    if (!cliente.promociones) {
                         cliente.getPedido().aplicarPromo3x2();
                         cliente.getPedido().aplicarPromo10();
                         cliente.setPromociones(true);
+
                         out.println();
                         out.println("=================================");
                         out.println();
-                        out.println("PROMO 2X3 APLICADA + 10% DESCUENTO.");
-                        cliente.mostrarResumenCompra();
+                        out.println("PROMO 3x2 + 10 % DESCUENTO APLICADA.");
+                    } else {
+                        out.println();
+                        out.println("YA HAS APLICADO TUS PROMOS.");
+                    }
+                    cliente.mostrarResumenCompra();
                     break;
+
                 case "2":
-                        cliente.productosOrdenadosUds();
+                    cliente.productosOrdenadosUds();
                     break;
+
                 case "3":
-                        out.println("Eliminando productos...");
+                    out.print("Escriba el producto que desea eliminar: ");
+                    String opcionElegida = teclado.nextLine().trim().toUpperCase();
+                    cliente.eliminarUnaUnidad(opcionElegida);
                     break;
+
                 case "X":
-                        out.println("GRACIAS POR SU PEDIDO. Se lo enviaremos a la dirección " + Cliente.getDIRECCION());
-                    break;
+                    out.println();
+                    out.println("GRACIAS POR SU PEDIDO. Se lo enviaremos a la dirección " + Cliente.getDIRECCION());
+                    System.exit(0);
+                    return;
+
                 default:
                     out.println("ERROR: Opción incorrecta");
-                    out.println();
-                    opcionCorrecta = false;
+
             }
-
-        } while (!opcionCorrecta);
-
-        out.println();
-        out.println("==================================");
-        out.println();
-
+        }
     }
+
 
     public void mensajeSeguirComprando(){
         out.println("¿Quieres añadir más productos a tu carrito de la compra? [S/N]: ");
     }
+
 
     public void imprimirProductos() {
         out.println();
@@ -167,9 +172,11 @@ public class AppZonaClientes {
         out.print("Elige un producto: ");
     }
 
+
     public void imprimirDespedida() {
         out.println("Hasta Pronto, " + cliente.getNombre() + "!");
     }
+
 
     public void imprimirListaClientes() {
         for (Cliente clientes : MercaDaw.getListaClientes()){
@@ -177,15 +184,5 @@ public class AppZonaClientes {
             out.println(" Usurario: " + clientes.getNombre());
             out.println(" Contraeña: " + clientes.getPassword());
         }
-    }
-
-    public static void main(String[] args) {
-
-        MercaDaw mercaDaw = new MercaDaw();
-        List<Cliente> clientes = MercaDaw.getListaClientes();
-        AppZonaClientes zonaClientes = new AppZonaClientes();
-        zonaClientes.imprimirListaClientes();
-        zonaClientes.autenticacion(clientes);
-
     }
 }
