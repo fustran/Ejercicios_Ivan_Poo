@@ -87,7 +87,7 @@ Implementa un **Comparator** para ordenar productos:
 
 ## Documentación Técnica
 
-La documentación JavaDoc completa del proyecto está disponible en el[`index`](./docs/index.html).
+La documentación JavaDoc completa del proyecto está disponible en el[`index`](./JavaDoc/index.html).
 
 > Incluye descripción detallada de cada clase y método del proyecto.
 
