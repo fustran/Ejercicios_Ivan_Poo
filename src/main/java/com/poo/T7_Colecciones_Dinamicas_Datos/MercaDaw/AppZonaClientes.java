@@ -17,7 +17,7 @@ public class AppZonaClientes {
      */
     public void autenticacion(List<Cliente> listaClientes) {
         out.println();
-        out.println("*** COMPRA ONLINE DE MERCADAW ***");
+        out.println("*** BIENVENIDO A LA COMPRA ONLINE EN MERCADAW ***");
 
         int intentos = 3;
         while(true){
@@ -207,5 +207,15 @@ public class AppZonaClientes {
             out.println(" Usurario: " + clientes.getNombre());
             out.println(" Contraeña: " + clientes.getPassword());
         }
+    }
+
+    public static void main(String[] args) {
+
+        MercaDaw mercaDaw = new MercaDaw();
+        List<Cliente> clientes = MercaDaw.getListaClientes();
+        AppZonaClientes zonaClientes = new AppZonaClientes();
+        zonaClientes.imprimirListaClientes();
+        zonaClientes.autenticacion(clientes);
+        zonaClientes.imprimirDespedida();
     }
 }

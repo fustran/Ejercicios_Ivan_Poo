@@ -81,7 +81,18 @@ public class Cliente {
         List<Map.Entry<Producto,Integer>> listaProductos = new ArrayList<>(pedido.getPedido().entrySet());
         listaProductos.sort(new OrdenarDescentente());
 
-        recorrerMap();
+        //Recorremos la lista ordenada
+        for (Map.Entry<Producto, Integer> entry : listaProductos) {
+            Producto producto = entry.getKey();
+            int unidades = entry.getValue();
+            double precioUnidad = producto.getProductos();
+
+            out.printf("%d %s %.2f€\n", unidades, producto.name(), precioUnidad);
+        }
+
+        out.println();
+        out.printf("IMPORTE TOTAL: %.2f€\n", pedido.getImporteTotal());
+
     }
 
     /**

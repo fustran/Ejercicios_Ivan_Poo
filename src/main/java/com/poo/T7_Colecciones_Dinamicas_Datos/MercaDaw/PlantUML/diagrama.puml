@@ -2,38 +2,46 @@
 
 top to bottom direction
 
-  class AppZonaClientes {
-    - teclado: Scanner
-    - static cliente: Cliente
-    + autenticacion(List<Cliente>): void
-    + iniciarCompra(): void
-    + imprimirProductos(): void
-    + imprimirDespedida(): void
-    + imprimirListaClientes(): void
-    + main(args: String[]): void
-  }
+ class AppZonaClientes {
+     - teclado: Scanner
+     - static cliente: Cliente
+     + autenticacion(List<Cliente>): void
+     + iniciarCompra(): void
+     + imprimirProductos(): void
+     + imprimirDespedida(): void
+     + imprimirListaClientes(): void
+     + mensajeSeguirComprando(): void
+     + menuClientes(): void
+     + main(args: String[]): void
+   }
 
-  class MercaDaw {
-    - static ALEATORIOS: Random
-    - static CARACTERES: String
-    - static listaClientes: List<Cliente>
+class MercaDaw {
+    - static final ALEATORIOS: Random
+    - static final CARACTERES: String
+    - static final listaClientes: List<Cliente>
     + MercaDaw()
     + static generarClientes(): void
     + static getListaClientes(): List<Cliente>
 }
 
-  class Cliente {
-    - static DIRECCION: String
+
+class Cliente {
+    - static final DIRECCION: String
     - nombre: String
     - password: String
     - pedido: Pedido
     - promociones: boolean
     + Cliente(String, String)
     + crearPedido(): void
-    + insertarProducto(): void
+    + insertarProducto(String): void
     + importePedido(): double
+    + mostrarResumenCompra(): void
+    + productosOrdenadosUds(): void
+    + recorrerMap(): void
+    + eliminarUnaUnidad(String): void
     + toString(): String
-  }
+}
+
 
   class Pedido {
     - pedido: HashMap<Producto,Integer>
