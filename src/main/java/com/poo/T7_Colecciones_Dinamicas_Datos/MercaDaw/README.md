@@ -87,7 +87,7 @@ Implementa un **Comparator** para ordenar productos:
 
 ## Documentación Técnica
 
-La documentación JavaDoc completa del proyecto está disponible en el[`index`](./JavaDoc/index.html).
+La documentación JavaDoc completa del proyecto está disponible en el[`index`](https://fustran.github.io/Ejercicios_Ivan_Poo/com/poo/T7_Colecciones_Dinamicas_Datos/MercaDaw/package-summary.html).
 
 > Incluye descripción detallada de cada clase y método del proyecto.
 
