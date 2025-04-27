@@ -1,8 +1,10 @@
 package com.poo.T7_Colecciones_Dinamicas_Datos.MercaDaw;
 
 import java.util.List;
-
-public class App {
+/**
+ * Clase principal del programa para ejecutar la aplicación.
+ */
+public final class App {
 
     public static void main(String[] args) {
 
@@ -11,6 +13,6 @@ public class App {
         AppZonaClientes zonaClientes = new AppZonaClientes();
         zonaClientes.imprimirListaClientes();
         zonaClientes.autenticacion(clientes);
-
+        zonaClientes.imprimirDespedida();
     }
 }

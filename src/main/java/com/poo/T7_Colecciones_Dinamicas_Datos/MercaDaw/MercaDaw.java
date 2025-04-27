@@ -2,7 +2,9 @@ package com.poo.T7_Colecciones_Dinamicas_Datos.MercaDaw;
 
 import lombok.*;
 import java.util.*;
-
+/**
+ * Clase que gestiona la creacion aleatoria de clientes y la lista de clientes.
+ */
 @Getter
 public class MercaDaw {
 
@@ -10,13 +12,13 @@ public class MercaDaw {
     private static final String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     private static final List<Cliente> listaClientes = new LinkedList<>();
 
-
     public MercaDaw() {
         generarClientes();
     }
 
-
-    // Metodo para generar clientes
+    /**
+     * Metodo para generar clientes con usuario y passwords aleatorios dentro de un rango de caracteres concretos.
+     */
     public static void generarClientes(){
 
         StringBuilder nombreUsuario = new StringBuilder();
@@ -43,7 +45,10 @@ public class MercaDaw {
         listaClientes.add(new Cliente(nombreUsuario.toString(), password.toString()));
     }
 
-
+    /**
+     * Metodo estático para obtener la lista de clientes y que no pueda ser modificada, solo se permite lectura.
+     * @return La lista de clientes.
+     */
     public static List<Cliente> getListaClientes() {
         return Collections.unmodifiableList(listaClientes);
     }

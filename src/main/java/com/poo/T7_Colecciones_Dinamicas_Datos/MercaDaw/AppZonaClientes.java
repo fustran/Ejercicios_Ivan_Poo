@@ -3,12 +3,18 @@ package com.poo.T7_Colecciones_Dinamicas_Datos.MercaDaw;
 import java.util.List;
 import java.util.Scanner;
 import static java.lang.System.*;
-
+/**
+ * Clase que gestiona la zona de clientes.
+ */
 public class AppZonaClientes {
 
     final Scanner teclado = new Scanner(in);
     private static Cliente cliente;
 
+    /**
+     * Metodo para autenticar a un cliente comparando usuario y contraseña con los datos almacenados en la lista de clientes.
+     * @param listaClientes La lista de clientes que recibe desde MercaDaw y es llamada desde la app principal.
+     */
     public void autenticacion(List<Cliente> listaClientes) {
         out.println();
         out.println("*** COMPRA ONLINE DE MERCADAW ***");
@@ -45,7 +51,9 @@ public class AppZonaClientes {
         }
     }
 
-
+    /**
+     * Metodo para iniciar una compra comprobando que se escojan los productos existentes en el ENUM, añadir productos, mostrar importes acumulados.
+     */
     public void iniciarCompra() {
         cliente.crearPedido();
         boolean seguirComprando = true;
@@ -91,6 +99,13 @@ public class AppZonaClientes {
             }
         }
 
+        menuClientes();
+    }
+
+    /**
+     * Metodo para mostrar un submenú al cliente con 4 opciones, aplicar promociones, ordenar productos, eliminar productos, mostrar resumen de compra.
+     */
+    public void menuClientes() {
         while (true) {
             out.println();
             out.println("================================");
@@ -150,12 +165,16 @@ public class AppZonaClientes {
         }
     }
 
-
+    /**
+     * Metodo para mostrar un mensaje al cliente mientras compra.
+     */
     public void mensajeSeguirComprando(){
         out.println("¿Quieres añadir más productos a tu carrito de la compra? [S/N]: ");
     }
 
-
+    /**
+     * Metodo para imprimir los productos del ENUM.
+     */
     public void imprimirProductos() {
         out.println();
         out.println("===========================================");
@@ -172,12 +191,16 @@ public class AppZonaClientes {
         out.print("Elige un producto: ");
     }
 
-
+    /**
+     * Metodo para mostrar un mensaje de despedida al cliente.
+     */
     public void imprimirDespedida() {
         out.println("Hasta Pronto, " + cliente.getNombre() + "!");
     }
 
-
+    /**
+     * Metodo para imprimir la lista de clientes almacenados en una linkedList y poder usarlos de prueba.
+     */
     public void imprimirListaClientes() {
         for (Cliente clientes : MercaDaw.getListaClientes()){
             out.println();

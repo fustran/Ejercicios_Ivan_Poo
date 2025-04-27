@@ -1,7 +1,9 @@
 package com.poo.T7_Colecciones_Dinamicas_Datos.MercaDaw;
 
 import lombok.*;
-
+/**
+ * Clase con un ENUM de productos diponibles.
+ */
 @Getter
 public enum Producto {
 

@@ -3,14 +3,15 @@ package com.poo.T7_Colecciones_Dinamicas_Datos.MercaDaw;
 import lombok.*;
 import java.util.*;
 import static java.lang.System.*;
-
+/**
+ * Clase Cliente donde se almacenan todos los datos del cliente
+ */
 @Getter
 @Setter
 public class Cliente {
 
     @Getter
     private static final String DIRECCION = "Calle +FalsaQueUnBilleteDe3000Pts, 123.";
-
     private String nombre;
     private String password;
     private Pedido pedido;
@@ -21,13 +22,18 @@ public class Cliente {
         this.password = password;
     }
 
-
+    /**
+     * Metodo que crea el pedido con un importe default de 0 € y promociones sin aplicar.
+     */
     public void crearPedido() {
         this.pedido = new Pedido(0.0);
         this.promociones = false;
     }
 
-
+    /**
+     * Metodo para insertar productos en el mapa de tipo pedido, habiendo sido comprobado su existencia en el ENUM previamente.
+     * @param productoElegido El producto a insertar.
+     */
     public void insertarProducto(String productoElegido) {
 
         Producto producto = Producto.valueOf(productoElegido);
@@ -39,12 +45,17 @@ public class Cliente {
         pedido.setImporteTotal(nuevoImporte);
     }
 
-
+    /**
+     * Metodo que gestiona el importe del pedido.
+     * @return El importe total del pedido.
+     */
     public double importePedido() {
         return pedido.getImporteTotal();
     }
 
-
+    /**
+     * Metodo para mostrar un resumen de compra recorriendo el mapa Pedido vinculado al cliente.
+     */
     public void mostrarResumenCompra() {
         out.println();
         out.println("=======================================");
@@ -55,7 +66,9 @@ public class Cliente {
         recorrerMap();
     }
 
-
+    /**
+     * Metodo para ordenar los productos por unidades descentente usando un metodo que implementa la interfaz Comparator.
+     */
     public void productosOrdenadosUds() {
         out.println();
         out.println("=======================================");
@@ -67,10 +80,13 @@ public class Cliente {
 
         List<Map.Entry<Producto,Integer>> listaProductos = new ArrayList<>(pedido.getPedido().entrySet());
         listaProductos.sort(new OrdenarDescentente());
+
         recorrerMap();
     }
 
-    // Metodo para recorrer el mapa, clave-valor y los precios
+    /**
+     * Metodo para recorrer el mapa Pedido, su clave, valor y el precio de cada producto.
+     */
     public void recorrerMap() {
 
         for (Map.Entry<Producto,Integer> entry : pedido.getPedido().entrySet()) {
@@ -85,7 +101,10 @@ public class Cliente {
         out.printf("IMPORTE TOTAL: %.2f€\n", pedido.getImporteTotal());
     }
 
-    // Metodo para eliminar productos del mapa en el pedido
+    /**
+     * Metodo para elimiar productos del mapa Pedido y mostrar el resumen del pedido actualizado.
+     * @param opcionElegida El producto a eliminar del mapa.
+     */
     public void eliminarUnaUnidad(String opcionElegida) {
 
         if (pedido.getPedido().isEmpty()) {

@@ -3,7 +3,9 @@ package com.poo.T7_Colecciones_Dinamicas_Datos.MercaDaw;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.*;
-
+/**
+ * Clase Pedido que gestiona un mapa de productos y sus importes.
+ */
 @Getter
 @Setter
 public class Pedido {
@@ -17,7 +19,9 @@ public class Pedido {
         this.importeTotal = importeTotal;
     }
 
-
+    /**
+     * Metodo para aplicar la promoción 3x2, cada producto con 3 unidades, restará el importe de uno.
+     */
     public void aplicarPromo3x2() {
         double totalConPromo = 0.0;
 
@@ -35,11 +39,12 @@ public class Pedido {
         this.importeTotal = totalConPromo;
     }
 
-
+    /**
+     * Metodo para aplicar un 10% de descuento al totral de la cuenta.
+     */
     public void aplicarPromo10() {
         this.importeTotal = importeTotal * 0.9;
     }
-
 
     @Override
     public String toString() {
