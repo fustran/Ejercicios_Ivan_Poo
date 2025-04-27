@@ -6,11 +6,11 @@ Permite registrar clientes, autenticar usuarios, crear pedidos, aplicar promocio
 
 ---
 
-##  🚀  Ejecución del Programa y Pruebas de Uso
+##  🚀 Ejecución del Programa y Pruebas de Uso
 
 Vídeo Demo del funcionamiento del sistema MercaDaw en el siguiente enlace:
 
-👉 [**Ver vídeo de ejecución y pruebas**](https://www.youtube.com/watch?v=)
+👉 [**Ver vídeo de ejecución y pruebas**](https://www.youtube.com/watch?v=BexQ8bnS9Xk)
 
 El vídeo muestra:
 - Inicio del programa.
@@ -24,7 +24,7 @@ El vídeo muestra:
 
 ---
 
-##  📂  Índice de Clases
+##  📂 Índice de Clases
 
 - [AppZonaClientes](#appzonaclientes) — Clase principal que ejecuta el programa, controla la interacción del cliente (login, compra, promociones).
 - [MercaDaw](#mercadaw) — Controla la generación y gestión de clientes.
@@ -87,7 +87,7 @@ Implementa un **Comparator** para ordenar productos:
 
 ## Documentación Técnica
 
-La documentación completa del proyecto está disponible en el[`📚 JavaDoc`](https://fustran.github.io/Ejercicios_Ivan_Poo/com/poo/T7_Colecciones_Dinamicas_Datos/MercaDaw/package-summary.html).
+La documentación completa del proyecto está disponible en 📚[`JavaDoc`](https://fustran.github.io/Ejercicios_Ivan_Poo/com/poo/T7_Colecciones_Dinamicas_Datos/MercaDaw/package-summary.html).
 
 > Incluye descripción detallada de cada clase y método del proyecto.
 
