@@ -1,12 +1,12 @@
-# MercaDaw - sistema de Compra online
+#  🛒  MercaDaw - sistema de Compra online
 
-## Descripción del Proyecto
+## 📄 Descripción del Proyecto
 MercaDaw es una aplicación de gestión de productos, clientes y pedidos.  
 Permite registrar clientes, autenticar usuarios, crear pedidos, aplicar promociones y realizar operaciones de compra online simuladas.
 
 ---
 
-## Ejecución del Programa y Pruebas de Uso
+##  🚀  Ejecución del Programa y Pruebas de Uso
 
 Vídeo Demo del funcionamiento del sistema MercaDaw en el siguiente enlace:
 
@@ -24,7 +24,7 @@ El vídeo muestra:
 
 ---
 
-## Índice de Clases
+##  📂  Índice de Clases
 
 - [AppZonaClientes](#appzonaclientes) — Clase principal que ejecuta el programa, controla la interacción del cliente (login, compra, promociones).
 - [MercaDaw](#mercadaw) — Controla la generación y gestión de clientes.
@@ -35,7 +35,7 @@ El vídeo muestra:
 
 ---
 
-## Clases y Funcionalidades
+## 🎯 Clases y Funcionalidades
 
 ---
 
@@ -87,7 +87,7 @@ Implementa un **Comparator** para ordenar productos:
 
 ## Documentación Técnica
 
-La documentación JavaDoc completa del proyecto está disponible en el[`index`](https://fustran.github.io/Ejercicios_Ivan_Poo/com/poo/T7_Colecciones_Dinamicas_Datos/MercaDaw/package-summary.html).
+La documentación completa del proyecto está disponible en el[`📚 JavaDoc`](https://fustran.github.io/Ejercicios_Ivan_Poo/com/poo/T7_Colecciones_Dinamicas_Datos/MercaDaw/package-summary.html).
 
 > Incluye descripción detallada de cada clase y método del proyecto.
 
