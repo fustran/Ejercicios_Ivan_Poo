@@ -1,4 +1,4 @@
-package com.poo.T7_Colecciones_Dinamicas_Datos.PilasStack;
+package com.poo.T7_Colecciones_Dinamicas_Datos.Ejercicios.A1_PilasStack;
 
 import java.util.Scanner;
 import java.util.Stack;
