@@ -135,11 +135,12 @@ public class AppZonaClientes {
                         out.println("=================================");
                         out.println();
                         out.println("PROMO 3x2 + 10 % DESCUENTO APLICADA.");
+                        cliente.mostrarResumenCompra();
                     } else {
+                        cliente.productosOrdenadosUds();
                         out.println();
                         out.println("YA HAS APLICADO TUS PROMOS.");
                     }
-                    cliente.mostrarResumenCompra();
                     break;
 
                 case "2":
