@@ -2,6 +2,8 @@ package com.poo.T7_Colecciones_Dinamicas_Datos.Ejercicios.A1_PilasStack;
 
 import java.util.Stack;
 
+import static java.lang.System.*;
+
 /*
     Usa una pila para verificar si una expresión matemática tiene paréntesis bien cerrados.
 
@@ -24,21 +26,42 @@ public class Ejercicio3 {
     public static void main(String[] args) {
 
         String expresion = "(2+3))+(5-1)(";
+        esBalanceado(expresion);
 
         if(esBalanceado(expresion)){
-            System.out.println("Los paréntesis están bien cerrados!");
+            out.println("Los paréntesis están bien cerrados!");
         }else{
-            System.out.println("Los paréntesis están mal cerrados!");
+            out.println("Los paréntesis están mal cerrados!");
         }
 
+
+        String expresion2 = "((2+3)+(5-1))";
+        esBalanceado(expresion2);
+
+        if(esBalanceado(expresion2)){
+            out.println("Los paréntesis están bien cerrados!");
+        }else{
+            out.println("Los paréntesis están mal cerrados!");
+        }
     }
 
     public static boolean esBalanceado(String expresion){
         Stack<Character> parentesis = new Stack<>();
-        Stack<Character> parentesiss = new Stack<>();
 
+        for (int i = 0; i < expresion.length(); i++) {
+            char character = expresion.charAt(i);
 
+            if(character == '('){
+                parentesis.push(character);
+            } else if (character == ')') {
+                if (parentesis.isEmpty()){
+                    return false;
+                }
 
-        return true;
+                parentesis.pop();
+            }
+        }
+
+        return parentesis.isEmpty();
     }
 }
