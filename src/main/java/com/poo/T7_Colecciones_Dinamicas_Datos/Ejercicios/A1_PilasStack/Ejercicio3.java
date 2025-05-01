@@ -1,7 +1,6 @@
 package com.poo.T7_Colecciones_Dinamicas_Datos.Ejercicios.A1_PilasStack;
 
 import java.util.Stack;
-
 import static java.lang.System.*;
 
 /*
@@ -34,7 +33,6 @@ public class Ejercicio3 {
             out.println("Los paréntesis están mal cerrados!");
         }
 
-
         String expresion2 = "((2+3)+(5-1))";
         esBalanceado(expresion2);
 
@@ -53,7 +51,8 @@ public class Ejercicio3 {
 
             if(character == '('){
                 parentesis.push(character);
-            } else if (character == ')') {
+            }else if (character == ')') {
+
                 if (parentesis.isEmpty()){
                     return false;
                 }
