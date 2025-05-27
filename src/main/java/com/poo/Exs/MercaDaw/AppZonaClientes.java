@@ -107,7 +107,7 @@ public class AppZonaClientes {
      * Metodo para mostrar un submenú al cliente con 4 opciones, aplicar promociones, ordenar productos, eliminar productos, mostrar resumen de compra.
      */
     public void menuClientes() {
-        while (true) {
+        do {
             out.println();
             out.println("================================");
             out.println();
@@ -164,7 +164,7 @@ public class AppZonaClientes {
                     out.println("ERROR: Opción incorrecta");
 
             }
-        }
+        } while (true);
     }
 
     /**
