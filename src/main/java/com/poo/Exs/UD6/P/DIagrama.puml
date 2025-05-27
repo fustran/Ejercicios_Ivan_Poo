@@ -1,0 +1,59 @@
+@startuml
+
+abstract class PizzaExpress <<abstract>> {
+
+    + abstract obtenerDetalles()
+
+}
+
+class Cliente extends PizzaExpress {
+    - nombre: String
+    - descuento: int % 20 por defecto
+    + pedir()
+    + pagar()
+    + recoger()
+}
+
+class Pedido extends PizzaExpress {
+    - cliente: Cliente
+    - listaPizzas: ArrayList<CartaPizzas>
+    - estadoPedido: Estado
+    + aplicarDescuento()
+}
+
+class Empleado extends PizzaExpress {
+    - id_empleado: String EMP001, EMP002,...
+    - nombre: String
+    + siguienteEstado(Pedido pedido)
+    + entregarPedido(Pedido pedido)
+}
+
+interface AccionesPedido <<interface>> {
+    + cancelar(Pedido pedido)
+}
+
+enum Estado <<enum>> {
+    CREANDO
+    CANCELADO
+    RECIBIDO
+    MONTANDO_PIZZA
+    HORNEANDO
+    PREPARANDO_PEDIDO
+    LISTO
+}
+
+enum CartaPizzas <<enum>> {
+    BBQ(9)
+    CARBONARA(8)
+    JAMON_YORK(6)
+    ATUN(7.5)
+    HAWAIANA(7)
+    VEGGIE(10)
+    - precio: double
+}
+
+Cliente ..|> AccionesPedido
+Empleado ..|> AccionesPedido
+Cliente o-- Pedido
+
+@enduml

@@ -1,0 +1,7 @@
+package com.poo.Exs.UD6.P;
+
+public enum Estado {
+
+    CREANDO, CANCELADO, RECIBIDO, MONTANDO_PIZZA, HORNEANDO, PREPARANDO_PEDIDO, LISTO;
+
+}
