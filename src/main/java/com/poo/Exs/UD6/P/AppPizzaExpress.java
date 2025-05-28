@@ -1,7 +1,5 @@
 package com.poo.Exs.UD6.P;
 
-import org.example.herencia_concierto.EdadValidaException;
-
 import java.util.Scanner;
 
 public class AppPizzaExpress {
