@@ -1,22 +1,23 @@
 package com.poo.Exs.Rec_567_1.P;
 
 import lombok.Getter;
-
+import lombok.ToString;
 import java.util.*;
 
 @Getter
+@ToString
 public class Usuario implements Acciones{
 
-    static Scanner teclado = new Scanner(System.in);
+    private static final Scanner TECLADO = new Scanner(System.in);
 
-    private String nombre_usuario;
-    private String contraseña;
-    private HashMap<Evento, Integer> carritoCompra;
+    private final String nombreUsuario;
+    private final String contrasenya;
+    private final HashMap<Evento, Integer> carritoCompra;
 
-    public Usuario(String nombre_usuario, String contraseña){
-        this.nombre_usuario=nombre_usuario;
-        this.contraseña=contraseña;
-        carritoCompra=new HashMap<>();
+    public Usuario(String nombre_usuario, String contrasenya){
+        this.nombreUsuario = nombre_usuario;
+        this.contrasenya = contrasenya;
+        carritoCompra = new HashMap<>();
     }
 
     public void anyadirAlCarrito(Evento evento, int cantidad){
@@ -28,16 +29,20 @@ public class Usuario implements Acciones{
     }
 
     public void setCarrito(Evento evento, int cantidad){
-        if (carritoCompra.get(evento)+cantidad>7 || carritoCompra.get(evento)+cantidad< 0){
-            System.out.println("No puedes realizar la operación (cantidad entradas=min 0 y máx 7).");
+        if (carritoCompra.get(evento) + cantidad > 7 || carritoCompra.get(evento) + cantidad < 0){
+            System.out.println("No puedes realizar la operación (cantidad entradas = min 0 y máx 7).");
         }else{
-            carritoCompra.put(evento,carritoCompra.get(evento)+cantidad);
+            carritoCompra.put(evento,carritoCompra.get(evento) + cantidad);
         }
     }
 
     public void verCarrito(){
-        for(Map.Entry<Evento,Integer> mapita : carritoCompra.entrySet()){
-            System.out.println("Carrito: "+  mapita.getValue() + " entradas para " + mapita.getKey().getNombre() + ". Importe total: " + mapita.getKey().getPrecio()*mapita.getValue() + "€. Gastos de gestión: por calcular.");
+        for(Map.Entry<Evento,Integer> mapa : carritoCompra.entrySet()){
+            System.out.println(
+                    " Carrito: "            + mapa.getValue() +
+                    " Entradas para: "      + mapa.getKey().getNombre() +
+                    ". Importe total: "     + mapa.getKey().getPrecio() * mapa.getValue() +
+                    "€. Gastos de gestión: por calcular.");
         }
         imprimirMenu();
     }
@@ -67,11 +72,12 @@ public class Usuario implements Acciones{
             System.out.println("Opción: ");
 
             try{
-                opcion = MetodoPago.valueOf(teclado.next().toUpperCase());
+                opcion = MetodoPago.valueOf(TECLADO.next().toUpperCase());
                 break;
             }catch (Exception e){
                 System.out.println("Método de pago no válido. Vuelve a intentarlo.");
             }
+
         }while(true);
 
         System.out.println("Realizando pago con " + opcion + " (+ " + opcion.getPrecio() + " € de gastos de gestión)");
@@ -95,12 +101,12 @@ public class Usuario implements Acciones{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return Objects.equals(nombre_usuario, usuario.nombre_usuario) && Objects.equals(contraseña, usuario.contraseña);
+        return Objects.equals(nombreUsuario, usuario.nombreUsuario) && Objects.equals(contrasenya, usuario.contrasenya);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nombre_usuario, contraseña);
+        return Objects.hash(nombreUsuario, contrasenya);
     }
 
 }

@@ -11,36 +11,35 @@ public class AppCompraEntradas {
 
     public static void main(String[] args) throws InterruptedException {
 
-        //crear eventos
+        // crear eventos
         TicketMutxa.insertarEvento("Paellas", LocalDate.of(2025, 4, 16),20,"festival");
         TicketMutxa.insertarEvento("Concierto Estopa", LocalDate.of(2025, 4, 21),40,"concierto");
 
         // crear usuarios
         TicketMutxa.generarUsuarios(4);
 
-        //empieza el flujo del programa
+        // empieza el flujo del programa
         System.out.println("**** BIENVENIDO A TICKETMUTXA ****");
         System.out.println();
 
-        //autenticarse
+        // autenticarse
         System.out.println("Inicia sesión");
 
         Usuario comprador;
-        do{
+        do {
             System.out.println("    Usuario: ");
-            String usuario =  teclado.nextLine();
+            String usuario = teclado.nextLine();
             System.out.println("    Contraseña: ");
             String contrasenya = teclado.nextLine();
-            comprador = new Usuario(usuario,contrasenya);
-            if (comprador.autenticarse(TicketMutxa.getUsuariosRegistrados())){
-                break;
-            }
-        }while(true);
+
+            comprador = new Usuario(usuario, contrasenya);
+
+        } while (!comprador.autenticarse(TicketMutxa.getUsuariosRegistrados()));
 
         System.out.println("---------------------");
 
-        //flujo compra de entradas
-        System.out.println("Hola " + comprador.getNombre_usuario() + ". Elige un evento para iniciar la compra: ");
+        // flujo compra de entradas
+        System.out.println("Hola " + comprador.getNombreUsuario() + ". Elige un evento para iniciar la compra: ");
         TicketMutxa.verEventos();
         System.out.println("---------------------");
 
@@ -51,15 +50,17 @@ public class AppCompraEntradas {
             opcion = teclado.nextInt();
             teclado.nextLine();
             evento = TicketMutxa.getEvento(opcion);
-        }while(evento==null);
+
+        }while(evento == null);
 
         System.out.println();
         System.out.println("Estás comprando entradas para el evento " + evento.getNombre());
         System.out.println("Espera tu turno...");
 
-        //generar cola virtual
+        // generar cola virtual
         Queue<Usuario> colaUsuarios = new LinkedList<>();
         for (Usuario usuario : TicketMutxa.getUsuariosRegistrados()){
+
             if (!usuario.equals(comprador)){
                 colaUsuarios.offer(usuario);
             }
@@ -81,10 +82,10 @@ public class AppCompraEntradas {
             entradas = teclado.nextInt();
             teclado.nextLine();
             comprador.anyadirAlCarrito(evento,entradas);
+
         }while(entradas > 7);
 
         while (true) {
-
             comprador.verCarrito();
 
             opcion = teclado.nextInt();
@@ -108,9 +109,7 @@ public class AppCompraEntradas {
                     System.out.println("Opción no válida.");
                     break;
             }
-
         }
-
     }
 
 }

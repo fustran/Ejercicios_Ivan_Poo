@@ -1,18 +1,19 @@
 package com.poo.Exs.Rec_567_1.P;
 
 import lombok.Getter;
-
+import lombok.ToString;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Getter
+@ToString
 public abstract class Evento implements Comparable<Evento> {
 
-    private String nombre;
-    private LocalDate fecha;
-    private double precio;
+    private final String nombre;
+    private final LocalDate fecha;
+    private final double precio;
 
-    public Evento(String nombre, LocalDate fecha, double precio){
+    protected Evento(String nombre, LocalDate fecha, double precio){
         this.nombre=nombre;
         this.fecha=fecha;
         this.precio=precio;
