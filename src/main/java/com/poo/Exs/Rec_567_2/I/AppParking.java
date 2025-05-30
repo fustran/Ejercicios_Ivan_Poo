@@ -5,33 +5,40 @@ import java.util.Scanner;
 public class AppParking {
 
     static final Scanner TECLADO = new Scanner(System.in);
-    static Parking parking = new Parking("Alicante",1000, 0.10);
+    static Parking parking = new Parking("Alicante",1000, 0.015);
 
     public static void main(String[] args) {
+
+        System.out.println("=== PARKING MUTXAMIEL===");
 
         parking.generarClientesAleatorios();
         parking.mostrarClientesActuales();
 
+        app1();
+
         Ticket ticket = new Ticket("", 1, Estado.PENDIENTE);
         ticket.generar();
-        gestionParking();
-        app2();
+        parking.anyadirClientes(ticket);
+        ticket.recoger();
+        parking.mostrarClientesActuales();
 
+        app2();
+        ticket.pagar();
+
+        //app3();
 
     }
 
-    public static void gestionParking(){
-
-        int plazas = parking.getPlazasTotales();
+    public static void app1() {
+        int plazasTotales = parking.getPlazasTotales();
         int clientes = parking.getClientesActuales().size();
-        int espacioLibre = 0;
+        int plazasLibres = 0;
 
-        System.out.println("APP Parking");
+        System.out.println("APP ACCESO");
 
-        espacioLibre = plazas - clientes;
+        plazasLibres = plazasTotales - clientes;
 
-        System.out.println("Plazas libres " + espacioLibre);
-
+        System.out.println("Plazas libres " + "(" + plazasLibres + ")");
 
     }
 
@@ -41,6 +48,10 @@ public class AppParking {
         String matricula = TECLADO.nextLine().trim().toUpperCase();
         System.out.println("Validando...");
         parking.validarTicket(matricula);
+
+    }
+
+    public static void app3() {
 
     }
 }
