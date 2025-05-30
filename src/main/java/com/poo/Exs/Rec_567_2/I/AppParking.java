@@ -1,5 +1,8 @@
 package com.poo.Exs.Rec_567_2.I;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 public class AppParking {
@@ -25,7 +28,7 @@ public class AppParking {
         app2();
         parking.mostrarClientesActuales();
 
-        //app3();
+        app3();
 
     }
 
@@ -52,5 +55,19 @@ public class AppParking {
 
     public static void app3() {
 
+        List<Ticket> ordenados = new ArrayList<>(parking.getClientesActuales());
+
+        ordenados.sort(Comparator.comparingInt(Ticket::getMinutos));
+
+        System.out.println();
+        System.out.println("            === TICKETS ORDENADOS ===");
+
+        int i = 1;
+        for (Ticket ticket : ordenados) {
+            System.out.printf("%d. Matrícula: %s - minutos: %d - estado: %s%n", i++,
+                    ticket.getMatricula(),
+                    ticket.getMinutos(),
+                    ticket.getEstado());
+        }
     }
 }
