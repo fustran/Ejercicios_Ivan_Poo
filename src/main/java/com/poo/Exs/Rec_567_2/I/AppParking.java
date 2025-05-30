@@ -23,7 +23,7 @@ public class AppParking {
         parking.mostrarClientesActuales();
 
         app2();
-        ticket.pagar();
+        parking.mostrarClientesActuales();
 
         //app3();
 
@@ -46,7 +46,6 @@ public class AppParking {
         System.out.println("=== PAGO DE TICKETS ===");
         System.out.println("Introduce la matrícula:");
         String matricula = TECLADO.nextLine().trim().toUpperCase();
-        System.out.println("Validando...");
         parking.validarTicket(matricula);
 
     }

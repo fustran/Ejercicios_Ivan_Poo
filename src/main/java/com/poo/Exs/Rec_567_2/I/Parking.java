@@ -25,7 +25,9 @@ public class Parking {
 
     public void generarClientesAleatorios(){
 
-        for (int i = 0; i < 10; i++) {
+        int generarTickets = ALEATORIOS.nextInt(10) + 1;
+
+        for (int i = 0; i < generarTickets; i++) {
             String cliente = aleatorios();
             int minutos = ALEATORIOS.nextInt(800);
 
@@ -71,6 +73,7 @@ public class Parking {
     }
 
     public Ticket validarTicket(String matricula){
+        System.out.println("Validando...");
 
         if (matricula != null) {
             for(Ticket matriculas : clientesActuales){
@@ -83,10 +86,16 @@ public class Parking {
                     System.out.println();
                     System.out.printf("Minutos: %d --> Precio por minuto: %.3f€%n", matriculas.getMinutos(), getPrecioMinuto());
                     System.out.printf("Importe a pagar: %.2f€%n", matriculas.getMinutos() * getPrecioMinuto());
+
+                    matriculas.pagar();
+
+                    return matriculas;
                 }
             }
         }
-        return null;
 
+        System.out.println("El ticket no existe");
+        return null;
    }
+
 }

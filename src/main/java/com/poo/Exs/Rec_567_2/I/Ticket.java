@@ -57,8 +57,10 @@ public class Ticket implements Acciones{
 
     @Override
     public void pagar() {
+        this.estado = Estado.PAGADO;
         System.out.println("Ticket pagado...");
         System.out.println("Buen viaje!");
+
     }
 
     @Override
